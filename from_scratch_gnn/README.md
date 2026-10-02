@@ -59,6 +59,8 @@ checkpoints/
 
 The exact rules are in [BENCHMARK_PROTOCOL.md](BENCHMARK_PROTOCOL.md).
 
+Stage 0 is frozen in [benchmark/README.md](benchmark/README.md). The tracked fold file and manifest are generated from the official training CSV, which remains outside this repository.
+
 ---
 
 ## Stage 1 — Establish the reference baselines

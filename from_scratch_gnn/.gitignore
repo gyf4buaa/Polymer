@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.cache/
+cache/
+checkpoints/
+training_history/
+*.pt
+*.pth
+*.ckpt
+*.joblib
+*.pkl
+*.onnx
