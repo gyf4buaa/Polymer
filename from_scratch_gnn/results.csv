@@ -1,0 +1,7 @@
+experiment_id,model_name,category,benchmark_version,git_commit,seed,oof_wmae,tg_mae,ffv_mae,tc_mae,density_mae,rg_mae,kaggle_private,status,notes
+external_reference_v2,third-party-backbone + Physics3D,external_reference,,,,,,,,,,0.06830,historical_external_reference,Existing project reference; not an OOF baseline and not used for model selection
+baseline_descriptor,TBD descriptor baseline,baseline_v0,,,,,,,,,,,planned,
+baseline_thirdparty,third-party GATv2 retrained from scratch,baseline_v0,,,,,,,,,,,planned,Same frozen folds and metric as Own-GNN
+historical_own_gnn,historical own GNN,historical_reference,,,,0.02485,,,,,,,historical_reference,Must be reproduced under the frozen benchmark before being treated as formal
+own_gnn_v0,Own-GNN v0,own_model,baseline_v0,,,,,,,,,,,planned,Pure from-scratch graph GNN
+own_gnn_final,Own-GNN final,own_model,baseline_v0,,,,,,,,,,,planned,Freeze before Kaggle Private evaluation
