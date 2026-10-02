@@ -42,6 +42,17 @@ The additional work archived here focuses on:
 
 The historical local GNN training source has not yet been verified and imported into this repository. A compatible training pipeline has therefore been reconstructed from the MIT-licensed upstream source and the current inference contract; see [training/README.md](training/README.md). It is explicitly marked as a reconstruction rather than the historical local source.
 
+### Historical self-trained GNN route
+
+Separate local audit records indicate that this project also had an independently run five-fold GATv2 experiment with its own training history, model weights and OOF evaluation. That historical route is **not yet imported into this repository** and should not be conflated with the public third-place GATv2 assets used by the archived v2 inference script.
+
+Until the local source is recovered and reviewed, this repository keeps the two paths separate:
+
+1. **archived v2 inference path** — public third-place GATv2 assets + the physics/conformer/LightGBM/blending work documented here;
+2. **historical self-trained GNN path** — local experiment evidence exists, but source recovery is still pending.
+
+The code under [training/](training/) is therefore an **upstream-compatible fallback/reconstruction**, not a reconstruction of the historical self-trained route.
+
 ## Current archived inference route
 
 The primary script is:
