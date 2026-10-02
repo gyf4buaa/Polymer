@@ -40,7 +40,7 @@ The additional work archived here focuses on:
 - post-competition diagnostics and score provenance;
 - packaging the combined pipeline for Kaggle Internet-Off inference.
 
-The original local GNN training files were not preserved. A compatible training pipeline has now been reconstructed from the MIT-licensed upstream source and the current inference contract; see [training/README.md](training/README.md). It is explicitly marked as a reconstruction, not as the lost original local training code.
+The historical local GNN training source has not yet been verified and imported into this repository. A compatible training pipeline has therefore been reconstructed from the MIT-licensed upstream source and the current inference contract; see [training/README.md](training/README.md). It is explicitly marked as a reconstruction rather than the historical local source.
 
 ## Current archived inference route
 
