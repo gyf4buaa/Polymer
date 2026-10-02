@@ -39,4 +39,4 @@ Recovery reference commit observed during reconstruction:
 
 `f385d220d348283792c9f3dc8ed4ab0619e6f7c4`
 
-The reconstructed files are explicitly documented as compatibility/reproducibility code and are not represented as the lost historical local training source.
+The reconstructed files are explicitly documented as compatibility/reproducibility code and are not represented as the historical local training source.
