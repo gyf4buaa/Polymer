@@ -1,0 +1,16 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Reconstructed training outputs
+training_artifacts/
+data/
+
+# Large local/offline assets
+*.zip
+*.tgz
+*.tar.gz
+*.pth
+*.pt
+*.pkl
