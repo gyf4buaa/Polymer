@@ -1,0 +1,25 @@
+{
+  "competition_slug": "neurips-open-polymer-prediction-2025",
+  "submitted_at_utc": "2026-06-04 17:34:31.743000",
+  "submission_ref": 53369928,
+  "description": "CodeBERTa adaptive hidden TTA10 T4 RDKit late submission v1",
+  "status": "SubmissionStatus.COMPLETE",
+  "public_score": 0.06297,
+  "private_score": 0.08104,
+  "top_10_private_threshold": 0.08340,
+  "equivalent_private_leaderboard_rank": 7,
+  "kernel": "wubuaa/opp25-codeberta-adaptive",
+  "kernel_version": null,
+  "kernel_accelerator": "NvidiaTeslaT4",
+  "manifest": "codeberta_submission_manifest.json",
+  "submission_sha256": "67c7a582255d913476c95e0b3dadc78009c20751d486ae1225f035e674639fc9",
+  "manifest_sha256": "dfbc63451abc4b60926b8a28b9f7994c0f09a93476f1e8b312a80375929016f1",
+  "log_sha256": "87617549888a7c27fc6f918c2c14e5ef5bfcc4bc2d16207a25d3ae7b4dc8a780",
+  "code_sha256": "a2fd08049af8fe59ed63968d8138008bec3e63f7fd3e661702e8d65bab464c1e",
+  "notes": [
+    "Late code submission succeeded via Kaggle Kernel version, not direct CSV upload.",
+    "Private score is lower than the visible rank-10 threshold 0.08340, so this run reaches top-10-equivalent performance.",
+    "This adaptive run is the strongest completed official submission archived so far: private 0.08104 versus 0.08111 for the earlier CodeBERTa TTA30 v3 run.",
+    "The archived manifest records Tesla T4, CUDA, offline RDKit, transformers, and selected_tta=30 for the 3-row public/small output path."
+  ]
+}
