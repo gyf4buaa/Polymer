@@ -24,8 +24,6 @@
 
 脚本需要比赛输入，以及一个附加的离线资产 Kaggle Dataset。原始 `gnn3_offline_assets.zip`（SHA-256 `4a01dbea2db931f45fd34634e542d90575aca5f9082b203f00600519d6ad419c`，105,938,993 字节）包含 5 折 GNN 权重、fingerprint 索引和离线 wheels；它超过 GitHub 单文件限制，且包含第三方模型资产，因此没有放进此 GitHub 发布目录。把确认可分发的资产包单独上传为 Kaggle Dataset 并附加到 Notebook 后，脚本会在 `/kaggle/input` 中查找并解压它。脚本面向 Internet Off 的 Kaggle 环境。
 
-脚本中的 GNN 检查点来自第三方公开 GATv2 方案的 refit 模型资产。不要将其视为本仓库从头训练得到的权重；来源与许可范围见第三方声明。
-
 ## 分数使用说明
 
 该版本代码注释明示 Tg 偏移参考了赛后释放的 private 标签。它是赛后探索版本，分数不代表遵守竞赛盲测条件的有效名次。官方最终榜单和本地报告不一致；不要把报告中的阶段性“第 1 名”写成最终名次。
