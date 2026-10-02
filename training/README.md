@@ -1,6 +1,6 @@
-# Reconstructed GATv2 training path
+# Upstream-compatible GATv2 training reconstruction
 
-This directory restores a training path compatible with the GATv2 assets consumed by the archived inference script.
+This directory restores a training path compatible with the public GATv2 assets consumed by the archived inference script. It is a fallback/reproducibility path and is not intended to stand in for the separate historical self-trained GNN experiment.
 
 ## Provenance
 
