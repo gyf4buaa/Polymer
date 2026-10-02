@@ -4,7 +4,7 @@ This directory restores a training path compatible with the GATv2 assets consume
 
 ## Provenance
 
-The historical local training files for this project are no longer available. The reconstruction is based on two independently matching sources of evidence:
+The historical local training source has not yet been verified and imported into this repository. The reconstruction is based on two independently matching sources of evidence:
 
 1. the current inference script, which fixes the model class, dimensions, target order, asset names and fold layout; and
 2. the public MIT-licensed third-place solution by `fresnellll/kaggle-NeurIPS-polymer-prediction-solution`, whose `src/prepare_data.py` and `src/train.py` produce the same asset contract.
@@ -13,7 +13,7 @@ Reference upstream commit observed during recovery:
 
 `f385d220d348283792c9f3dc8ed4ab0619e6f7c4`
 
-This directory is therefore a **reconstruction/adaptation**, not a claim that these files are the lost original local source.
+This directory is therefore a **reconstruction/adaptation**, not a claim that these files are the historical local source.
 
 ## Recovered training contract
 
