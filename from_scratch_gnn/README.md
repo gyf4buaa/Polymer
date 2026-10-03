@@ -202,6 +202,79 @@ Compare, with everything else fixed:
 
 Question: **Does a polymer-aware graph representation improve OOF generalization?**
 
+### Stage 3A result
+
+This was a representation-only ablation. Both variants reused the unchanged
+Own-GNN v0 training engine, GINEConv backbone, four layers, hidden size 256,
+dropout 0.1, mean+max pooling, five heads, masked Huber loss, AdamW settings,
+target normalization, seed, frozen five folds, Stage 0 metric, and v0
+node/bond chemical features. Variant A preserves every RDKit atom and bond,
+including `*` (atomic-number-zero bucket 0). Variant B removes only two
+degree-one dummy atoms with distinct real neighbors, marks those endpoints,
+preserves original chemical bonds, and adds no closure edge. Ambiguous
+topologies retain the full graph and record a deterministic fallback.
+
+| Model | Representation | OOF wMAE | Tg | FFV | Tc | Density | Rg |
+|---|---|---:|---:|---:|---:|---:|---:|
+| Own-GNN v0 | remove `*` + marked closure edge | 0.0229070190 | 53.73353017 | 0.00583204 | 0.02455388 | 0.02348644 | 1.58151550 |
+| Variant A | keep dummy atoms | 0.0227728722 | 51.50385374 | 0.00582648 | 0.02412187 | 0.02529545 | 1.61020157 |
+| Variant B | remove dummy + endpoint marker, no closure | 0.0230024716 | 54.05964086 | 0.00583066 | 0.02452482 | 0.02488108 | 1.56622578 |
+
+Both formal runs passed frozen Stage 0 OOF validation over all 7,973 samples.
+Their source commit is `364e69f37059daf1ffac3b09cadf41ce60afe6a1`;
+training-data SHA256 is
+`1f79c85c785698e8c3499d99721adfe3be9660a487f137a923dd34eb7ef845e1`, and
+folds SHA256 is
+`1bb066dd45d9b9a0f7861efbe7efd38c438522519ed36a745bf61f2a9191284a`.
+
+| Fold | A best epoch | A validation wMAE | B best epoch | B validation wMAE |
+|---:|---:|---:|---:|---:|
+| 0 | 58 | 0.02189877 | 99 | 0.02191349 |
+| 1 | 78 | 0.02044939 | 70 | 0.02067256 |
+| 2 | 63 | 0.02250620 | 49 | 0.02329773 |
+| 3 | 54 | 0.02451637 | 96 | 0.02436420 |
+| 4 | 50 | 0.02449581 | 35 | 0.02476635 |
+
+| Run | Runtime | CUDA device | Mean / max sampled GPU utilization | Peak total memory (`nvidia-smi`) | Peak PyTorch allocated VRAM |
+|---|---:|---|---:|---:|---:|
+| Variant A | 581.63 s | RTX 4070 | 36.5% / 42% (39 samples) | 2,261 MiB | 141.8 MiB |
+| Variant B | 635.45 s | RTX 4070 | 37.4% / 44% (43 samples) | 2,252 MiB | 136.9 MiB |
+
+CUDA smoke passed for both variants. Across formal runs there were no NaN,
+OOM, parse failures, or dropped rows. The only runtime warning was PyG's
+notice that the optional `torch-scatter` package is absent; it did not prevent
+CUDA training or checkpoint creation.
+
+| Graph audit | Variant A | Variant B |
+|---|---:|---:|
+| Graphs built | 7,973 / 7,973 | 7,973 / 7,973 |
+| Valid two-endpoint graphs | 7,940 | 7,940 |
+| Retained dummy nodes | 15,968 | 88 (fallback samples only) |
+| Marked endpoint graphs / nodes | 0 / 0 | 7,940 / 15,880 |
+| Existing ordinary bonds between endpoint atoms | 1,244 | 1,244 preserved |
+| Fallbacks | 0 | 33 (2 one-dummy, 8 three-dummy, 8 four-dummy, 15 shared-endpoint) |
+| Added closure / polymerization edges | 0 / 0 | 0 / 0 |
+
+The absolute aggregate differences from v0 are small: A is lower by
+0.00013415 wMAE and B is higher by 0.00009545. A improves Tg and Tc MAE but
+has higher Density and Rg MAE; B improves Density and Rg slightly but has
+higher Tg MAE. Thus the targets respond differently, and this single seed
+does not establish a representation winner or prove that periodic closure is
+generally beneficial. Keep v0 as the internal baseline; do not treat A's
+small score gain as a final-model decision.
+
+All 52 tests passed. Both variants also passed 120-step CPU tiny-overfit and
+five-epoch CPU fold-0 checks before the RTX run. Formal results and the compact
+OOF/provenance artifacts are under each variant's
+`artifacts/production_gpu_20261003/`; checkpoint weights remain on the RTX
+worktrees and are not committed. `results.csv` contains separate `own_model`
+rows for A and B; the historical v0 row is unchanged.
+
+Variant packages and independent graph schemas:
+
+- `models/own_gnn_repr_keep_dummy/`
+- `models/own_gnn_repr_endpoint_marker/`
+
 ### 3B. Message-passing operator
 
 After graph construction is fixed, compare a small set such as:
