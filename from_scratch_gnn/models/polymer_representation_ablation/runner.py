@@ -168,7 +168,13 @@ def _source_manifest_for_variant(
     variant_root: Path,
     graph_schema: str,
     representation: str,
+    config: Mapping[str, Any] | None = None,
 ) -> dict[str, Any]:
+    effective_config = config if config is not None else _load_variant_config(
+        variant_root=variant_root,
+        graph_schema=graph_schema,
+        representation=representation,
+    )
     variant_path = variant_root.resolve().relative_to(
         frozen_engine.REPOSITORY_ROOT
     ).as_posix()
@@ -194,10 +200,12 @@ def _source_manifest_for_variant(
         )["experiment_id"],
         "representation": representation,
         "graph_schema": graph_schema,
+        "seed": int(effective_config["seed"]),
         "git_commit": commit,
         "branch": frozen_engine._git_output("branch", "--show-current"),
         "source_files_sha256": files,
         "variant_config_sha256": sha256_file(variant_root / "config.json"),
+        "effective_config_sha256": frozen_engine._config_sha256(effective_config),
         "benchmark_files_sha256": {
             "train_csv": sha256_file(train_csv),
             "folds_csv": sha256_file(folds_csv),
@@ -209,7 +217,11 @@ def _source_manifest_for_variant(
 
 
 def _load_variant_config(
-    *, variant_root: Path, graph_schema: str, representation: str
+    *,
+    variant_root: Path,
+    graph_schema: str,
+    representation: str,
+    seed_override: int | None = None,
 ) -> dict[str, Any]:
     config = json.loads((variant_root / "config.json").read_text(encoding="utf-8"))
     baseline = json.loads(
@@ -218,7 +230,7 @@ def _load_variant_config(
     if config.get("benchmark_version") != baseline["benchmark_version"]:
         raise ValueError("Representation variant changed the frozen benchmark version")
     if config.get("seed") != baseline["seed"]:
-        raise ValueError("Representation variant changed the frozen seed")
+        raise ValueError("Representation variant changed the checked-in seed")
     if config.get("training") != baseline["training"]:
         raise ValueError("Representation variant changed frozen training settings")
     fixed_model_keys = (
@@ -243,6 +255,10 @@ def _load_variant_config(
         raise ValueError("Variant representation differs from its graph config")
     if config.get("category") != "own_model":
         raise ValueError("Representation variants must be registered as owned models")
+    if seed_override is not None:
+        if int(seed_override) < 0:
+            raise ValueError("Seed override must be non-negative")
+        config["seed"] = int(seed_override)
     return config
 
 
@@ -261,8 +277,13 @@ def _append_variant_result(
         fields = list(reader.fieldnames or [])
         existing = list(reader)
     new_row = {field: "" for field in fields}
+    seed = int(config["seed"])
     values = {
-        "experiment_id": config["experiment_id"],
+        "experiment_id": (
+            config["experiment_id"]
+            if seed == 42
+            else f"{config['experiment_id']}_seed_{seed}"
+        ),
         "model_name": config["model_name"],
         "category": "own_model",
         "benchmark_version": config["benchmark_version"],
@@ -282,7 +303,21 @@ def _append_variant_result(
     for key, value in values.items():
         if key in new_row:
             new_row[key] = value
-    existing.append(new_row)
+    experiment_id = str(values["experiment_id"])
+    if seed == 42:
+        # Preserve the original seed-42 writer behavior and historical row.
+        existing.append(new_row)
+    else:
+        matches = [
+            index for index, row in enumerate(existing)
+            if row.get("experiment_id") == experiment_id
+        ]
+        if len(matches) > 1:
+            raise RuntimeError(f"results.csv contains duplicate experiment_id {experiment_id}")
+        if matches:
+            existing[matches[0]] = new_row
+        else:
+            existing.append(new_row)
     temp_path = result_path.with_suffix(result_path.suffix + ".tmp")
     with temp_path.open("w", encoding="utf-8", newline="") as output:
         writer = csv.DictWriter(output, fieldnames=fields, lineterminator="\n")
@@ -324,6 +359,12 @@ def main_for_variant(
         for name, value in replacements.items():
             setattr(frozen_engine, name, value)
         args = frozen_engine.parse_args()
+        frozen_engine._load_config = lambda: _load_variant_config(
+            variant_root=variant_root,
+            graph_schema=graph_schema,
+            representation=representation,
+            seed_override=args.seed,
+        )
         if args.tiny_overfit:
             frozen_engine._run_tiny_overfit(args)
         elif args.smoke_fold is not None:

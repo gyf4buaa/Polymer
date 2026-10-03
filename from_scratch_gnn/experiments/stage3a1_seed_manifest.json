@@ -1,0 +1,47 @@
+{
+  "experiment": "Stage 3A.1 paired-seed representation confirmation",
+  "status": "pre-registered",
+  "repository": "gyf4buaa/Polymer",
+  "base_main_commit": "84e6aa667b2e3abca9c85c9476c4d84291f1c624",
+  "seed42_policy": "Reuse the already completed Stage 3A formal OOF results; do not rerun.",
+  "seeds": [42, 43, 44, 45, 46],
+  "new_formal_run_count": 12,
+  "new_seeds": [43, 44, 45, 46],
+  "training_protocol": "Frozen Own-GNN v0 protocol; only the random seed varies between runs.",
+  "train_sha256": "1f79c85c785698e8c3499d99721adfe3be9660a487f137a923dd34eb7ef845e1",
+  "folds_sha256": "1bb066dd45d9b9a0f7861efbe7efd38c438522519ed36a745bf61f2a9191284a",
+  "models": [
+    {
+      "name": "Own-GNN v0",
+      "experiment_id": "own_gnn_v0_frozen_oof_v1",
+      "config": "models/own_gnn_v0/config.json",
+      "config_sha256": "160a69d9ab21f9635e57a1d03354659e0c8cc584fc5f0c9548a093a921391616",
+      "representation": "remove two valid dummy atoms and add marked endpoint-closure edge",
+      "graph_schema": "own_gnn_v0_endpoint_closure_edge16_node7_v1",
+      "seed42_git_commit": "b3f5df52c81f8032f5f2a2390b437d5d3302b160",
+      "seed42_oof_wmae": 0.022907019022911094
+    },
+    {
+      "name": "Variant A — keep dummy atoms",
+      "experiment_id": "own_gnn_repr_keep_dummy",
+      "config": "models/own_gnn_repr_keep_dummy/config.json",
+      "config_sha256": "c4e34979ff01692b6b02016299dceeb6451c53953f8339ab55aaf33263079d13",
+      "representation": "retain original dummy atoms and chemical bonds; no closure or endpoint marker",
+      "graph_schema": "own_gnn_repr_keep_dummy_raw_graph_node7_edge16_endpoint1_v1",
+      "seed42_git_commit": "364e69f37059daf1ffac3b09cadf41ce60afe6a1",
+      "seed42_oof_wmae": 0.022772872219188344
+    },
+    {
+      "name": "Variant B — endpoint marker, no closure",
+      "experiment_id": "own_gnn_repr_endpoint_marker",
+      "config": "models/own_gnn_repr_endpoint_marker/config.json",
+      "config_sha256": "42ad5aa3550ab1db4c3d13f76cdb68cbc7ffa61b77726cc19dcf9961c5636b88",
+      "representation": "remove two valid dummy atoms and mark their real neighbors; no closure edge",
+      "graph_schema": "own_gnn_repr_endpoint_marker_no_closure_node7_edge16_endpoint1_v1",
+      "seed42_git_commit": "364e69f37059daf1ffac3b09cadf41ce60afe6a1",
+      "seed42_oof_wmae": 0.02300247156063056
+    }
+  ],
+  "paired_runs": "For every new seed, run all three models with the same seed, data, folds, metric, and frozen training settings.",
+  "analysis": "Compute per-seed OOF wMAE and target MAE, paired deltas, five-seed means and standard deviations after all 12 new runs complete."
+}
