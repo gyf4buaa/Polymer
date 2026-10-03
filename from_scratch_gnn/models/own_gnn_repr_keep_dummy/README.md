@@ -36,8 +36,8 @@ registered as `own_model`; its result never replaces the v0 registry row.
 
 CPU tiny-overfit passed: masked Huber loss fell from 0.34745914 to 0.00430032
 in 120 steps, with an exact checkpoint round trip. The five-epoch CPU fold-0
-smoke passed with best validation wMAE 0.02976372 at epoch 5 (25.36 seconds of
-training). This is only an execution check, not an OOF result.
+smoke passed with best validation wMAE 0.02976372 at epoch 5 (27.95 seconds of
+fold training). This is only an execution check, not an OOF result.
 
 The full graph audit covered 7,973/7,973 samples, retained 15,968
 atomic-number-zero dummy nodes, and reported zero graph fallbacks, dropped

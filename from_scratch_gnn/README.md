@@ -235,7 +235,8 @@ CPU-only smoke checks passed independently. The full training set built
 
 All 52 tests under `from_scratch_gnn` passed. Both variants passed 120-step
 CPU tiny-overfit and a five-epoch CPU fold-0 smoke; the latter reached best
-validation wMAE 0.02976372 for A and 0.03110151 for B at epoch 5. These short
+validation wMAE 0.02976372 for A and 0.03110151 for B at epoch 5 (27.95 s and
+24.81 s of fold training, respectively). These short
 smokes are execution checks, not OOF results or evidence for choosing a graph
 representation. No non-finite loss or CPU OOM occurred. CUDA and formal OOF
 runtime/NaN/OOM status are unobserved because the GPU was busy. No formal

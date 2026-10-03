@@ -38,8 +38,8 @@ variant is registered as `own_model`; its result never replaces the v0 row.
 
 CPU tiny-overfit passed: masked Huber loss fell from 0.34953839 to 0.00224609
 in 120 steps, with an exact checkpoint round trip. The five-epoch CPU fold-0
-smoke passed with best validation wMAE 0.03110151 at epoch 5 (22.77 seconds of
-training). This is only an execution check, not an OOF result.
+smoke passed with best validation wMAE 0.03110151 at epoch 5 (24.81 seconds of
+fold training). This is only an execution check, not an OOF result.
 
 The full graph audit covered 7,973/7,973 samples. It marked 7,940 valid graphs
 (15,880 endpoint nodes), retained 88 dummy nodes in 33 lossless fallback
