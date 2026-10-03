@@ -86,10 +86,18 @@ def _git_output(*args: str) -> str:
 
 def _require_clean_source() -> None:
     status = _git_output("status", "--porcelain", "--untracked-files=all")
-    if status:
+    # The official training CSV lives outside Git under data/ by design.
+    # Allow that input directory while requiring all executable source to be
+    # committed and clean before a formal run.
+    unexpected = [
+        line for line in status.splitlines()
+        if not line.startswith("?? data/")
+    ]
+    if unexpected:
+        unexpected_text = "\n".join(unexpected)
         raise RuntimeError(
             "Formal training requires committed source and a clean working tree; "
-            f"git status reported:\n{status}"
+            f"git status reported:\n{unexpected_text}"
         )
 
 
