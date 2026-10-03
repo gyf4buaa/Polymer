@@ -29,3 +29,14 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
+
+
+## Reconstructed training path
+
+The files under `training/` are an adaptation/reconstruction of the public training recipe from the same MIT-licensed upstream solution, cross-checked against this repository's archived inference contract.
+
+Recovery reference commit observed during reconstruction:
+
+`f385d220d348283792c9f3dc8ed4ab0619e6f7c4`
+
+The reconstructed files are explicitly documented as compatibility/reproducibility code and are not represented as the historical local training source.
