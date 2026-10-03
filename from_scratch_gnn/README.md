@@ -65,17 +65,7 @@ Stage 0 is frozen in [benchmark/README.md](benchmark/README.md). The tracked fol
 
 ## Stage 1 — Establish the reference baselines
 
-### 1A. Conventional descriptor baseline
-
-Train a simple non-GNN baseline such as:
-
-```text
-RDKit descriptors + Morgan fingerprint → LightGBM
-```
-
-Purpose: determine whether graph learning actually improves over a strong low-cost molecular baseline.
-
-### 1B. Third-party GATv2 reference
+### 1A. Third-party GATv2 reference
 
 Retrain the public third-party GATv2 architecture **from random initialization** using the frozen folds and frozen metric.
 
@@ -88,6 +78,16 @@ Third-party architecture OOF wMAE = ?
 ```
 
 Once established, this number should not move while Own-GNN is being developed.
+
+### 1B. Conventional descriptor baseline
+
+Train a simple non-GNN baseline such as:
+
+```text
+RDKit descriptors + Morgan fingerprint → LightGBM
+```
+
+Purpose: determine whether graph learning actually improves over a strong low-cost molecular baseline.
 
 ### 1C. Historical own-GNN reference
 
