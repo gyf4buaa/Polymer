@@ -3,7 +3,6 @@ from __future__ import annotations
 import argparse
 import csv
 import json
-import shutil
 import sys
 from pathlib import Path
 
@@ -75,9 +74,18 @@ def test_v0_registry_seed_result_is_unique_and_idempotent(tmp_path: Path):
     track_root = train_oof.TRACK_ROOT
     source = track_root / "results.csv"
     destination = tmp_path / "results.csv"
-    shutil.copyfile(source, destination)
     with source.open("r", encoding="utf-8-sig", newline="") as original:
         original_rows = list(csv.DictReader(original))
+    target_id = "own_gnn_v0_frozen_oof_v1_seed_43"
+    original_rows = [row for row in original_rows if row["experiment_id"] != target_id]
+    with destination.open("w", encoding="utf-8", newline="") as fixture:
+        writer = csv.DictWriter(
+            fixture,
+            fieldnames=list(original_rows[0]),
+            lineterminator="\n",
+        )
+        writer.writeheader()
+        writer.writerows(original_rows)
 
     config = train_oof._load_config()
     config["seed"] = 43
@@ -102,7 +110,7 @@ def test_v0_registry_seed_result_is_unique_and_idempotent(tmp_path: Path):
         rows = list(csv.DictReader(result))
     matches = [
         row for row in rows
-        if row["experiment_id"] == "own_gnn_v0_frozen_oof_v1_seed_43"
+        if row["experiment_id"] == target_id
     ]
     assert rows[: len(original_rows)] == original_rows
     assert len(matches) == 1

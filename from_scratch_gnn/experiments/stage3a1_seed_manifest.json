@@ -1,12 +1,23 @@
 {
   "experiment": "Stage 3A.1 paired-seed representation confirmation",
-  "status": "pre-registered",
+  "status": "complete",
   "repository": "gyf4buaa/Polymer",
   "base_main_commit": "84e6aa667b2e3abca9c85c9476c4d84291f1c624",
   "seed42_policy": "Reuse the already completed Stage 3A formal OOF results; do not rerun.",
-  "seeds": [42, 43, 44, 45, 46],
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
   "new_formal_run_count": 12,
-  "new_seeds": [43, 44, 45, 46],
+  "new_seeds": [
+    43,
+    44,
+    45,
+    46
+  ],
   "training_protocol": "Frozen Own-GNN v0 protocol; only the random seed varies between runs.",
   "train_sha256": "1f79c85c785698e8c3499d99721adfe3be9660a487f137a923dd34eb7ef845e1",
   "folds_sha256": "1bb066dd45d9b9a0f7861efbe7efd38c438522519ed36a745bf61f2a9191284a",
@@ -43,5 +54,34 @@
     }
   ],
   "paired_runs": "For every new seed, run all three models with the same seed, data, folds, metric, and frozen training settings.",
-  "analysis": "Compute per-seed OOF wMAE and target MAE, paired deltas, five-seed means and standard deviations after all 12 new runs complete."
+  "analysis": "Compute per-seed OOF wMAE and target MAE, paired deltas, five-seed means and standard deviations after all 12 new runs complete.",
+  "source_commit_for_all_new_formal_runs": "de70b3e0cfd51fc83920fa372f1d1fdab92a6845",
+  "fold_seed_rule": "Each run seed s sets fold initialization seeds s + fold_index (folds 0–4); all three models used the same run seed and therefore the same per-fold seeds.",
+  "cuda_smoke": {
+    "model": "Variant A",
+    "seed": 43,
+    "fold": 0,
+    "epochs": 2,
+    "device": "cuda",
+    "status": "passed",
+    "purpose": "seed-plumbing smoke only; excluded from model comparison"
+  },
+  "formal_execution": {
+    "status": "12_of_12_successful",
+    "new_seeds": [
+      43,
+      44,
+      45,
+      46
+    ],
+    "device": "NVIDIA GeForce RTX 4070 / CUDA",
+    "oof_validation": "All 12 runs accepted by Stage 0 validator: 7,973 rows, no missing/extra/duplicate IDs.",
+    "nan_or_oom": "None observed; run logs scanned for NaN, OOM, CUDA error, and traceback markers with zero hits.",
+    "startup_retry": "The first Own-GNN v0 seed-43 launch was rejected by the clean-source guard because a temporary data symlink made the checkout dirty; it failed before epoch 1. The symlink was removed and the same frozen run completed using the external train CSV path. No model run was duplicated or overwritten.",
+    "runtime_seconds_total": 6831.352108760984,
+    "runtime_minutes_total": 113.85586847934974,
+    "artifacts": "from_scratch_gnn/experiments/stage3a1_run_artifact_manifest.json"
+  },
+  "analysis_artifact": "experiments/stage3a1/paired_summary.json",
+  "light_artifacts_only": true
 }
