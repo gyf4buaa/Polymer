@@ -2,7 +2,7 @@
 
 This directory is the clean-room experimental track for training a polymer property GNN from random initialization.
 
-The goal is not to reproduce or fine-tune the existing third-party competition model. The third-party GATv2 solution is kept only as a **reference baseline**. All models developed here should use our own training runs, checkpoints, OOF predictions, experiment logs, and ablations.
+The goal is not to reproduce or fine-tune the existing third-party competition model. The third-party GATv2 solution is kept only as an **external reference**. **Own-GNN v0 is the internal baseline** for all subsequent model development. All later variants are judged first against Own-GNN v0 under the frozen OOF protocol; external references provide context rather than steering the development path.
 
 ## Scientific question
 
@@ -13,11 +13,11 @@ The development loop is:
 ```text
 freeze benchmark
     ↓
-retrain third-party architecture as an OOF reference
+establish external reference points
     ↓
-Own-GNN v0: simple graph-only baseline
+Own-GNN v0: freeze the internal baseline
     ↓
-controlled model improvements
+controlled improvements relative to Own-GNN v0
     ↓
 controlled feature/fusion improvements
     ↓
@@ -63,15 +63,15 @@ Stage 0 is frozen in [benchmark/README.md](benchmark/README.md). The tracked fol
 
 ---
 
-## Stage 1 — Establish the reference baselines
+## Stage 1 — Establish external reference points
 
-### 1A. Third-party GATv2 reference
+### 1A. Third-party GATv2 external reference
 
 Retrain the public third-party GATv2 architecture **from random initialization** using the frozen folds and frozen metric.
 
 Do not use its already-refit competition weights to calculate a training-set score.
 
-This produces one fixed reference line:
+This produces one fixed external reference line:
 
 ```text
 Third-party architecture OOF wMAE = 0.02406818
@@ -88,9 +88,9 @@ metrics, fold metrics, histories, and checkpoints are under
 `baselines/third_party_gatv2/artifacts/production_gpu_20261003/`; the Mac CPU
 pilot remains exploratory provenance and did not contribute to this result.
 
-Once established, this number should not move while Own-GNN is being developed.
+Once established, this number should not move while Own-GNN is being developed. It is not the optimization baseline for later Own-GNN variants.
 
-### 1B. Conventional descriptor baseline
+### 1B. Conventional descriptor reference
 
 Train a simple non-GNN baseline such as:
 
@@ -98,7 +98,7 @@ Train a simple non-GNN baseline such as:
 RDKit descriptors + Morgan fingerprint → LightGBM
 ```
 
-Purpose: determine whether graph learning actually improves over a strong low-cost molecular baseline.
+Purpose: provide a simple non-GNN context point for how much graph learning adds. It is not the baseline for Own-GNN development.
 
 ### 1C. Historical own-GNN reference
 
@@ -108,7 +108,7 @@ If it cannot be reproduced exactly, keep its historical OOF result only as a his
 
 ---
 
-## Stage 2 — Own-GNN v0
+## Stage 2 — Freeze the internal baseline: Own-GNN v0
 
 Build the simplest clean from-scratch GNN first.
 
@@ -181,13 +181,13 @@ Compared with the frozen third-party GATv2 result (0.02406818), this is a
 4.82% lower OOF wMAE for this single-seed run. The full metrics and histories
 are in the ignored production artifact directory on the RTX node.
 
-This is the first fully owned benchmark point.
+This is the first fully owned benchmark point and, from this stage onward, the **internal baseline**. Later Own-GNN variants should be accepted or rejected primarily by comparison with this result under the same frozen folds and metric. The third-party model remains an external context reference.
 
 ---
 
-## Stage 3 — Controlled GNN improvement
+## Stage 3 — Controlled improvement from Own-GNN v0
 
-Do not change many things at once. Each experiment should answer one hypothesis.
+Do not change many things at once. Each experiment should answer one hypothesis, and its primary comparison is against Own-GNN v0 or the immediately preceding accepted Own-GNN variant—not against the third-party reference.
 
 Recommended order:
 
@@ -332,19 +332,27 @@ Kaggle Private must **not** be used as an iterative hyperparameter-validation se
 
 The final comparison has two levels.
 
-### Development benchmark
+### Internal development benchmark
 
-Use the same frozen OOF protocol:
+Own-GNN v0 is the zero point for model development:
 
 | Model | OOF wMAE | Tg | FFV | Tc | Density | Rg |
 |---|---:|---:|---:|---:|---:|---:|
-| Descriptor baseline | TBD | | | | | |
-| Third-party GATv2 retrained from scratch | 0.02406818 | 54.32066 | 0.00719931 | 0.02426117 | 0.02983760 | 1.54587552 |
-| Historical Own-GNN | TBD | | | | | |
-| Own-GNN v0 | 0.02290702 | 53.73353 | 0.00583204 | 0.02455388 | 0.02348644 | 1.58152 |
+| **Own-GNN v0 internal baseline** | **0.02290702** | 53.73353 | 0.00583204 | 0.02455388 | 0.02348644 | 1.58152 |
+| Own-GNN variants | TBD | | | | | |
 | Own-GNN final | TBD | | | | | |
 
-This table explains **why the model improved**.
+This table explains **whether each change improves our own model and why**.
+
+### External context
+
+External and historical models are reported separately so that they do not become the development objective:
+
+| Reference | OOF wMAE | Role |
+|---|---:|---|
+| Third-party GATv2 retrained from scratch | 0.02406818 | External architecture reference |
+| Conventional descriptor model | TBD | Non-GNN reference |
+| Historical Own-GNN | TBD | Historical reference only unless reproduced on frozen folds |
 
 ### External hidden-test benchmark
 
