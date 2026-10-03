@@ -1,9 +1,6 @@
 # Own-GNN v0
 
-Own-GNN v0 is a clean, graph-only model trained from random initialization on
-the frozen Stage 0 benchmark. It is independent of the third-party GATv2
-reference implementation and does not use its weights, Morgan fingerprints,
-global RDKit descriptors, physics features, or 3D inputs.
+Own-GNN v0 is the **internal baseline** for the owned-model development track: a clean, graph-only model trained from random initialization on the frozen Stage 0 benchmark. It is independent of the third-party GATv2 external reference implementation and does not use its weights, Morgan fingerprints, global RDKit descriptors, physics features, or 3D inputs. Subsequent Own-GNN variants should be compared primarily against this baseline; the third-party result is retained only as external context.
 
 ## Graph representation
 
@@ -112,9 +109,7 @@ duplicates, omissions, or extra IDs. Full OOF metrics:
 | Density MAE | 0.02348644 |
 | Rg MAE | 1.58151550 |
 
-Against the frozen Third-party GATv2 wMAE of 0.0240681831, Own-GNN v0 is
-0.0011611640 lower (4.82% relative). This is the first single-seed baseline
-result, not a multi-seed final claim.
+For external context, the frozen third-party GATv2 reference has wMAE 0.0240681831; Own-GNN v0 is 0.0011611640 lower (4.82% relative) on this single-seed run. This contextual comparison does not define the development objective: Own-GNN v0 itself is the internal baseline for subsequent variants, and this is not yet a multi-seed final claim.
 
 The formal run took 590.7 seconds total (9m 51s), averaged 1.063 seconds per
 executed epoch, and processed about 6,008 training samples per second. CUDA
