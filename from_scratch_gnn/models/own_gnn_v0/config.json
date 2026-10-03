@@ -1,0 +1,49 @@
+{
+  "experiment_id": "own_gnn_v0",
+  "model_name": "Own-GNN v0",
+  "benchmark_version": "nopp2025_train_v1",
+  "seed": 42,
+  "graph": {
+    "schema": "own_gnn_v0_endpoint_closure_edge16_node7_v1",
+    "node_features": [
+      "atomic_number",
+      "degree",
+      "formal_charge",
+      "hybridization",
+      "aromatic",
+      "total_hydrogens",
+      "chirality"
+    ],
+    "edge_features": [
+      "bond_type_one_hot",
+      "conjugated",
+      "in_ring",
+      "stereo_one_hot",
+      "polymerization_edge"
+    ],
+    "ambiguous_endpoint_policy": "keep_original_atoms_and_bonds_no_polymer_edge_record_reason"
+  },
+  "model": {
+    "operator": "GINEConv",
+    "hidden_dim": 256,
+    "num_layers": 4,
+    "dropout": 0.1,
+    "residual": true,
+    "normalization": "LayerNorm",
+    "pooling": ["global_mean", "global_max"],
+    "property_heads": ["Tg", "FFV", "Tc", "Density", "Rg"]
+  },
+  "training": {
+    "epochs_max": 600,
+    "patience": 40,
+    "batch_size": 64,
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.00001,
+    "loss": "masked_huber",
+    "huber_delta": 1.0,
+    "target_normalization": "fold_train_mean_std",
+    "task_reduction": "equal_mean_over_tasks_with_observed_labels",
+    "early_stopping_metric": "Stage0 weighted MAE with frozen manifest weights"
+  }
+}
