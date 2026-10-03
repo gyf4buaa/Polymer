@@ -275,6 +275,87 @@ Variant packages and independent graph schemas:
 - `models/own_gnn_repr_keep_dummy/`
 - `models/own_gnn_repr_endpoint_marker/`
 
+### Stage 3A.1 — paired-seed representation confirmation (complete)
+
+This confirmation asks whether Variant A's small seed-42 advantage over the
+frozen Own-GNN v0 baseline persists across the pre-registered paired seeds.
+The only run-to-run variable was the base random seed. Own-GNN v0, Variant A,
+and Variant B retained the exact Stage 3A architecture, graph representation,
+chemical features, optimizer, loss, training settings, target normalization,
+folds, and Stage 0 metric. The implementation derives fold initialization
+seeds as `run_seed + fold_index`, identically for all three models.
+
+Seed 42 is reused from Stage 3A and was not rerun. The twelve new full 5-fold
+OOF runs are seeds 43–46 for each model. Every run was performed with the
+Stage 3A.1 source commit `de70b3e0cfd51fc83920fa372f1d1fdab92a6845` on CUDA
+using an NVIDIA RTX 4070. The frozen train and fold SHA256 values remain
+`1f79c85c785698e8c3499d99721adfe3be9660a487f137a923dd34eb7ef845e1` and
+`1bb066dd45d9b9a0f7861efbe7efd38c438522519ed36a745bf61f2a9191284a`.
+
+| Model | Seed 42 | Seed 43 | Seed 44 | Seed 45 | Seed 46 | Mean ± sample SD | Min–max |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Own-GNN v0 | 0.0229070190 | 0.0230364285 | 0.0230329353 | 0.0229046954 | 0.0231809810 | 0.0230124119 ± 0.0001141535 | 0.0229046954–0.0231809810 |
+| Variant A — keep dummy | 0.0227728722 | 0.0226486259 | 0.0228896667 | 0.0227330069 | 0.0228828622 | 0.0227854068 ± 0.0001024446 | 0.0226486259–0.0228896667 |
+| Variant B — endpoint marker, no closure | 0.0230024716 | 0.0232366175 | 0.0230425081 | 0.0232757492 | 0.0230131083 | 0.0231140909 ± 0.0001312694 | 0.0230024716–0.0232757492 |
+
+Paired deltas use left minus right; a negative value favors the left-hand
+representation.
+
+| Comparison | Seed 42 | Seed 43 | Seed 44 | Seed 45 | Seed 46 | Mean ± sample SD | Direction |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| A − v0 | −0.0001341468 | −0.0003878026 | −0.0001432686 | −0.0001716884 | −0.0002981189 | −0.0002270051 ± 0.0001113636 | A lower in 5/5 |
+| B − v0 | +0.0000954525 | +0.0002001890 | +0.0000095728 | +0.0003710538 | −0.0001678728 | +0.0001016791 ± 0.0002021432 | B higher in 4/5 |
+| A − B | −0.0002295993 | −0.0005879916 | −0.0001528414 | −0.0005427422 | −0.0001302461 | −0.0003286841 ± 0.0002197597 | A lower in 5/5 |
+
+| Target | Own-GNN v0 mean ± SD | Variant A mean ± SD | Variant B mean ± SD | A − v0 mean delta | B − v0 mean delta |
+|---|---:|---:|---:|---:|---:|
+| Tg | 53.5326 ± 0.606 | 51.7968 ± 0.920 | 53.6849 ± 0.774 | −1.73578 | +0.15229 |
+| FFV | 0.00580818 ± 0.000211 | 0.00589486 ± 0.000128 | 0.00597187 ± 0.000344 | +0.00008668 | +0.00016369 |
+| Tc | 0.0248217 ± 0.000199 | 0.0246618 ± 0.000366 | 0.0247491 ± 0.000367 | −0.00015986 | −0.00007254 |
+| Density | 0.0247803 ± 0.00112 | 0.0246016 ± 0.000666 | 0.0252259 ± 0.000518 | −0.00017876 | +0.00044557 |
+| Rg | 1.57709 ± 0.0220 | 1.57739 ± 0.0216 | 1.56873 ± 0.0223 | +0.00029658 | −0.00835883 |
+
+The seed-level target MAEs and paired deltas are in
+[`experiments/stage3a1/paired_summary.json`](experiments/stage3a1/paired_summary.json).
+Per-fold best epochs, validation wMAE, runtime, GPU utilization, and memory
+measurements are in
+[`experiments/stage3a1/fold_run_summary.csv`](experiments/stage3a1/fold_run_summary.csv).
+Each run's predictions, fold metrics, five histories, effective config,
+gzip-compressed graph diagnostics, registry row, and provenance remain under its
+`models/*/artifacts/paired_seed_{43,44,45,46}/` directory. File SHA256 values
+are listed in [`experiments/stage3a1_run_artifact_manifest.json`](experiments/stage3a1_run_artifact_manifest.json).
+Checkpoint weights and graph caches are excluded.
+
+All twelve new OOF predictions passed Stage 0 validation on all 7,973 samples,
+with no missing, extra, or duplicate IDs. The runs used 6,831 seconds of GPU
+training time in total (113.9 minutes); the maximum recorded PyTorch allocated
+VRAM was 135.7 MiB and maximum `nvidia-smi` memory use during training was
+2,330 MiB. There were no NaN values, OOMs, or CUDA errors. The only repeated
+runtime notice was PyG's optional `torch-scatter` acceleration warning. One
+initial v0 seed-43 launch was stopped by the clean-source guard before epoch 1
+because a temporary data symlink made the checkout dirty; the symlink was
+removed and the same run completed with the frozen CSV supplied by absolute
+path. No training run was duplicated. The two-epoch Variant A seed-43 CUDA
+smoke passed before formal training and was not used for model selection.
+
+Variant A's mean paired advantage is −0.00022701 wMAE, with negative deltas
+for all five seeds; its paired-delta SD is 0.00011136. Its Tg and Tc MAEs are
+lower in four of five seeds. The seed-42 Density and Rg trade-offs did not
+repeat consistently: Variant A's Density delta changes direction across
+seeds, and its mean Rg delta is close to zero relative to the seed spread.
+This is a consistent signal in the five pre-registered seeds, but still a
+small single-benchmark result rather than a general physical conclusion.
+Variant B is higher than v0 in mean OOF wMAE and in four of five paired seeds.
+
+**Decision:** carry Variant A forward as the fixed representation candidate
+for a later message-passing operator comparison. Do not treat its score as a
+final model selection. The next question should be whether the operator
+comparison preserves Variant A's paired advantage when representation and all
+other frozen settings are held fixed. This does not start Stage 3B.
+
+All 66 repository tests pass after the seed-plumbing, artifact-isolation, and
+paired-summary checks.
+
 ### 3B. Message-passing operator
 
 After graph construction is fixed, compare a small set such as:

@@ -123,6 +123,78 @@ def test_variant_config_rejects_training_setting_drift(
         )
 
 
+@pytest.mark.parametrize(
+    ("variant_name", "schema", "representation"),
+    [
+        ("own_gnn_repr_keep_dummy", DUMMY_SCHEMA, DUMMY_REPRESENTATION),
+        (
+            "own_gnn_repr_endpoint_marker",
+            ENDPOINT_SCHEMA,
+            ENDPOINT_REPRESENTATION,
+        ),
+    ],
+)
+def test_seed_override_changes_only_effective_seed_and_keeps_source_config(
+    variant_name: str, schema: str, representation: str
+):
+    root = runner.frozen_engine.TRACK_ROOT / "models" / variant_name
+    source_path = root / "config.json"
+    source_bytes = source_path.read_bytes()
+    source_config = json.loads(source_bytes)
+    default_config = runner._load_variant_config(
+        variant_root=root,
+        graph_schema=schema,
+        representation=representation,
+    )
+    seeded_config = runner._load_variant_config(
+        variant_root=root,
+        graph_schema=schema,
+        representation=representation,
+        seed_override=43,
+    )
+
+    assert default_config == source_config
+    assert seeded_config["seed"] == 43
+    seeded_config["seed"] = source_config["seed"]
+    assert seeded_config == source_config
+    assert source_path.read_bytes() == source_bytes
+
+
+def test_variant_source_manifest_records_seed_schema_representation_and_hashes(
+    tmp_path: Path,
+):
+    variant_root = runner.frozen_engine.TRACK_ROOT / "models/own_gnn_repr_keep_dummy"
+    config = runner._load_variant_config(
+        variant_root=variant_root,
+        graph_schema=DUMMY_SCHEMA,
+        representation=DUMMY_REPRESENTATION,
+        seed_override=44,
+    )
+    train_csv = tmp_path / "train.csv"
+    folds_csv = tmp_path / "folds.csv"
+    train_csv.write_text("train fixture\n")
+    folds_csv.write_text("fold fixture\n")
+
+    manifest = runner._source_manifest_for_variant(
+        "stage3a1-test-commit",
+        train_csv,
+        folds_csv,
+        variant_root=variant_root,
+        graph_schema=DUMMY_SCHEMA,
+        representation=DUMMY_REPRESENTATION,
+        config=config,
+    )
+
+    assert manifest["git_commit"] == "stage3a1-test-commit"
+    assert manifest["seed"] == 44
+    assert manifest["graph_schema"] == DUMMY_SCHEMA
+    assert manifest["representation"] == DUMMY_REPRESENTATION
+    assert manifest["benchmark_files_sha256"]["train_csv"] == runner.sha256_file(train_csv)
+    assert manifest["benchmark_files_sha256"]["folds_csv"] == runner.sha256_file(folds_csv)
+    assert manifest["variant_config_sha256"] == runner.sha256_file(variant_root / "config.json")
+    assert manifest["effective_config_sha256"] == runner.frozen_engine._config_sha256(config)
+
+
 def test_variant_registry_append_preserves_v0_row_and_uses_owned_category(
     tmp_path: Path,
 ):
@@ -159,6 +231,41 @@ def test_variant_registry_append_preserves_v0_row_and_uses_owned_category(
     assert rows[-1]["category"] == "own_model"
     assert rows[-1]["git_commit"] == "stage3a-test-commit"
     assert source.read_bytes() == before_bytes
+
+
+def test_variant_seed_result_is_unique_and_idempotent(tmp_path: Path):
+    track_root = runner.frozen_engine.TRACK_ROOT
+    destination = tmp_path / "results.csv"
+    shutil.copyfile(track_root / "results.csv", destination)
+    config = json.loads(
+        (track_root / "models/own_gnn_repr_keep_dummy/config.json").read_text()
+    )
+    config["seed"] = 43
+    metrics = {
+        "overall_oof_wmae": 0.1,
+        "target_mae": {name: 1.0 for name in runner.frozen_engine.TARGETS},
+    }
+    metadata_path = track_root / "models/own_gnn_repr_keep_dummy/artifacts/seed43/run_metadata.json"
+
+    for score in (0.1, 0.2):
+        metrics["overall_oof_wmae"] = score
+        runner._append_variant_result(
+            destination,
+            config=config,
+            commit="stage3a1-test-commit",
+            metrics=metrics,
+            folds_sha256="frozen-folds",
+            train_sha256="frozen-train",
+            run_metadata_path=metadata_path,
+        )
+
+    with destination.open("r", encoding="utf-8-sig", newline="") as result:
+        rows = list(csv.DictReader(result))
+    matches = [row for row in rows if row["experiment_id"] == "own_gnn_repr_keep_dummy_seed_43"]
+    assert len(matches) == 1
+    assert matches[0]["seed"] == "43"
+    assert matches[0]["oof_wmae"] == "0.2"
+    assert matches[0]["category"] == "own_model"
 
 
 def test_cli_adapter_restores_frozen_engine_hooks_after_argparse_exit(

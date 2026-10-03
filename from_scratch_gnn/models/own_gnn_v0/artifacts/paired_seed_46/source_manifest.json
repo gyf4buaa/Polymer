@@ -1,0 +1,25 @@
+{
+  "git_commit": "de70b3e0cfd51fc83920fa372f1d1fdab92a6845",
+  "branch": "",
+  "seed": 46,
+  "representation": "endpoint_closure",
+  "graph_schema": "own_gnn_v0_endpoint_closure_edge16_node7_v1",
+  "source_config_sha256": "160a69d9ab21f9635e57a1d03354659e0c8cc584fc5f0c9548a093a921391616",
+  "effective_config_sha256": "2528d60dab4760b4d1f64075ec09c851180c9554f5d58eff14c90977f04c71ed",
+  "source_files_sha256": {
+    "from_scratch_gnn/models/own_gnn_v0/README.md": "95d045479ec945fc282f060e6453c2e4935799597a75f33b734e8176d48dc5e4",
+    "from_scratch_gnn/models/own_gnn_v0/__init__.py": "e50253d23930ca26f3c21f81233b9ea30ac5efc391703b9baaf778a9b42d185c",
+    "from_scratch_gnn/models/own_gnn_v0/config.json": "160a69d9ab21f9635e57a1d03354659e0c8cc584fc5f0c9548a093a921391616",
+    "from_scratch_gnn/models/own_gnn_v0/graph.py": "9fb76d6b606bc9f32010e5668d1f5eb04e54e75286212fcf7c031ea93f969a13",
+    "from_scratch_gnn/models/own_gnn_v0/model.py": "75d276505c720fdb472c52eae2860c7984a82e8221a90b251412eeda703b62fc",
+    "from_scratch_gnn/models/own_gnn_v0/tests/__init__.py": "a2510b015ba0e44513494952cfdc3e0e7c3d3efd8c2b50c7f98f558e033bc330",
+    "from_scratch_gnn/models/own_gnn_v0/tests/test_graph_model.py": "0ba062f119761d055a45e26502aa4b6457d5ee59416bd4bf9bd6d6c4200fc18a",
+    "from_scratch_gnn/models/own_gnn_v0/tests/test_seed_plumbing.py": "38ef8ed674660270b5b4fdad7b53c7c2895b0d5fd1a6de1ea0a5dbde1d785fe3",
+    "from_scratch_gnn/models/own_gnn_v0/train_oof.py": "3bafc2fed8249cfdda576e30dd2cc3dcda659ce800532b6e2dcd978967e23c69"
+  },
+  "benchmark_files_sha256": {
+    "train_csv": "1f79c85c785698e8c3499d99721adfe3be9660a487f137a923dd34eb7ef845e1",
+    "folds_csv": "1bb066dd45d9b9a0f7861efbe7efd38c438522519ed36a745bf61f2a9191284a",
+    "manifest_json": "dfbd13bc3ca1b087199f88d8dcfaba0616b9f79a58a50b291527cc146ef87e2a"
+  }
+}

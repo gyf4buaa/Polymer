@@ -1,0 +1,20 @@
+{
+  "experiment_id": "own_gnn_repr_endpoint_marker_seed_43",
+  "model_name": "Own-GNN Variant B \u2014 endpoint marker, no closure",
+  "category": "own_model",
+  "benchmark_version": "nopp2025_train_v1",
+  "git_commit": "de70b3e0cfd51fc83920fa372f1d1fdab92a6845",
+  "seed": "43",
+  "oof_wmae": "0.0232366174900583",
+  "tg_mae": "52.691967889392664",
+  "ffv_mae": "0.006486111747642804",
+  "tc_mae": "0.024246743378023006",
+  "density_mae": "0.025312060960666447",
+  "rg_mae": "1.5872183102365005",
+  "kaggle_private": "",
+  "status": "formal_oof_model",
+  "notes": "Representation-only ablation: remove only two valid degree-one dummy atoms and mark their distinct real neighbors with polymer_endpoint=1; preserve all chemical bonds and add no closure edge. Ambiguous topology retains the complete graph and records its reason. All frozen Own-GNN v0 training settings and Stage 0 folds/metric are reused.",
+  "folds_sha256": "1bb066dd45d9b9a0f7861efbe7efd38c438522519ed36a745bf61f2a9191284a",
+  "train_data_sha256": "1f79c85c785698e8c3499d99721adfe3be9660a487f137a923dd34eb7ef845e1",
+  "run_metadata": "models/own_gnn_repr_endpoint_marker/artifacts/paired_seed_43/run_metadata.json"
+}

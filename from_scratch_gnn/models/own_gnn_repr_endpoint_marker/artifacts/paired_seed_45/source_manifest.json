@@ -1,0 +1,33 @@
+{
+  "experiment_id": "own_gnn_repr_endpoint_marker",
+  "representation": "endpoint_marker",
+  "graph_schema": "own_gnn_repr_endpoint_marker_no_closure_node7_edge16_endpoint1_v1",
+  "seed": 45,
+  "git_commit": "de70b3e0cfd51fc83920fa372f1d1fdab92a6845",
+  "branch": "",
+  "source_files_sha256": {
+    "from_scratch_gnn/models/own_gnn_repr_endpoint_marker/README.md": "6c9b408594e09fd5504161beed8808986acd102ca3b653c7d02962fd63881a03",
+    "from_scratch_gnn/models/own_gnn_repr_endpoint_marker/__init__.py": "0f9fa29d66261c0d131b0e85002e50ac7798a6d749388a77b1bb6327b7e5cec2",
+    "from_scratch_gnn/models/own_gnn_repr_endpoint_marker/config.json": "42ad5aa3550ab1db4c3d13f76cdb68cbc7ffa61b77726cc19dcf9961c5636b88",
+    "from_scratch_gnn/models/own_gnn_repr_endpoint_marker/graph.py": "54b782d9b1691bef3eae634f09530064c61bbce62a4f76f8f5bebaa80476c241",
+    "from_scratch_gnn/models/own_gnn_repr_endpoint_marker/tests/__init__.py": "35c2e9d2c707def9207d17967195bff5af0e1f69fea2d6e80a9a83114f388f9a",
+    "from_scratch_gnn/models/own_gnn_repr_endpoint_marker/tests/test_graph.py": "1a19bcd9cb40ba32f54a1bafb04326d2c2bad717255033460afb6092b0a07f21",
+    "from_scratch_gnn/models/own_gnn_repr_endpoint_marker/train_oof.py": "6818aba169ce877721e5bb4d8b786745a4fe339d89e2fa429327e7664f103426",
+    "from_scratch_gnn/models/own_gnn_v0/graph.py": "9fb76d6b606bc9f32010e5668d1f5eb04e54e75286212fcf7c031ea93f969a13",
+    "from_scratch_gnn/models/own_gnn_v0/model.py": "75d276505c720fdb472c52eae2860c7984a82e8221a90b251412eeda703b62fc",
+    "from_scratch_gnn/models/own_gnn_v0/train_oof.py": "3bafc2fed8249cfdda576e30dd2cc3dcda659ce800532b6e2dcd978967e23c69",
+    "from_scratch_gnn/models/polymer_representation_ablation/__init__.py": "f5e379a4f31c5fa6e0fec280d72f1fbc19c2969e17d1c9256d209b4d702561b9",
+    "from_scratch_gnn/models/polymer_representation_ablation/graph_builder.py": "36ebb8fbea68f88fec6537fc9787d9f2b0d952d750489d2f9f345c3b177b5717",
+    "from_scratch_gnn/models/polymer_representation_ablation/model.py": "ee01ca7b4e4a536e556fd8fbdd0636e2ded76a79f6780dfa4e5916a37bed3288",
+    "from_scratch_gnn/models/polymer_representation_ablation/runner.py": "562cb03e410ea8798cf7e57b1e1489a435415b11cfd10496f46bb0637ce32ab0",
+    "from_scratch_gnn/models/polymer_representation_ablation/tests/__init__.py": "4416f30b4a99e0527976933ebfc1edd8746e739988a464abbc3632847321abf4",
+    "from_scratch_gnn/models/polymer_representation_ablation/tests/test_runner.py": "69f8ebafc8618288e664731b08e11bb6270a3267b94d5bd7a677dc6d116603c7"
+  },
+  "variant_config_sha256": "42ad5aa3550ab1db4c3d13f76cdb68cbc7ffa61b77726cc19dcf9961c5636b88",
+  "effective_config_sha256": "98bf182890191e1b9ca46731b37247855de58781791fc1e4309cc285c59f7720",
+  "benchmark_files_sha256": {
+    "train_csv": "1f79c85c785698e8c3499d99721adfe3be9660a487f137a923dd34eb7ef845e1",
+    "folds_csv": "1bb066dd45d9b9a0f7861efbe7efd38c438522519ed36a745bf61f2a9191284a",
+    "manifest_json": "dfbd13bc3ca1b087199f88d8dcfaba0616b9f79a58a50b291527cc146ef87e2a"
+  }
+}

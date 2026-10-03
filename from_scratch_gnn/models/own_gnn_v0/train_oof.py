@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
 import json
 import math
 import os
@@ -103,6 +104,39 @@ def _require_clean_source() -> None:
 
 def _load_config() -> dict[str, Any]:
     return json.loads((MODEL_ROOT / "config.json").read_text(encoding="utf-8"))
+
+
+def _effective_config(args: argparse.Namespace) -> dict[str, Any]:
+    """Return the checked-in config with only an explicit seed override applied."""
+    config = json.loads(json.dumps(_load_config()))
+    if args.seed is not None:
+        config["seed"] = int(args.seed)
+    return config
+
+
+def _default_output_dir(model_root: Path, seed: int, configured_seed: int = 42) -> Path:
+    """Keep the legacy default for seed 42 and isolate each added seed."""
+    artifact_name = "production" if seed == configured_seed else f"paired_seed_{seed}"
+    return model_root / "artifacts" / artifact_name
+
+
+def _config_sha256(config: Mapping[str, Any]) -> str:
+    serialized = json.dumps(
+        config, indent=2, ensure_ascii=False, allow_nan=False
+    ) + "\n"
+    return hashlib.sha256(serialized.encode("utf-8")).hexdigest()
+
+
+def _refuse_cross_seed_artifact_reuse(output_dir: Path, seed: int) -> None:
+    config_path = output_dir / "config.json"
+    if config_path.exists():
+        existing = json.loads(config_path.read_text(encoding="utf-8"))
+        existing_seed = existing.get("seed")
+        if existing_seed is not None and int(existing_seed) != seed:
+            raise RuntimeError(
+                f"Artifact directory {output_dir} already belongs to seed "
+                f"{existing_seed}; refusing to overwrite it with seed {seed}."
+            )
 
 
 def _load_frozen_inputs(
@@ -644,7 +678,14 @@ def _write_config_files(output_dir: Path, config: Mapping[str, Any]) -> None:
     (output_dir / "config.yaml").write_text(serialized, encoding="utf-8")
 
 
-def _source_manifest(commit: str, train_csv: Path, folds_csv: Path) -> dict[str, Any]:
+def _source_manifest(
+    commit: str,
+    train_csv: Path,
+    folds_csv: Path,
+    *,
+    config: Mapping[str, Any] | None = None,
+) -> dict[str, Any]:
+    effective_config = config if config is not None else _load_config()
     tracked = _git_output("ls-files", "from_scratch_gnn/models/own_gnn_v0").splitlines()
     files = {}
     for relative in tracked:
@@ -654,6 +695,13 @@ def _source_manifest(commit: str, train_csv: Path, folds_csv: Path) -> dict[str,
     return {
         "git_commit": commit,
         "branch": _git_output("branch", "--show-current"),
+        "seed": int(effective_config["seed"]),
+        "representation": effective_config.get("graph", {}).get(
+            "representation", "endpoint_closure"
+        ),
+        "graph_schema": effective_config.get("graph", {}).get("schema", GRAPH_SCHEMA),
+        "source_config_sha256": sha256_file(MODEL_ROOT / "config.json"),
+        "effective_config_sha256": _config_sha256(effective_config),
         "source_files_sha256": files,
         "benchmark_files_sha256": {
             "train_csv": sha256_file(train_csv),
@@ -702,10 +750,15 @@ def _append_result(
         fields = list(reader.fieldnames or [])
         existing = list(reader)
     new_row = {field: "" for field in fields}
+    seed = int(config["seed"])
     values = {
-        "experiment_id": "own_gnn_v0_frozen_oof_v1",
+        "experiment_id": (
+            "own_gnn_v0_frozen_oof_v1"
+            if seed == 42
+            else f"own_gnn_v0_frozen_oof_v1_seed_{seed}"
+        ),
         "model_name": "Own-GNN v0",
-        "category": "own_model",
+        "category": "own_model" if seed == 42 else "internal_baseline",
         "benchmark_version": config["benchmark_version"],
         "git_commit": commit,
         "seed": config["seed"],
@@ -720,7 +773,21 @@ def _append_result(
     for key, value in values.items():
         if key in new_row:
             new_row[key] = value
-    existing.append(new_row)
+    experiment_id = str(values["experiment_id"])
+    if seed == 42:
+        # Preserve the original seed-42 writer behavior and historical row.
+        existing.append(new_row)
+    else:
+        matches = [
+            index for index, row in enumerate(existing)
+            if row.get("experiment_id") == experiment_id
+        ]
+        if len(matches) > 1:
+            raise RuntimeError(f"results.csv contains duplicate experiment_id {experiment_id}")
+        if matches:
+            existing[matches[0]] = new_row
+        else:
+            existing.append(new_row)
     temp_path = result_path.with_suffix(result_path.suffix + ".tmp")
     with temp_path.open("w", encoding="utf-8", newline="") as output:
         writer = csv.DictWriter(output, fieldnames=fields, lineterminator="\n")
@@ -732,8 +799,7 @@ def _append_result(
 def _run_formal(args: argparse.Namespace) -> dict[str, Any]:
     _require_clean_source()
     run_started = time.monotonic()
-    config = _load_config()
-    config = json.loads(json.dumps(config))
+    config = _effective_config(args)
     config["training"]["epochs_max"] = args.epochs or int(config["training"]["epochs_max"])
     config["training"]["patience"] = args.patience or int(config["training"]["patience"])
     config["training"]["batch_size"] = args.batch_size or int(config["training"]["batch_size"])
@@ -745,6 +811,7 @@ def _run_formal(args: argparse.Namespace) -> dict[str, Any]:
     fold_sizes = {str(fold): fold_ids.count(fold) for fold in range(5)}
     config["runtime"] = _runtime_info(device, fold_sizes)
     output_dir = args.output_dir.resolve()
+    _refuse_cross_seed_artifact_reuse(output_dir, int(config["seed"]))
     _write_config_files(output_dir, config)
     print("Building or loading all frozen training graphs…", flush=True)
     graphs, graph_diagnostics = _build_graphs(
@@ -797,6 +864,7 @@ def _run_formal(args: argparse.Namespace) -> dict[str, Any]:
     commit = _git_output("rev-parse", "HEAD")
     metadata = {
         "experiment_id": config["experiment_id"],
+        "seed": int(config["seed"]),
         "model_name": config["model_name"],
         "git_commit": commit,
         "branch": _git_output("branch", "--show-current"),
@@ -821,13 +889,18 @@ def _run_formal(args: argparse.Namespace) -> dict[str, Any]:
             )
         },
         "runtime": config["runtime"],
+        "effective_config_sha256": sha256_file(output_dir / "config.json"),
+        "source_config_sha256": sha256_file(MODEL_ROOT / "config.json"),
         "started_at_utc": run_started_at,
         "completed_at_utc": _timestamp(),
         "duration_seconds": time.monotonic() - run_started,
         "gpu_sampling": gpu_sampler.summary() if gpu_sampler is not None else None,
     }
     write_json(output_dir / "run_metadata.json", metadata)
-    write_json(output_dir / "source_manifest.json", _source_manifest(commit, train_csv, folds_csv))
+    write_json(
+        output_dir / "source_manifest.json",
+        _source_manifest(commit, train_csv, folds_csv, config=config),
+    )
     _append_result(
         TRACK_ROOT / "results.csv",
         config=config,
@@ -873,7 +946,7 @@ def _tiny_sample_indices(rows: Sequence[Mapping[str, Any]], limit: int = 32) -> 
 
 
 def _run_tiny_overfit(args: argparse.Namespace) -> dict[str, Any]:
-    config = _load_config()
+    config = _effective_config(args)
     device = _device(args.device)
     rows = load_training_data(args.train_csv.resolve())
     if sha256_file(args.train_csv.resolve()) != json.loads(
@@ -965,8 +1038,7 @@ def _run_tiny_overfit(args: argparse.Namespace) -> dict[str, Any]:
 
 
 def _run_smoke_fold(args: argparse.Namespace) -> dict[str, Any]:
-    config = _load_config()
-    config = json.loads(json.dumps(config))
+    config = _effective_config(args)
     device = _device(args.device)
     rows, fold_ids, manifest = _load_frozen_inputs(args.train_csv.resolve(), args.folds_csv.resolve())
     fold = int(args.smoke_fold)
@@ -980,6 +1052,7 @@ def _run_smoke_fold(args: argparse.Namespace) -> dict[str, Any]:
     fold_sizes = {str(index): fold_ids.count(index) for index in range(5)}
     fold_config["runtime"] = _runtime_info(device, fold_sizes)
     fold_config["runtime"]["smoke_fold_only"] = True
+    _refuse_cross_seed_artifact_reuse(output_dir, int(fold_config["seed"]))
     _write_config_files(output_dir, fold_config)
     graphs, graph_diagnostics = _build_graphs(
         rows,
@@ -1013,6 +1086,8 @@ def _run_smoke_fold(args: argparse.Namespace) -> dict[str, Any]:
     metadata = {
         "status": "passed",
         "git_commit": _git_output("rev-parse", "HEAD"),
+        "seed": int(fold_config["seed"]),
+        "effective_config_sha256": sha256_file(output_dir / "config.json"),
         "device": str(device),
         "fold": fold,
         "requested_epochs": int(fold_config["training"]["epochs_max"]),
@@ -1048,7 +1123,12 @@ def parse_args() -> argparse.Namespace:
         "--folds-csv", type=Path, default=TRACK_ROOT / "benchmark" / "folds.csv"
     )
     parser.add_argument(
-        "--output-dir", type=Path, default=MODEL_ROOT / "artifacts" / "production"
+        "--output-dir", type=Path,
+        help="Artifact directory (defaults to a seed-specific path).",
+    )
+    parser.add_argument(
+        "--seed", type=int,
+        help="Override only the configured random seed; default preserves seed 42.",
     )
     parser.add_argument("--device", default="auto", choices=("auto", "cpu", "mps", "cuda"))
     parser.add_argument("--epochs", type=int)
@@ -1065,12 +1145,19 @@ def parse_args() -> argparse.Namespace:
         parser.error("--patience must be positive")
     if args.batch_size is not None and args.batch_size < 1:
         parser.error("--batch-size must be positive")
+    if args.seed is not None and args.seed < 0:
+        parser.error("--seed must be non-negative")
     if args.log_every < 1 or args.tiny_steps < 1:
         parser.error("--log-every and --tiny-steps must be positive")
     if args.tiny_overfit and args.smoke_fold is not None:
         parser.error("Choose either --tiny-overfit or --smoke-fold")
     args.train_csv = args.train_csv.resolve()
     args.folds_csv = args.folds_csv.resolve()
+    if args.output_dir is None:
+        configured_seed = int(_load_config()["seed"])
+        effective_seed = configured_seed if args.seed is None else args.seed
+        args.output_dir = _default_output_dir(MODEL_ROOT, effective_seed, configured_seed)
+    args.output_dir = args.output_dir.resolve()
     return args
 
 

@@ -1,0 +1,86 @@
+{
+  "experiment_id": "own_gnn_repr_endpoint_marker",
+  "model_name": "Own-GNN Variant B — endpoint marker, no closure",
+  "category": "own_model",
+  "benchmark_version": "nopp2025_train_v1",
+  "seed": 44,
+  "graph": {
+    "schema": "own_gnn_repr_endpoint_marker_no_closure_node7_edge16_endpoint1_v1",
+    "representation": "endpoint_marker",
+    "node_features": [
+      "atomic_number",
+      "degree",
+      "formal_charge",
+      "hybridization",
+      "aromatic",
+      "total_hydrogens",
+      "chirality"
+    ],
+    "additional_node_features": [
+      "polymer_endpoint_binary"
+    ],
+    "edge_features": [
+      "bond_type_one_hot",
+      "conjugated",
+      "in_ring",
+      "stereo_one_hot",
+      "polymerization_edge_all_zero"
+    ],
+    "valid_dummy_policy": "remove_two_degree_one_dummies_and_mark_distinct_real_neighbors",
+    "endpoint_closure": false,
+    "ambiguous_dummy_policy": "retain_complete_source_graph_and_bonds_record_reason"
+  },
+  "model": {
+    "operator": "GINEConv",
+    "hidden_dim": 256,
+    "num_layers": 4,
+    "dropout": 0.1,
+    "residual": true,
+    "normalization": "LayerNorm",
+    "pooling": [
+      "global_mean",
+      "global_max"
+    ],
+    "property_heads": [
+      "Tg",
+      "FFV",
+      "Tc",
+      "Density",
+      "Rg"
+    ],
+    "endpoint_indicator_embedding": "zero_initialized_additive_vector"
+  },
+  "training": {
+    "epochs_max": 600,
+    "patience": 40,
+    "batch_size": 64,
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 1e-05,
+    "loss": "masked_huber",
+    "huber_delta": 1.0,
+    "target_normalization": "fold_train_mean_std",
+    "task_reduction": "equal_mean_over_tasks_with_observed_labels",
+    "early_stopping_metric": "Stage0 weighted MAE with frozen manifest weights"
+  },
+  "registry_notes": "Representation-only ablation: remove only two valid degree-one dummy atoms and mark their distinct real neighbors with polymer_endpoint=1; preserve all chemical bonds and add no closure edge. Ambiguous topology retains the complete graph and records its reason. All frozen Own-GNN v0 training settings and Stage 0 folds/metric are reused.",
+  "runtime": {
+    "device": "cuda",
+    "device_name": "NVIDIA GeForce RTX 4070",
+    "processor": "x86_64",
+    "python": "3.11.17 (main, Oct  1 2026, 15:41:07) [GCC 13.3.0]",
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "torch": "2.11.0+cu128",
+    "torch_geometric": "2.7.0",
+    "rdkit": "2026.03.2",
+    "numpy": "2.4.6",
+    "fold_sizes": {
+      "0": 1595,
+      "1": 1595,
+      "2": 1595,
+      "3": 1594,
+      "4": 1594
+    },
+    "started_at_utc": "2026-10-03T15:37:32+00:00"
+  }
+}
