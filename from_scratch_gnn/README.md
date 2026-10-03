@@ -59,21 +59,13 @@ checkpoints/
 
 The exact rules are in [BENCHMARK_PROTOCOL.md](BENCHMARK_PROTOCOL.md).
 
+Stage 0 is frozen in [benchmark/README.md](benchmark/README.md). The tracked fold file and manifest are generated from the official training CSV, which remains outside this repository.
+
 ---
 
 ## Stage 1 — Establish the reference baselines
 
-### 1A. Conventional descriptor baseline
-
-Train a simple non-GNN baseline such as:
-
-```text
-RDKit descriptors + Morgan fingerprint → LightGBM
-```
-
-Purpose: determine whether graph learning actually improves over a strong low-cost molecular baseline.
-
-### 1B. Third-party GATv2 reference
+### 1A. Third-party GATv2 reference
 
 Retrain the public third-party GATv2 architecture **from random initialization** using the frozen folds and frozen metric.
 
@@ -82,10 +74,31 @@ Do not use its already-refit competition weights to calculate a training-set sco
 This produces one fixed reference line:
 
 ```text
-Third-party architecture OOF wMAE = ?
+Third-party architecture OOF wMAE = 0.02406818
 ```
 
+The formal Stage 1A CUDA run completed from random initialization on all five
+frozen folds. The Stage 0 validator covered all 7,973 training samples with no
+duplicate, missing, or extra sample IDs. Per-fold best epochs were 180, 105,
+69, 133, and 133; the corresponding validation wMAEs were 0.02211136,
+0.02234731, 0.02578474, 0.02519220, and 0.02490654. The official OOF target
+MAEs are Tg 54.32066, FFV 0.00719931, Tc 0.02426117, Density 0.02983760, and
+Rg 1.54587552. Run configuration, source manifest, predictions, validator
+metrics, fold metrics, histories, and checkpoints are under
+`baselines/third_party_gatv2/artifacts/production_gpu_20261003/`; the Mac CPU
+pilot remains exploratory provenance and did not contribute to this result.
+
 Once established, this number should not move while Own-GNN is being developed.
+
+### 1B. Conventional descriptor baseline
+
+Train a simple non-GNN baseline such as:
+
+```text
+RDKit descriptors + Morgan fingerprint → LightGBM
+```
+
+Purpose: determine whether graph learning actually improves over a strong low-cost molecular baseline.
 
 ### 1C. Historical own-GNN reference
 
@@ -321,7 +334,7 @@ Use the same frozen OOF protocol:
 | Model | OOF wMAE | Tg | FFV | Tc | Density | Rg |
 |---|---:|---:|---:|---:|---:|---:|
 | Descriptor baseline | TBD | | | | | |
-| Third-party GATv2 retrained from scratch | TBD | | | | | |
+| Third-party GATv2 retrained from scratch | 0.02406818 | 54.32066 | 0.00719931 | 0.02426117 | 0.02983760 | 1.54587552 |
 | Historical Own-GNN | TBD | | | | | |
 | Own-GNN v0 | TBD | | | | | |
 | Own-GNN final | TBD | | | | | |

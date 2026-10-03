@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.cache/
+cache/
+checkpoints/
+training_history/
+*.pt
+*.pth
+*.ckpt
+*.joblib
+*.pkl
+*.onnx
+# Third-party GATv2 run outputs, including configs, histories, predictions and logs.
+baselines/third_party_gatv2/artifacts/

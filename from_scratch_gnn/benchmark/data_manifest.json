@@ -1,0 +1,156 @@
+{
+  "benchmark_version": "nopp2025_train_v1",
+  "created_by": "from_scratch_gnn/scripts/freeze_benchmark.py",
+  "source": {
+    "description": "Official competition training file; no supplement or released test data",
+    "path_label": "data/competition_raw/train.csv",
+    "file_name": "train.csv",
+    "sha256": "1f79c85c785698e8c3499d99721adfe3be9660a487f137a923dd34eb7ef845e1",
+    "committed_to_repository": false,
+    "source_columns": [
+      "id",
+      "SMILES",
+      "Tg",
+      "FFV",
+      "Tc",
+      "Density",
+      "Rg"
+    ],
+    "canonical_view_columns": [
+      "sample_id",
+      "SMILES",
+      "Tg",
+      "FFV",
+      "Tc",
+      "Density",
+      "Rg"
+    ],
+    "id_mapping": {
+      "source": "id",
+      "canonical": "sample_id"
+    }
+  },
+  "sample_count": 7973,
+  "target_statistics_and_weights": {
+    "Tg": {
+      "valid_count": 511,
+      "missing_count": 7462,
+      "min": -148.0297376,
+      "max": 472.25,
+      "range": 620.2797376,
+      "task_balance_factor": 1.2730481750460205,
+      "weight": 0.00205237749659811
+    },
+    "FFV": {
+      "valid_count": 7030,
+      "missing_count": 943,
+      "min": 0.2269924,
+      "max": 0.77709707,
+      "range": 0.55010467,
+      "task_balance_factor": 0.3432239825005911,
+      "weight": 0.6239248659724905
+    },
+    "Tc": {
+      "valid_count": 737,
+      "missing_count": 7236,
+      "min": 0.0465,
+      "max": 0.524,
+      "range": 0.47750000000000004,
+      "task_balance_factor": 1.060038270353066,
+      "weight": 2.219975435294379
+    },
+    "Density": {
+      "valid_count": 613,
+      "missing_count": 7360,
+      "min": 0.748691234,
+      "max": 1.840998909,
+      "range": 1.092307675,
+      "task_balance_factor": 1.162318235511848,
+      "weight": 1.0640941761320573
+    },
+    "Rg": {
+      "valid_count": 614,
+      "missing_count": 7359,
+      "min": 9.7283551,
+      "max": 34.672905605,
+      "range": 24.944550504999995,
+      "task_balance_factor": 1.1613713365884741,
+      "weight": 0.04655811842974215
+    }
+  },
+  "metric": {
+    "implementation": "from_scratch_gnn/src/metrics.py::evaluate_oof",
+    "weight_formula": "weight_i = (1 / range_i) * (K * sqrt(1 / n_i) / sum_j sqrt(1 / n_j))",
+    "local_statistics_source": "official training labels only",
+    "private_labels_used": false
+  },
+  "folds": {
+    "file": "folds.csv",
+    "sha256": "1bb066dd45d9b9a0f7861efbe7efd38c438522519ed36a745bf61f2a9191284a",
+    "n_splits": 5,
+    "seed": 20250604,
+    "strategy": "unstratified sample-level random balanced 5-fold",
+    "assignment_algorithm": "SHA-256 rank of UTF-8 string 'polymer-stage0-sha256-rank-v1\\0{seed}\\0{sample_id}', then sequential balanced fold chunks",
+    "row_order": "source train.csv order; assignment is independent of row order",
+    "fold_sizes": {
+      "0": 1595,
+      "1": 1595,
+      "2": 1595,
+      "3": 1594,
+      "4": 1594
+    },
+    "fold_target_valid_counts": {
+      "0": {
+        "sample_count": 1595,
+        "valid_target_counts": {
+          "Tg": 100,
+          "FFV": 1407,
+          "Tc": 145,
+          "Density": 125,
+          "Rg": 122
+        }
+      },
+      "1": {
+        "sample_count": 1595,
+        "valid_target_counts": {
+          "Tg": 93,
+          "FFV": 1421,
+          "Tc": 146,
+          "Density": 113,
+          "Rg": 115
+        }
+      },
+      "2": {
+        "sample_count": 1595,
+        "valid_target_counts": {
+          "Tg": 101,
+          "FFV": 1384,
+          "Tc": 169,
+          "Density": 129,
+          "Rg": 129
+        }
+      },
+      "3": {
+        "sample_count": 1594,
+        "valid_target_counts": {
+          "Tg": 121,
+          "FFV": 1396,
+          "Tc": 132,
+          "Density": 120,
+          "Rg": 122
+        }
+      },
+      "4": {
+        "sample_count": 1594,
+        "valid_target_counts": {
+          "Tg": 96,
+          "FFV": 1422,
+          "Tc": 145,
+          "Density": 126,
+          "Rg": 126
+        }
+      }
+    }
+  },
+  "diagnostics_file": "diagnostics.json"
+}

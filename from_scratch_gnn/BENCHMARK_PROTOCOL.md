@@ -197,3 +197,52 @@ Do not repeatedly modify the model in response to Private score without explicit
 Every formal result should be appended to `results.csv`.
 
 Never overwrite an older row merely because a newer run performs better. The registry should preserve the experimental path, including failed or neutral changes when they are scientifically informative.
+
+
+---
+
+## Stage 0 frozen snapshot: nopp2025_train_v1
+
+The initial local snapshot is frozen as follows:
+
+- Official source: local data workspace data/competition_raw/train.csv; raw SHA-256 1f79c85c785698e8c3499d99721adfe3be9660a487f137a923dd34eb7ef845e1.
+- Source schema: id, SMILES, Tg, FFV, Tc, Density, Rg; canonical view: sample_id, SMILES, Tg, FFV, Tc, Density, Rg.
+- Rows: 7,973. id is renamed to sample_id; rows and raw SMILES are retained without deduplication.
+- Supplements and released public/private files are excluded. The raw training CSV is not committed.
+- Audit result: 0 missing/duplicate IDs, 0 missing SMILES, 0 exact duplicate SMILES, 0 canonicalized duplicate SMILES, 0 RDKit-invalid SMILES (checked with RDKit 2026.03.2), 0 rows with all five targets missing. No anomaly is silently removed. See benchmark/diagnostics.json.
+
+### Frozen split
+
+All formal experiments use benchmark/folds.csv, SHA-256 1bb066dd45d9b9a0f7861efbe7efd38c438522519ed36a745bf61f2a9191284a.
+
+- Five folds, seed 20250604 (the existing modeling/src/config.py RANDOM_SEED), unstratified sample-level random split.
+- To make assignments independent of row order and software versions, sort IDs by the SHA-256 digest of UTF-8 bytes for “polymer-stage0-sha256-rank-v1”, followed by a NUL byte, the decimal seed, another NUL byte, and the sample ID; assign sequential balanced chunks to folds 0–4.
+- Sample counts by fold: 1,595; 1,595; 1,595; 1,594; 1,594.
+- Per-fold valid label counts are stored in benchmark/data_manifest.json.
+- The historical `modeling/src/cv.py` uses target-specific folds (quantile-stratified where possible). Those per-target folds do not satisfy this shared multi-target contract; historical OOF scores must be recomputed on the frozen map before formal comparison. No structure-similarity grouping or GroupKFold is used in this benchmark version.
+
+### Frozen metric and training-snapshot weights
+
+src/metrics.py::evaluate_oof is the only implementation of both weight calculation and score aggregation. The [official Kaggle evaluation rule](https://www.kaggle.com/competitions/neurips-open-polymer-prediction-2025) is:
+
+\[
+w_i = \frac{1}{r_i}\cdot
+\frac{K\sqrt{1/n_i}}{\sum_{j=1}^{K}\sqrt{1/n_j}},
+\qquad
+\mathrm{wMAE} = \frac{1}{N}\sum_{s=1}^{N}
+\sum_{i:\, y_{s,i}\mathrm{\ observed}}w_i|\hat y_{s,i}-y_{s,i}|.
+\]
+
+Here, \(K=5\), \(n_i\) is the count of available labels, \(r_i=\max(y_i)-\min(y_i)\), and \(N\) is the number of samples being scored. Missing truths are masked from both the target MAE numerator and denominator; the aggregate follows the competition's per-sample outer mean. In particular, overall wMAE is not the simple mean of the five raw MAEs. For this snapshot, N = 7,973 and sum_j sqrt(1/n_j) = 0.1737459602374502.
+
+Kaggle uses hidden-test counts and ranges when scoring a submission. The local development metric cannot read hidden/private labels, so this frozen version uses only the full official training CSV for \(n_i\) and \(r_i\). These values are fixed in benchmark/data_manifest.json; they are used for all full OOF comparisons and should be passed as target_weights when a fold-local validation metric is calculated.
+
+| Target | \(n_i\) | \(r_i\) | \(w_i\) |
+|---|---:|---:|---:|
+| Tg | 511 | 620.2797376 | 0.00205237749659811 |
+| FFV | 7,030 | 0.55010467 | 0.623924865972491 |
+| Tc | 737 | 0.4775 | 2.21997543529438 |
+| Density | 613 | 1.092307675 | 1.06409417613206 |
+| Rg | 614 | 24.944550505 | 0.0465581184297421 |
+
+The validator aligns OOF rows by sample_id, requires exact training-sample coverage, and writes overall OOF wMAE plus Tg/FFV/Tc/Density/Rg MAE to metrics.json. It does not train models or read Kaggle submissions. Implementation and usage details are in benchmark/README.md.

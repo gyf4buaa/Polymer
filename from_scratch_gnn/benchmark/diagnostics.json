@@ -1,0 +1,63 @@
+{
+  "sample_count": 7973,
+  "missing_sample_id_count": 0,
+  "missing_sample_id_row_indices": [],
+  "duplicate_sample_id_group_count": 0,
+  "duplicate_sample_id_groups": [],
+  "missing_smiles_count": 0,
+  "missing_smiles_row_indices": [],
+  "duplicate_smiles_group_count": 0,
+  "duplicate_smiles_groups": [],
+  "smiles_validation": {
+    "method": "RDKit Chem.MolFromSmiles",
+    "available": true,
+    "rdkit_version": "2026.03.2",
+    "invalid_count": 0,
+    "invalid_smiles": []
+  },
+  "canonical_smiles_audit": {
+    "method": "RDKit canonical isomeric SMILES; diagnostic only",
+    "available": true,
+    "duplicate_group_count": 0,
+    "duplicate_groups": []
+  },
+  "all_targets_missing_count": 0,
+  "all_targets_missing_row_indices": [],
+  "targets": {
+    "Tg": {
+      "valid_count": 511,
+      "missing_count": 7462,
+      "min": -148.0297376,
+      "max": 472.25,
+      "range": 620.2797376
+    },
+    "FFV": {
+      "valid_count": 7030,
+      "missing_count": 943,
+      "min": 0.2269924,
+      "max": 0.77709707,
+      "range": 0.55010467
+    },
+    "Tc": {
+      "valid_count": 737,
+      "missing_count": 7236,
+      "min": 0.0465,
+      "max": 0.524,
+      "range": 0.47750000000000004
+    },
+    "Density": {
+      "valid_count": 613,
+      "missing_count": 7360,
+      "min": 0.748691234,
+      "max": 1.840998909,
+      "range": 1.092307675
+    },
+    "Rg": {
+      "valid_count": 614,
+      "missing_count": 7359,
+      "min": 9.7283551,
+      "max": 34.672905605,
+      "range": 24.944550504999995
+    }
+  }
+}
