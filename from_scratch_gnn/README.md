@@ -202,6 +202,54 @@ Compare, with everything else fixed:
 
 Question: **Does a polymer-aware graph representation improve OOF generalization?**
 
+### Stage 3A implementation and run status
+
+The Stage 3A code isolates graph representation while reusing the unchanged
+Own-GNN v0 train engine, model backbone, optimizer, loss, normalization, seed
+scheme, frozen folds, and Stage 0 metric. Variant A keeps every RDKit atom and
+bond, including `*` atoms (atomic-number-zero bucket 0). Variant B removes only
+an unambiguous pair of degree-one dummy atoms, marks their distinct real
+neighbors with `polymer_endpoint=1`, preserves all existing chemical bonds,
+and adds no closure edge. Ambiguous topologies use a logged lossless fallback.
+
+| Model | Representation | OOF wMAE | Tg | FFV | Tc | Density | Rg |
+|---|---|---:|---:|---:|---:|---:|---:|
+| Own-GNN v0 | remove `*` + marked closure edge | 0.0229070190 | 53.73353017 | 0.00583204 | 0.02455388 | 0.02348644 | 1.58151550 |
+| Variant A | keep dummy atoms | pending | pending | pending | pending | pending | pending |
+| Variant B | remove dummy + endpoint marker, no closure | pending | pending | pending | pending | pending | pending |
+
+The variants' formal five-fold OOF runs are pending. At the GPU availability
+check on 2026-10-03, the RTX 4070 reported 43% utilization and 1,791 MiB in
+use, so neither CUDA smoke nor formal training was started. Unit tests and
+CPU-only smoke checks passed independently. The full training set built
+7,973/7,973 graphs with no parse failures or dropped rows:
+
+| Graph audit | Variant A | Variant B |
+|---|---:|---:|
+| Retained dummy / atomic-number-zero nodes | 15,968 | 88 (fallback samples only) |
+| Valid two-endpoint graphs | 7,940 | 7,940 |
+| Endpoint-marked graphs / nodes | 0 / 0 | 7,940 / 15,880 |
+| Existing chemical bond between valid endpoints | 1,244 | 1,244 preserved |
+| Fallback graphs | 0 | 33: 2 one-dummy, 8 three-dummy, 8 four-dummy, 15 shared-endpoint |
+| Added closure / polymerization edges | 0 / 0 | 0 / 0 |
+
+All 52 tests under `from_scratch_gnn` passed. Both variants passed 120-step
+CPU tiny-overfit and a five-epoch CPU fold-0 smoke; the latter reached best
+validation wMAE 0.02976372 for A and 0.03110151 for B at epoch 5. These short
+smokes are execution checks, not OOF results or evidence for choosing a graph
+representation. No non-finite loss or CPU OOM occurred. CUDA and formal OOF
+runtime/NaN/OOM status are unobserved because the GPU was busy. No formal
+per-fold best epoch/validation wMAE is available; only the CPU fold-0 smokes
+ran. No formal result row is added to `results.csv` until a complete frozen
+OOF run exists.
+No claim about the relative value of closure, endpoint identity, or retained
+dummy atoms is made from the implementation tests.
+
+Variant packages and independent graph schemas:
+
+- `models/own_gnn_repr_keep_dummy/`
+- `models/own_gnn_repr_endpoint_marker/`
+
 ### 3B. Message-passing operator
 
 After graph construction is fixed, compare a small set such as:

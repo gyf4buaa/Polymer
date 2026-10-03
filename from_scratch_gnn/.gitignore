@@ -13,3 +13,5 @@ training_history/
 # Third-party GATv2 run outputs, including configs, histories, predictions and logs.
 baselines/third_party_gatv2/artifacts/
 models/own_gnn_v0/artifacts/
+models/own_gnn_repr_keep_dummy/artifacts/
+models/own_gnn_repr_endpoint_marker/artifacts/
