@@ -1,0 +1,23 @@
+{
+  "experiment_id": "own_gnn_operator_gatv2",
+  "operator": "gatv2",
+  "seed": 46,
+  "status": "formal_oof_model",
+  "source_commit": "c57d016cc65c1b74e00b89e9ff1ba40acf59a0c9",
+  "train_sha256": "1f79c85c785698e8c3499d99721adfe3be9660a487f137a923dd34eb7ef845e1",
+  "folds_sha256": "1bb066dd45d9b9a0f7861efbe7efd38c438522519ed36a745bf61f2a9191284a",
+  "effective_config_sha256": "cef9f059543577b7cda527a480c321d917eec4dabd4b763cc93effce77d1d22d",
+  "overall_oof_wmae": 0.023319656041323404,
+  "target_mae": {
+    "Tg": 53.11735771666324,
+    "FFV": 0.006175742259619309,
+    "Tc": 0.024811714007697133,
+    "Density": 0.028697194313798198,
+    "Rg": 1.532816199639499
+  },
+  "run_metadata": "models/operator_ablation/gatv2/artifacts/seed_46/run_metadata.json",
+  "parameter_count": {
+    "trainable": 1244421,
+    "message_passing_blocks": 544768
+  }
+}

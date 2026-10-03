@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "graph_schema": "own_gnn_repr_keep_dummy_raw_graph_node7_edge16_endpoint1_v1",
+  "source_train_sha256": "1f79c85c785698e8c3499d99721adfe3be9660a487f137a923dd34eb7ef845e1",
+  "source_commit": "c57d016cc65c1b74e00b89e9ff1ba40acf59a0c9",
+  "generator": "/Users/gyf/Documents/Codex/Polymer-stage3a/from_scratch_gnn/models/operator_ablation/degree_stats.py",
+  "generator_sha256": "cf55864c2c1aefbeca1d6df7042fab729dad83337ea0e5874089427549d881d4",
+  "graph_set_fingerprint_sha256": "a3107fc9257796215375e2cf8dc387e9edbabcff7fc2d37b8dd8507886572315",
+  "degree_definition": "directed incoming degree; bincount(edge_index[1]) per graph",
+  "histogram_by_degree": {
+    "0": 0,
+    "1": 48203,
+    "2": 140996,
+    "3": 77869,
+    "4": 6364,
+    "5": 0,
+    "6": 1
+  },
+  "histogram_tensor": [
+    0,
+    48203,
+    140996,
+    77869,
+    6364,
+    0,
+    1
+  ],
+  "node_count": 273433,
+  "directed_edge_count": 589264,
+  "graph_count": 7973,
+  "uses_labels_or_targets": false
+}

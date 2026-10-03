@@ -348,24 +348,114 @@ small single-benchmark result rather than a general physical conclusion.
 Variant B is higher than v0 in mean OOF wMAE and in four of five paired seeds.
 
 **Decision:** carry Variant A forward as the fixed representation candidate
-for a later message-passing operator comparison. Do not treat its score as a
-final model selection. The next question should be whether the operator
-comparison preserves Variant A's paired advantage when representation and all
-other frozen settings are held fixed. This does not start Stage 3B.
+for later experiments. Its score is not a final-model selection. The planned
+message-passing operator comparison is complete and reported in Stage 3B below;
+that result does not establish a universally optimal representation or operator.
 
 All 66 repository tests pass after the seed-plumbing, artifact-isolation, and
 paired-summary checks.
 
-### 3B. Message-passing operator
+### 3B. Message-passing operator (complete)
 
-After graph construction is fixed, compare a small set such as:
+Stage 3B held the Stage 3A.1 Variant A keep-dummy graph, node/bond feature
+schema, hidden width 256, four layers, residual/normalization/dropout, mean+max
+readout, five property heads, loss, optimizer, target normalization, frozen
+folds, and Stage 0 metric fixed. The sole scientific variable was the
+message-passing operator. Historical GINE results were reused and **GINE was
+not retrained**. GATv2 and PNA each completed the five pre-registered seeds
+42–46 on CUDA using the same formal source commit,
+`c57d016cc65c1b74e00b89e9ff1ba40acf59a0c9`.
 
-- GINE;
-- GATv2;
-- GraphSAGE;
-- a standard MPNN.
+| Model | 42 | 43 | 44 | 45 | 46 | Mean ± sample SD | Min–max |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| GINE — historical Variant A | 0.0227728722 | 0.0226486259 | 0.0228896667 | 0.0227330069 | 0.0228828622 | 0.0227854068 ± 0.0001024446 | 0.0226486259–0.0228896667 |
+| GATv2 — edge-aware | 0.0230836920 | 0.0233582343 | 0.0234626269 | 0.0236539060 | 0.0233196560 | 0.0233756230 ± 0.0002083684 | 0.0230836920–0.0236539060 |
+| PNA — edge-aware | 0.0310363356 | 0.0328282117 | 0.0314809960 | 0.0321503291 | 0.0314973000 | 0.0317986345 ± 0.0006993773 | 0.0310363356–0.0328282117 |
 
-Question: **Does attention or a different edge update improve this task?**
+Paired deltas use left minus right; negative favors the left model.
+
+| Comparison | 42 | 43 | 44 | 45 | 46 | Mean ± sample SD | Left lower |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| GATv2 − GINE | +0.0003108197 | +0.0007096084 | +0.0005729602 | +0.0009208991 | +0.0004367939 | +0.0005902163 ± 0.0002374364 | 0/5 |
+| PNA − GINE | +0.0082634634 | +0.0101795859 | +0.0085913293 | +0.0094173221 | +0.0086144378 | +0.0090132277 ± 0.0007782772 | 0/5 |
+| GATv2 − PNA | −0.0079526437 | −0.0094699774 | −0.0080183691 | −0.0084964231 | −0.0081776440 | −0.0084230114 ± 0.0006218347 | 5/5 |
+
+Per-target MAE is shown as mean ± sample SD across the five seeds. Paired
+columns are the mean delta ± sample SD relative to GINE.
+
+| Target | GINE | GATv2 | PNA | GATv2 − GINE | PNA − GINE |
+|---|---:|---:|---:|---:|---:|
+| Tg | 51.7968 ± 0.920 | 54.0599 ± 0.720 | 55.0562 ± 0.546 | +2.26304 ± 0.804 | +3.25940 ± 1.001 |
+| FFV | 0.00589486 ± 0.000128 | 0.00594962 ± 0.000199 | 0.01084748 ± 0.000463 | +0.00005476 ± 0.000180 | +0.00495262 ± 0.000472 |
+| Tc | 0.0246618 ± 0.000366 | 0.0250403 ± 0.000529 | 0.0324929 ± 0.001132 | +0.00037850 ± 0.000445 | +0.00783108 ± 0.001102 |
+| Density | 0.0246016 ± 0.000666 | 0.0280656 ± 0.000977 | 0.0614923 ± 0.001865 | +0.00346405 ± 0.001156 | +0.03689076 ± 0.002295 |
+| Rg | 1.57739 ± 0.0216 | 1.54987 ± 0.0185 | 1.92178 ± 0.0471 | −0.0275168 ± 0.03439 | +0.3443886 ± 0.06316 |
+
+| Model | Fixed operator design | Trainable parameters | Message-passing parameters |
+|---|---|---:|---:|
+| GINE | Historical GINEConv | 1,243,657 | 543,748 |
+| GATv2 | 4 × 64 heads, concatenated; edge-aware | 1,244,421 | 544,768 |
+| PNA | mean/min/max/std; identity/amplification/attenuation; one tower; edge-aware | 5,176,581 | 4,476,928 |
+
+All models kept four 256-wide message-passing layers. Parameter counts were
+reported as measured and were not forced to match. The GATv2 and PNA operators
+consume the same encoded 16-column bond features. Both new operators passed the
+CPU tiny-overfit and two-epoch CUDA fold-0 smoke checks before formal training;
+smoke outputs are labeled non-selection.
+
+The ten successful formal runs used **12,360.8 seconds** total. All run
+metadata records an NVIDIA RTX 4070; maximum PyTorch allocated/reserved VRAM
+was 507.9/1,286.0 MiB and maximum `nvidia-smi` observed memory was 3,011 MiB.
+Mean sampled GPU utilization was 35.2% for GATv2 and 61.7% for PNA. There were
+no NaN values, OOMs, or CUDA errors. PyG emitted its optional `torch-scatter`
+acceleration warning; it did not prevent training.
+
+PNA's fixed degree histogram was built from topology for all **7,973** frozen
+keep-dummy graphs, with no labels or targets. Directed in-degree counts for
+degrees 0–6 were `[0, 48203, 140996, 77869, 6364, 0, 1]` over 273,433 nodes and
+589,264 directed edges. The graph fingerprint is
+`a3107fc9257796215375e2cf8dc387e9edbabcff7fc2d37b8dd8507886572315`; the
+`degree_stats.py` generator SHA256 is
+`cf55864c2c1aefbeca1d6df7042fab729dad83337ea0e5874089427549d881d4`.
+Train SHA256 and folds SHA256 are unchanged from Stage 3A.1:
+`1f79c85c785698e8c3499d99721adfe3be9660a487f137a923dd34eb7ef845e1` and
+`1bb066dd45d9b9a0f7861efbe7efd38c438522519ed36a745bf61f2a9191284a`.
+
+The first GATv2 seed-46 process lost its SSH transport during fold 1 after
+fold 0 had completed. The incomplete attempt was preserved on the RTX workspace
+and excluded from the aggregate; seed 46 was rerun once with the same source,
+config, folds, and training settings. The complete rerun is the only seed-46
+result included here. This was a transport interruption, not a CUDA or model
+error; the successful-run runtime above excludes time spent on the incomplete
+attempt.
+
+All 10 successful OOF artifacts passed Stage 0 validation on 7,973/7,973
+samples with no duplicate, missing, or extra IDs. The full repository test
+suite passed (84 tests), and `git diff --check` passed. The complete per-seed
+effective-config hashes, paired values, graph fingerprint, runtime data, and
+parameter metadata are in
+[`experiments/stage3b/aggregate_summary.md`](experiments/stage3b/aggregate_summary.md)
+and [`experiments/stage3b/aggregate_summary.json`](experiments/stage3b/aggregate_summary.json).
+The interrupted-attempt note is in
+[`experiments/stage3b/formal_execution_notes.json`](experiments/stage3b/formal_execution_notes.json);
+formal lightweight artifacts are under
+`models/operator_ablation/{gatv2,pna}/artifacts/seed_{42..46}/`. Checkpoints and
+graph caches are excluded from version control. Ten Stage 3B seed-level rows
+were appended to [`results.csv`](results.csv); historical GINE rows were left
+unchanged.
+
+**Decision:** operator choice has a larger measured effect here than the
+Stage 3A.1 keep-dummy representation difference (A − v0 was
+−0.0002270051 ± 0.0001113636). GATv2 is higher than GINE in all five paired
+seeds (+0.0005902163 ± 0.0002374364); PNA is higher in all five
+(+0.0090132277 ± 0.0007782772). GATv2 improves mean Rg MAE, but has higher mean
+MAE on the other four targets. PNA has higher mean MAE on all five targets,
+with the largest increases on Density, FFV, and Tc. Thus operator selection
+can materially change performance under this frozen setup, but neither tested
+replacement improves on GINE. **Keep keep-dummy GINE as the next-stage baseline.**
+This is a result on one benchmark and one fixed architecture family, not a
+claim that GINE is universally best for polymer properties. Stage 3B is
+complete; no Stage 3C experiment was started.
 
 ### 3C. Depth and capacity
 

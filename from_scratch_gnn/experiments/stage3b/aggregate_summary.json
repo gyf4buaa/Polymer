@@ -1,0 +1,767 @@
+{
+  "experiment": "Stage 3B message-passing operator ablation",
+  "status": "complete",
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "formal_source_commit": "c57d016cc65c1b74e00b89e9ff1ba40acf59a0c9",
+  "train_sha256": "1f79c85c785698e8c3499d99721adfe3be9660a487f137a923dd34eb7ef845e1",
+  "folds_sha256": "1bb066dd45d9b9a0f7861efbe7efd38c438522519ed36a745bf61f2a9191284a",
+  "baseline_source": {
+    "stage3a1_paired_summary": "experiments/stage3a1/paired_summary.json",
+    "stage3a1_paired_summary_sha256": "60b2e90cf969b2dcfb97d45684ab30f167213fe62de308ba95afb4bac71c40b2",
+    "gine_retrained": false
+  },
+  "overall_wmae": {
+    "GINE": {
+      "by_seed": {
+        "42": 0.022772872219188344,
+        "43": 0.022648625887830755,
+        "44": 0.02288966669365641,
+        "45": 0.02273300693214453,
+        "46": 0.022882862181573347
+      },
+      "mean": 0.022785406782878676,
+      "sample_std": 0.00010244456625914383,
+      "min": 0.022648625887830755,
+      "max": 0.02288966669365641
+    },
+    "GATv2": {
+      "by_seed": {
+        "42": 0.02308369195483314,
+        "43": 0.023358234305828555,
+        "44": 0.02346262687314995,
+        "45": 0.023653906008674317,
+        "46": 0.023319656041323404
+      },
+      "mean": 0.023375623036761873,
+      "sample_std": 0.00020836836920501328,
+      "min": 0.02308369195483314,
+      "max": 0.023653906008674317
+    },
+    "PNA": {
+      "by_seed": {
+        "42": 0.03103633563951401,
+        "43": 0.032828211742291516,
+        "44": 0.03148099597175609,
+        "45": 0.03215032906971412,
+        "46": 0.03149730000783611
+      },
+      "mean": 0.03179863448622237,
+      "sample_std": 0.0006993773358677468,
+      "min": 0.03103633563951401,
+      "max": 0.032828211742291516
+    }
+  },
+  "paired_overall_delta": {
+    "GATv2-GINE": {
+      "by_seed": {
+        "42": 0.00031081973564479545,
+        "43": 0.0007096084179978,
+        "44": 0.0005729601794935389,
+        "45": 0.0009208990765297888,
+        "46": 0.00043679385975005716
+      },
+      "mean": 0.0005902162538831961,
+      "sample_std": 0.00023743643126851498,
+      "min": 0.00031081973564479545,
+      "max": 0.0009208990765297888,
+      "left_lower_count": 0,
+      "right_lower_count": 5,
+      "tie_count": 0,
+      "sign_convention": "left minus right; negative favors left"
+    },
+    "PNA-GINE": {
+      "by_seed": {
+        "42": 0.008263463420325665,
+        "43": 0.01017958585446076,
+        "44": 0.00859132927809968,
+        "45": 0.009417322137569593,
+        "46": 0.008614437826262766
+      },
+      "mean": 0.009013227703343693,
+      "sample_std": 0.0007782772282138143,
+      "min": 0.008263463420325665,
+      "max": 0.01017958585446076,
+      "left_lower_count": 0,
+      "right_lower_count": 5,
+      "tie_count": 0,
+      "sign_convention": "left minus right; negative favors left"
+    },
+    "GATv2-PNA": {
+      "by_seed": {
+        "42": -0.00795264368468087,
+        "43": -0.00946997743646296,
+        "44": -0.008018369098606141,
+        "45": -0.008496423061039805,
+        "46": -0.008177643966512708
+      },
+      "mean": -0.008423011449460498,
+      "sample_std": 0.0006218346867519471,
+      "min": -0.00946997743646296,
+      "max": -0.00795264368468087,
+      "left_lower_count": 5,
+      "right_lower_count": 0,
+      "tie_count": 0,
+      "sign_convention": "left minus right; negative favors left"
+    }
+  },
+  "per_target_mae": {
+    "Tg": {
+      "by_model": {
+        "GINE": {
+          "by_seed": {
+            "42": 51.503853743494275,
+            "43": 50.73961480611636,
+            "44": 53.269823356068606,
+            "45": 51.785615358289725,
+            "46": 51.6852093284692
+          },
+          "mean": 51.79682331848763,
+          "sample_std": 0.9200317144472869,
+          "min": 50.73961480611636,
+          "max": 53.269823356068606
+        },
+        "GATv2": {
+          "by_seed": {
+            "42": 54.717695493927344,
+            "43": 53.506546959668036,
+            "44": 54.69916707271017,
+            "45": 54.25856733145873,
+            "46": 53.11735771666324
+          },
+          "mean": 54.059866914885504,
+          "sample_std": 0.7203144362569465,
+          "min": 53.11735771666324,
+          "max": 54.717695493927344
+        },
+        "PNA": {
+          "by_seed": {
+            "42": 55.262974266356515,
+            "43": 54.52716666124649,
+            "44": 54.89137881119205,
+            "45": 55.902116118493865,
+            "46": 54.69746584609342
+          },
+          "mean": 55.05622034067647,
+          "sample_std": 0.5463657579081314,
+          "min": 54.52716666124649,
+          "max": 55.902116118493865
+        }
+      },
+      "paired_delta": {
+        "GATv2-GINE": {
+          "by_seed": {
+            "42": 3.213841750433069,
+            "43": 2.7669321535516787,
+            "44": 1.4293437166415615,
+            "45": 2.4729519731690033,
+            "46": 1.4321483881940438
+          },
+          "mean": 2.2630435963978712,
+          "sample_std": 0.8042736895652723,
+          "min": 1.4293437166415615,
+          "max": 3.213841750433069,
+          "left_lower_count": 0,
+          "right_lower_count": 5,
+          "tie_count": 0,
+          "sign_convention": "left minus right; negative favors left"
+        },
+        "PNA-GINE": {
+          "by_seed": {
+            "42": 3.75912052286224,
+            "43": 3.7875518551301326,
+            "44": 1.621555455123442,
+            "45": 4.11650076020414,
+            "46": 3.0122565176242233
+          },
+          "mean": 3.2593970221888355,
+          "sample_std": 1.0008622969979455,
+          "min": 1.621555455123442,
+          "max": 4.11650076020414,
+          "left_lower_count": 0,
+          "right_lower_count": 5,
+          "tie_count": 0,
+          "sign_convention": "left minus right; negative favors left"
+        }
+      }
+    },
+    "FFV": {
+      "by_model": {
+        "GINE": {
+          "by_seed": {
+            "42": 0.005826482132443814,
+            "43": 0.005932659072097206,
+            "44": 0.005782235612051567,
+            "45": 0.005830745427190687,
+            "46": 0.0061021918580007545
+          },
+          "mean": 0.005894862820356806,
+          "sample_std": 0.000128341081821541,
+          "min": 0.005782235612051567,
+          "max": 0.0061021918580007545
+        },
+        "GATv2": {
+          "by_seed": {
+            "42": 0.005661434071480941,
+            "43": 0.005852529065180727,
+            "44": 0.006063961885130556,
+            "45": 0.005994434186991119,
+            "46": 0.006175742259619309
+          },
+          "mean": 0.0059496202936805305,
+          "sample_std": 0.00019918046676711796,
+          "min": 0.005661434071480941,
+          "max": 0.006175742259619309
+        },
+        "PNA": {
+          "by_seed": {
+            "42": 0.010454491931858005,
+            "43": 0.011500622495479415,
+            "44": 0.010515194895366129,
+            "45": 0.011169878427699908,
+            "46": 0.010597222822488424
+          },
+          "mean": 0.010847482114578377,
+          "sample_std": 0.0004631461791167214,
+          "min": 0.010454491931858005,
+          "max": 0.011500622495479415
+        }
+      },
+      "paired_delta": {
+        "GATv2-GINE": {
+          "by_seed": {
+            "42": -0.00016504806096287288,
+            "43": -8.013000691647898e-05,
+            "44": 0.0002817262730789895,
+            "45": 0.00016368875980043128,
+            "46": 7.355040161855474e-05
+          },
+          "mean": 5.475747332372473e-05,
+          "sample_std": 0.00018044607270475464,
+          "min": -0.00016504806096287288,
+          "max": 0.0002817262730789895,
+          "left_lower_count": 2,
+          "right_lower_count": 3,
+          "tie_count": 0,
+          "sign_convention": "left minus right; negative favors left"
+        },
+        "PNA-GINE": {
+          "by_seed": {
+            "42": 0.004628009799414192,
+            "43": 0.005567963423382209,
+            "44": 0.004732959283314562,
+            "45": 0.0053391330005092205,
+            "46": 0.00449503096448767
+          },
+          "mean": 0.004952619294221571,
+          "sample_std": 0.0004719772681125941,
+          "min": 0.00449503096448767,
+          "max": 0.005567963423382209,
+          "left_lower_count": 0,
+          "right_lower_count": 5,
+          "tie_count": 0,
+          "sign_convention": "left minus right; negative favors left"
+        }
+      }
+    },
+    "Tc": {
+      "by_model": {
+        "GINE": {
+          "by_seed": {
+            "42": 0.0241218720432738,
+            "43": 0.024749099197183353,
+            "44": 0.024486009558386916,
+            "45": 0.025041377024014606,
+            "46": 0.024910596764485968
+          },
+          "mean": 0.02466179091746893,
+          "sample_std": 0.00036606835919398965,
+          "min": 0.0241218720432738,
+          "max": 0.025041377024014606
+        },
+        "GATv2": {
+          "by_seed": {
+            "42": 0.02466327408694641,
+            "43": 0.02466809737234616,
+            "44": 0.0251367539009188,
+            "45": 0.025921597506260784,
+            "46": 0.024811714007697133
+          },
+          "mean": 0.025040287374833856,
+          "sample_std": 0.0005288959112553145,
+          "min": 0.02466327408694641,
+          "max": 0.025921597506260784
+        },
+        "PNA": {
+          "by_seed": {
+            "42": 0.03146332181041894,
+            "43": 0.03438881793164859,
+            "44": 0.03258851164905184,
+            "45": 0.03200888288868079,
+            "46": 0.032014798855345264
+          },
+          "mean": 0.032492866627029084,
+          "sample_std": 0.0011320921895370602,
+          "min": 0.03146332181041894,
+          "max": 0.03438881793164859
+        }
+      },
+      "paired_delta": {
+        "GATv2-GINE": {
+          "by_seed": {
+            "42": 0.0005414020436726105,
+            "43": -8.100182483719229e-05,
+            "44": 0.000650744342531883,
+            "45": 0.000880220482246178,
+            "46": -9.888275678883451e-05
+          },
+          "mean": 0.00037849645736492895,
+          "sample_std": 0.00044480718396399966,
+          "min": -9.888275678883451e-05,
+          "max": 0.000880220482246178,
+          "left_lower_count": 2,
+          "right_lower_count": 3,
+          "tie_count": 0,
+          "sign_convention": "left minus right; negative favors left"
+        },
+        "PNA-GINE": {
+          "by_seed": {
+            "42": 0.0073414497671451424,
+            "43": 0.009639718734465234,
+            "44": 0.008102502090664924,
+            "45": 0.006967505864666185,
+            "46": 0.007104202090859296
+          },
+          "mean": 0.007831075709560157,
+          "sample_std": 0.001102122222119295,
+          "min": 0.006967505864666185,
+          "max": 0.009639718734465234,
+          "left_lower_count": 0,
+          "right_lower_count": 5,
+          "tie_count": 0,
+          "sign_convention": "left minus right; negative favors left"
+        }
+      }
+    },
+    "Density": {
+      "by_model": {
+        "GINE": {
+          "by_seed": {
+            "42": 0.025295447238194987,
+            "43": 0.025097145150285126,
+            "44": 0.024347393122904078,
+            "45": 0.02361231410612356,
+            "46": 0.024655663322692426
+          },
+          "mean": 0.024601592588040035,
+          "sample_std": 0.0006658114494159638,
+          "min": 0.02361231410612356,
+          "max": 0.025295447238194987
+        },
+        "GATv2": {
+          "by_seed": {
+            "42": 0.026830275514608704,
+            "43": 0.029341034270572965,
+            "44": 0.027589076313685106,
+            "45": 0.027870630215520605,
+            "46": 0.028697194313798198
+          },
+          "mean": 0.028065642125637117,
+          "sample_std": 0.000976826311529807,
+          "min": 0.026830275514608704,
+          "max": 0.029341034270572965
+        },
+        "PNA": {
+          "by_seed": {
+            "42": 0.05895694401888651,
+            "43": 0.06240571012229409,
+            "44": 0.060106745074512795,
+            "45": 0.06331688077638452,
+            "46": 0.06267546352402371
+          },
+          "mean": 0.061492348703220324,
+          "sample_std": 0.0018648781043469865,
+          "min": 0.05895694401888651,
+          "max": 0.06331688077638452
+        }
+      },
+      "paired_delta": {
+        "GATv2-GINE": {
+          "by_seed": {
+            "42": 0.0015348282764137168,
+            "43": 0.004243889120287839,
+            "44": 0.0032416831907810285,
+            "45": 0.004258316109397045,
+            "46": 0.004041530991105772
+          },
+          "mean": 0.0034640495375970804,
+          "sample_std": 0.0011558368675720335,
+          "min": 0.0015348282764137168,
+          "max": 0.004258316109397045,
+          "left_lower_count": 0,
+          "right_lower_count": 5,
+          "tie_count": 0,
+          "sign_convention": "left minus right; negative favors left"
+        },
+        "PNA-GINE": {
+          "by_seed": {
+            "42": 0.033661496780691524,
+            "43": 0.03730856497200896,
+            "44": 0.03575935195160872,
+            "45": 0.039704566670260955,
+            "46": 0.03801980020133129
+          },
+          "mean": 0.03689075611518029,
+          "sample_std": 0.002295377194489519,
+          "min": 0.033661496780691524,
+          "max": 0.039704566670260955,
+          "left_lower_count": 0,
+          "right_lower_count": 5,
+          "tie_count": 0,
+          "sign_convention": "left minus right; negative favors left"
+        }
+      }
+    },
+    "Rg": {
+      "by_model": {
+        "GINE": {
+          "by_seed": {
+            "42": 1.6102015654144703,
+            "43": 1.5559213601480106,
+            "44": 1.5855684790324207,
+            "45": 1.5738706987724251,
+            "46": 1.5613784694842363
+          },
+          "mean": 1.5773881145703126,
+          "sample_std": 0.021639913436400652,
+          "min": 1.5559213601480106,
+          "max": 1.6102015654144703
+        },
+        "GATv2": {
+          "by_seed": {
+            "42": 1.5383003043985553,
+            "43": 1.572418402276932,
+            "44": 1.5384922540353305,
+            "45": 1.5673295044385926,
+            "46": 1.532816199639499
+          },
+          "mean": 1.549871332957782,
+          "sample_std": 0.018489238747729536,
+          "min": 1.532816199639499,
+          "max": 1.572418402276932
+        },
+        "PNA": {
+          "by_seed": {
+            "42": 1.8786575350178039,
+            "43": 1.9987737749078633,
+            "44": 1.916359951966998,
+            "45": 1.9254342531929662,
+            "46": 1.8896582326741371
+          },
+          "mean": 1.9217767495519538,
+          "sample_std": 0.04706943469782599,
+          "min": 1.8786575350178039,
+          "max": 1.9987737749078633
+        }
+      },
+      "paired_delta": {
+        "GATv2-GINE": {
+          "by_seed": {
+            "42": -0.0719012610159151,
+            "43": 0.016497042128921446,
+            "44": -0.04707622499709019,
+            "45": -0.00654119433383249,
+            "46": -0.028562269844737198
+          },
+          "mean": -0.027516781612530704,
+          "sample_std": 0.03439054675741877,
+          "min": -0.0719012610159151,
+          "max": 0.016497042128921446,
+          "left_lower_count": 4,
+          "right_lower_count": 1,
+          "tie_count": 0,
+          "sign_convention": "left minus right; negative favors left"
+        },
+        "PNA-GINE": {
+          "by_seed": {
+            "42": 0.2684559696033335,
+            "43": 0.4428524147598527,
+            "44": 0.33079147293457734,
+            "45": 0.3515635544205411,
+            "46": 0.3282797631899008
+          },
+          "mean": 0.3443886349816411,
+          "sample_std": 0.06316000244370983,
+          "min": 0.2684559696033335,
+          "max": 0.4428524147598527,
+          "left_lower_count": 0,
+          "right_lower_count": 5,
+          "tie_count": 0,
+          "sign_convention": "left minus right; negative favors left"
+        }
+      }
+    }
+  },
+  "runtime": {
+    "formal_run_count": 10,
+    "successful_runs": {
+      "gatv2": 5,
+      "pna": 5
+    },
+    "total_seconds": 12360.825005696002,
+    "mean_run_seconds": 1236.0825005696001,
+    "cuda_device_names": [
+      "NVIDIA GeForce RTX 4070"
+    ],
+    "mean_gpu_utilization_percent": {
+      "gatv2": 35.1733834270605,
+      "pna": 61.70239778588763
+    },
+    "maximum_pytorch_peak_allocated_mb": 507.8623046875,
+    "maximum_pytorch_peak_reserved_mb": 1286.0,
+    "maximum_nvidia_smi_observed_memory_mb": 3011.0,
+    "gpu_utilization_sample_count_per_run": [
+      49,
+      41,
+      41,
+      47,
+      36,
+      154,
+      109,
+      131,
+      107,
+      111
+    ],
+    "gpu_utilization": {
+      "gatv2": {
+        "by_seed": {
+          "42": {
+            "gpu_utilization_sample_count": 49,
+            "gpu_utilization_mean_percent": 36.10204081632653,
+            "gpu_utilization_max_percent": 46.0,
+            "nvidia_smi_peak_memory_used_mb": 1956.0
+          },
+          "43": {
+            "gpu_utilization_sample_count": 41,
+            "gpu_utilization_mean_percent": 35.97560975609756,
+            "gpu_utilization_max_percent": 43.0,
+            "nvidia_smi_peak_memory_used_mb": 1947.0
+          },
+          "44": {
+            "gpu_utilization_sample_count": 41,
+            "gpu_utilization_mean_percent": 34.58536585365854,
+            "gpu_utilization_max_percent": 42.0,
+            "nvidia_smi_peak_memory_used_mb": 1924.0
+          },
+          "45": {
+            "gpu_utilization_sample_count": 47,
+            "gpu_utilization_mean_percent": 34.787234042553195,
+            "gpu_utilization_max_percent": 42.0,
+            "nvidia_smi_peak_memory_used_mb": 1957.0
+          },
+          "46": {
+            "gpu_utilization_sample_count": 36,
+            "gpu_utilization_mean_percent": 34.416666666666664,
+            "gpu_utilization_max_percent": 46.0,
+            "nvidia_smi_peak_memory_used_mb": 1936.0
+          }
+        }
+      },
+      "pna": {
+        "by_seed": {
+          "42": {
+            "gpu_utilization_sample_count": 154,
+            "gpu_utilization_mean_percent": 61.97402597402598,
+            "gpu_utilization_max_percent": 69.0,
+            "nvidia_smi_peak_memory_used_mb": 2905.0
+          },
+          "43": {
+            "gpu_utilization_sample_count": 109,
+            "gpu_utilization_mean_percent": 61.788990825688074,
+            "gpu_utilization_max_percent": 68.0,
+            "nvidia_smi_peak_memory_used_mb": 2876.0
+          },
+          "44": {
+            "gpu_utilization_sample_count": 131,
+            "gpu_utilization_mean_percent": 61.37404580152672,
+            "gpu_utilization_max_percent": 67.0,
+            "nvidia_smi_peak_memory_used_mb": 3011.0
+          },
+          "45": {
+            "gpu_utilization_sample_count": 107,
+            "gpu_utilization_mean_percent": 61.654205607476634,
+            "gpu_utilization_max_percent": 68.0,
+            "nvidia_smi_peak_memory_used_mb": 2872.0
+          },
+          "46": {
+            "gpu_utilization_sample_count": 111,
+            "gpu_utilization_mean_percent": 61.72072072072072,
+            "gpu_utilization_max_percent": 68.0,
+            "nvidia_smi_peak_memory_used_mb": 2781.0
+          }
+        }
+      }
+    }
+  },
+  "parameter_count": {
+    "GINE": {
+      "operator": "historical GINEConv keep-dummy Variant A",
+      "trainable_parameter_count": 1243657,
+      "message_passing_block_parameter_count": 543748
+    },
+    "GATv2": {
+      "operator": "gatv2",
+      "operator_config": {
+        "heads": 4,
+        "channels_per_head": 64,
+        "concat": true,
+        "edge_aware": true,
+        "attention_dropout": 0.0,
+        "add_self_loops": false
+      },
+      "graph_schema": "own_gnn_repr_keep_dummy_raw_graph_node7_edge16_endpoint1_v1",
+      "representation": "keep_dummy",
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "message_passing_output_widths": [
+        256,
+        256,
+        256,
+        256
+      ],
+      "trainable_parameter_count": 1244421,
+      "message_passing_block_parameter_count": 544768,
+      "graph_set_fingerprint_sha256": "a3107fc9257796215375e2cf8dc387e9edbabcff7fc2d37b8dd8507886572315",
+      "selection_role": "formal configuration; smoke metrics are non-selection"
+    },
+    "PNA": {
+      "operator": "pna",
+      "operator_config": {
+        "aggregators": [
+          "mean",
+          "min",
+          "max",
+          "std"
+        ],
+        "scalers": [
+          "identity",
+          "amplification",
+          "attenuation"
+        ],
+        "towers": 1,
+        "edge_aware": true
+      },
+      "graph_schema": "own_gnn_repr_keep_dummy_raw_graph_node7_edge16_endpoint1_v1",
+      "representation": "keep_dummy",
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "message_passing_output_widths": [
+        256,
+        256,
+        256,
+        256
+      ],
+      "trainable_parameter_count": 5176581,
+      "message_passing_block_parameter_count": 4476928,
+      "graph_set_fingerprint_sha256": "a3107fc9257796215375e2cf8dc387e9edbabcff7fc2d37b8dd8507886572315",
+      "selection_role": "formal configuration; smoke metrics are non-selection",
+      "degree_statistics_path": "models/operator_ablation/pna/artifacts/seed_42/degree_histogram.json",
+      "degree_statistics_sha256": "e0b4ddab7ace3e8ab2e793e794fcc486e99eefa7730e43ecf0893dbf787a7934"
+    }
+  },
+  "operator_config": {
+    "GATv2": {
+      "heads": 4,
+      "channels_per_head": 64,
+      "concat": true,
+      "edge_aware": true,
+      "attention_dropout": 0.0,
+      "add_self_loops": false
+    },
+    "PNA": {
+      "aggregators": [
+        "mean",
+        "min",
+        "max",
+        "std"
+      ],
+      "scalers": [
+        "identity",
+        "amplification",
+        "attenuation"
+      ],
+      "towers": 1,
+      "edge_aware": true
+    }
+  },
+  "effective_config_sha256": {
+    "GATv2": {
+      "42": "2386dccfd34879d28ed8d4358f2551699c3095e6147f98d2445bb7d742154f45",
+      "43": "b939180e7a8cc11709d119724ae3b07c04a71d15480416a9f37f250bbbb1f802",
+      "44": "26ce460cdcbd6aa99fcfcd1589b2d18527d951a60ddf987a0cdf814d9b83f87e",
+      "45": "663a491a75c7376a3d86e49c3b4098eeef5839a653164fb5d2eb8ef56157f83e",
+      "46": "cef9f059543577b7cda527a480c321d917eec4dabd4b763cc93effce77d1d22d"
+    },
+    "PNA": {
+      "42": "19d56b392444114bd0b210e9c13fdd66f3bb67caeb0d363376097636bd958d0c",
+      "43": "d1f5f318b7727a37266efc17b7b353d89463b41daeac8049250447b61c29617f",
+      "44": "ca23600d422960829c49adbb872b4ebf4a998ec45a37febeed020f82ad1fb82b",
+      "45": "ae761cb5727bc8b687f503cab8e0f9db15fb00123c700748fd3c325dabe786b6",
+      "46": "218729336f8a6824c09dc423f11ea4beb2362417f1ed13f61cf088e7b051f5e7"
+    }
+  },
+  "pna_degree_statistics": {
+    "schema_version": 1,
+    "graph_schema": "own_gnn_repr_keep_dummy_raw_graph_node7_edge16_endpoint1_v1",
+    "source_train_sha256": "1f79c85c785698e8c3499d99721adfe3be9660a487f137a923dd34eb7ef845e1",
+    "source_commit": "c57d016cc65c1b74e00b89e9ff1ba40acf59a0c9",
+    "generator": "/home/gyf/work/polymer/from_scratch_gnn/models/operator_ablation/degree_stats.py",
+    "generator_sha256": "cf55864c2c1aefbeca1d6df7042fab729dad83337ea0e5874089427549d881d4",
+    "graph_set_fingerprint_sha256": "a3107fc9257796215375e2cf8dc387e9edbabcff7fc2d37b8dd8507886572315",
+    "degree_definition": "directed incoming degree; bincount(edge_index[1]) per graph",
+    "histogram_by_degree": {
+      "0": 0,
+      "1": 48203,
+      "2": 140996,
+      "3": 77869,
+      "4": 6364,
+      "5": 0,
+      "6": 1
+    },
+    "histogram_tensor": [
+      0,
+      48203,
+      140996,
+      77869,
+      6364,
+      0,
+      1
+    ],
+    "node_count": 273433,
+    "directed_edge_count": 589264,
+    "graph_count": 7973,
+    "uses_labels_or_targets": false
+  },
+  "artifact_roots": {
+    "gatv2": {
+      "42": "models/operator_ablation/gatv2/artifacts/seed_42",
+      "43": "models/operator_ablation/gatv2/artifacts/seed_43",
+      "44": "models/operator_ablation/gatv2/artifacts/seed_44",
+      "45": "models/operator_ablation/gatv2/artifacts/seed_45",
+      "46": "models/operator_ablation/gatv2/artifacts/seed_46"
+    },
+    "pna": {
+      "42": "models/operator_ablation/pna/artifacts/seed_42",
+      "43": "models/operator_ablation/pna/artifacts/seed_43",
+      "44": "models/operator_ablation/pna/artifacts/seed_44",
+      "45": "models/operator_ablation/pna/artifacts/seed_45",
+      "46": "models/operator_ablation/pna/artifacts/seed_46"
+    }
+  },
+  "selection_policy": "paired seed results on the frozen benchmark; no tuning or post-result reruns"
+}

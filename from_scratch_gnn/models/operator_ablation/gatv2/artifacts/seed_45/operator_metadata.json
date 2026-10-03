@@ -1,0 +1,25 @@
+{
+  "operator": "gatv2",
+  "operator_config": {
+    "heads": 4,
+    "channels_per_head": 64,
+    "concat": true,
+    "edge_aware": true,
+    "attention_dropout": 0.0,
+    "add_self_loops": false
+  },
+  "graph_schema": "own_gnn_repr_keep_dummy_raw_graph_node7_edge16_endpoint1_v1",
+  "representation": "keep_dummy",
+  "hidden_dim": 256,
+  "num_layers": 4,
+  "message_passing_output_widths": [
+    256,
+    256,
+    256,
+    256
+  ],
+  "trainable_parameter_count": 1244421,
+  "message_passing_block_parameter_count": 544768,
+  "graph_set_fingerprint_sha256": "a3107fc9257796215375e2cf8dc387e9edbabcff7fc2d37b8dd8507886572315",
+  "selection_role": "formal configuration; smoke metrics are non-selection"
+}

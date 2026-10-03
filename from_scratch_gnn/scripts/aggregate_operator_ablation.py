@@ -226,11 +226,30 @@ def aggregate_operator_ablation(
         int(item["run_metadata"].get("gpu_sampling", {}).get("gpu_utilization_sample_count", 0))
         for item in formal_runs
     ]
+    cuda_device_names = sorted(
+        {
+            str(item["run_metadata"].get("runtime", {}).get("device_name", "unknown"))
+            for item in formal_runs
+        }
+    )
+    mean_gpu_utilization: dict[str, float | None] = {}
+    for operator in OPERATORS:
+        values = [
+            float(runs[operator][seed]["run_metadata"]["gpu_sampling"]["gpu_utilization_mean_percent"])
+            for seed in SEEDS
+            if runs[operator][seed]["run_metadata"].get("gpu_sampling", {}).get(
+                "gpu_utilization_mean_percent"
+            )
+            is not None
+        ]
+        mean_gpu_utilization[operator] = statistics.mean(values) if values else None
     runtime = {
         "formal_run_count": len(formal_runs),
         "successful_runs": {operator: len(runs[operator]) for operator in OPERATORS},
         "total_seconds": sum(runtimes),
         "mean_run_seconds": statistics.mean(runtimes),
+        "cuda_device_names": cuda_device_names,
+        "mean_gpu_utilization_percent": mean_gpu_utilization,
         "maximum_pytorch_peak_allocated_mb": max(memory_allocated, default=None),
         "maximum_pytorch_peak_reserved_mb": max(memory_reserved, default=None),
         "maximum_nvidia_smi_observed_memory_mb": max(nvidia_memory, default=None),
@@ -298,7 +317,7 @@ def aggregate_operator_ablation(
         "train_sha256": TRAIN_SHA256,
         "folds_sha256": FOLDS_SHA256,
         "baseline_source": {
-            "stage3a1_paired_summary": str(baseline_path),
+            "stage3a1_paired_summary": baseline_path.relative_to(TRACK_ROOT.resolve()).as_posix(),
             "stage3a1_paired_summary_sha256": sha256_file(baseline_path),
             "gine_retrained": False,
         },
@@ -374,17 +393,40 @@ def write_markdown(summary: Mapping[str, Any], path: Path) -> None:
     lines.extend(
         [
             "",
+            "## Architecture and parameter counts",
+            "",
+            "| Model | Hidden width × layers | Trainable parameters | Message-passing parameters |",
+            "|---|---:|---:|---:|",
+        ]
+    )
+    for model in ("GINE", "GATv2", "PNA"):
+        counts = summary["parameter_count"][model]
+        total = counts.get("trainable_parameter_count", counts.get("trainable"))
+        message_passing = counts.get(
+            "message_passing_block_parameter_count", counts.get("message_passing_blocks")
+        )
+        width = counts.get("hidden_dim", 256)
+        layers = counts.get("num_layers", 4)
+        lines.append(f"| {model} | {width} × {layers} | {total:,} | {message_passing:,} |")
+    lines.extend(
+        [
+            "",
+            "GATv2 uses four 64-channel heads with concatenation and edge-aware attention. PNA uses mean/min/max/std aggregators, identity/amplification/attenuation scalers, one tower, and edge features.",
+            "",
             "## Frozen setup and provenance",
             "",
             f"- Train SHA256: `{summary['train_sha256']}`",
             f"- Folds SHA256: `{summary['folds_sha256']}`",
             f"- Formal OOF runs: GATv2 {summary['runtime']['successful_runs']['gatv2']}/5; PNA {summary['runtime']['successful_runs']['pna']}/5.",
             f"- Total formal runtime: {summary['runtime']['total_seconds']:.1f} seconds.",
-            f"- Maximum PyTorch allocated VRAM: {summary['runtime']['maximum_pytorch_peak_allocated_mb']:.1f} MiB; maximum `nvidia-smi` observed memory: {summary['runtime']['maximum_nvidia_smi_observed_memory_mb']:.0f} MiB.",
+            f"- CUDA device(s): {', '.join(summary['runtime']['cuda_device_names'])}.",
+            f"- Mean sampled GPU utilization: GATv2 {summary['runtime']['mean_gpu_utilization_percent']['gatv2']:.1f}%; PNA {summary['runtime']['mean_gpu_utilization_percent']['pna']:.1f}%.",
+            f"- Maximum PyTorch allocated/reserved VRAM: {summary['runtime']['maximum_pytorch_peak_allocated_mb']:.1f}/{summary['runtime']['maximum_pytorch_peak_reserved_mb']:.1f} MiB; maximum `nvidia-smi` observed memory: {summary['runtime']['maximum_nvidia_smi_observed_memory_mb']:.0f} MiB.",
             f"- GATv2: {summary['operator_config']['GATv2']}.",
             f"- PNA: {summary['operator_config']['PNA']}.",
-            f"- PNA degree histogram (entire frozen graph set): `{summary['pna_degree_statistics']['histogram_by_degree']}`; graph fingerprint `{summary['pna_degree_statistics']['graph_set_fingerprint_sha256']}`.",
+            f"- PNA degree histogram on {summary['pna_degree_statistics']['graph_count']} frozen graphs / {summary['pna_degree_statistics']['node_count']} nodes: `{summary['pna_degree_statistics']['histogram_by_degree']}`; graph fingerprint `{summary['pna_degree_statistics']['graph_set_fingerprint_sha256']}`; generator SHA256 `{summary['pna_degree_statistics']['generator_sha256']}`.",
             "- All 10 formal runs use the same source commit; GINE's existing five seeds were reused.",
+            "- The first GATv2 seed-46 attempt was interrupted by an SSH transport timeout and excluded; its same-config restart is the formal seed-46 run.",
             "- No readout, global feature, descriptor, ensemble, or later-stage experiments were run.",
             "",
         ]

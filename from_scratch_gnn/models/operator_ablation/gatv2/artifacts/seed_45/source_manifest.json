@@ -1,0 +1,45 @@
+{
+  "experiment_id": "own_gnn_operator_gatv2",
+  "operator": "gatv2",
+  "representation": "keep_dummy",
+  "graph_schema": "own_gnn_repr_keep_dummy_raw_graph_node7_edge16_endpoint1_v1",
+  "seed": 45,
+  "git_commit": "c57d016cc65c1b74e00b89e9ff1ba40acf59a0c9",
+  "branch": "stage3b/operator-ablation",
+  "source_files_sha256": {
+    "from_scratch_gnn/models/operator_ablation/README.md": "d3dd977a4368caedaf4d43132b839ec2b8f17f2b6950616433e77e661d5e87be",
+    "from_scratch_gnn/models/operator_ablation/__init__.py": "63ad427e9fa2966f4868e76182cf16fa37cbb36cdefb19fb3b21bbf548ae0d09",
+    "from_scratch_gnn/models/operator_ablation/cpu_smoke.py": "325ab6abf0a4518fe01010d826d1cad830bb420619198909c1f3c9ab0613f92d",
+    "from_scratch_gnn/models/operator_ablation/degree_stats.py": "cf55864c2c1aefbeca1d6df7042fab729dad83337ea0e5874089427549d881d4",
+    "from_scratch_gnn/models/operator_ablation/gatv2/__init__.py": "1a989f9930fbaeff8ee291724b08ded8059d16a7d7ce59944f7ac00400f76257",
+    "from_scratch_gnn/models/operator_ablation/gatv2/config.json": "e410a9af427a570b4edccbc2c26a9de3f4f7356938101e1db3d7a79ee155c808",
+    "from_scratch_gnn/models/operator_ablation/gatv2/train_oof.py": "4beba86febd7425df5468575f89e5979eb6c7845a429eb5c7cf2d28db1570027",
+    "from_scratch_gnn/models/operator_ablation/model.py": "a38ff1c1fc4348cf99488132995a91bd03ba711073f7a02ce837e691438bc1d8",
+    "from_scratch_gnn/models/operator_ablation/pna/__init__.py": "0d35febbc2336382515b8e2c18fadae5d7d3dd71252680a441ab14f0b6b4b295",
+    "from_scratch_gnn/models/operator_ablation/pna/config.json": "7c5dcaf2ff8ba40563071361a9261771e2175b49323b04e6e919b56bdb272380",
+    "from_scratch_gnn/models/operator_ablation/pna/train_oof.py": "3d5d6ead3793312baf2f8193622b74235423859fbc387e974e76c3161c35c26e",
+    "from_scratch_gnn/models/operator_ablation/runner.py": "6028205fd26ffcf345c6effe1e5dbda8bd3922d3b35811f0004830bd9cb08e8d",
+    "from_scratch_gnn/models/operator_ablation/tests/__init__.py": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "from_scratch_gnn/models/operator_ablation/tests/test_operators.py": "a6cf2d6c3b25d98330bb4b2d98150c516259418eb83c9064d68c613d606f0b43",
+    "from_scratch_gnn/models/own_gnn_repr_keep_dummy/graph.py": "45f9be924f5da6f7807a50c9f70b31d221fe6d607b6d2106edf50f8285afc194",
+    "from_scratch_gnn/models/own_gnn_v0/graph.py": "9fb76d6b606bc9f32010e5668d1f5eb04e54e75286212fcf7c031ea93f969a13",
+    "from_scratch_gnn/models/own_gnn_v0/model.py": "75d276505c720fdb472c52eae2860c7984a82e8221a90b251412eeda703b62fc",
+    "from_scratch_gnn/models/own_gnn_v0/train_oof.py": "3bafc2fed8249cfdda576e30dd2cc3dcda659ce800532b6e2dcd978967e23c69",
+    "from_scratch_gnn/models/polymer_representation_ablation/graph_builder.py": "36ebb8fbea68f88fec6537fc9787d9f2b0d952d750489d2f9f345c3b177b5717",
+    "from_scratch_gnn/models/polymer_representation_ablation/runner.py": "562cb03e410ea8798cf7e57b1e1489a435415b11cfd10496f46bb0637ce32ab0"
+  },
+  "source_config_sha256": "e410a9af427a570b4edccbc2c26a9de3f4f7356938101e1db3d7a79ee155c808",
+  "effective_config_sha256": "663a491a75c7376a3d86e49c3b4098eeef5839a653164fb5d2eb8ef56157f83e",
+  "benchmark_files_sha256": {
+    "train_csv": "1f79c85c785698e8c3499d99721adfe3be9660a487f137a923dd34eb7ef845e1",
+    "folds_csv": "1bb066dd45d9b9a0f7861efbe7efd38c438522519ed36a745bf61f2a9191284a",
+    "manifest_json": "dfbd13bc3ca1b087199f88d8dcfaba0616b9f79a58a50b291527cc146ef87e2a"
+  },
+  "graph_provenance": {
+    "graph_set_fingerprint_sha256": "a3107fc9257796215375e2cf8dc387e9edbabcff7fc2d37b8dd8507886572315",
+    "degree_statistics_path": null,
+    "degree_statistics_sha256": null,
+    "graph_diagnostics_path": "models/operator_ablation/gatv2/artifacts/seed_45/graph_diagnostics.json.gz",
+    "graph_diagnostics_sha256": "8f21e513063bda0ae8bd9c51338a93f3c3e6a3963abc8e0fe6772c0281ddfeeb"
+  }
+}
