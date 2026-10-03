@@ -2,7 +2,7 @@
 
 This file defines the comparison contract for the from-scratch GNN track.
 
-Once the first formal baseline has been run, changes to this protocol should be treated as a benchmark-version change rather than silently modifying historical results.
+Once the first formal internal baseline has been run, changes to this protocol should be treated as a benchmark-version change rather than silently modifying historical results.
 
 ## 1. Data identity
 
@@ -93,7 +93,7 @@ For from-scratch experiments:
 - no validation information in initialization;
 - no Private-label-derived adjustment.
 
-Third-party architectures may be reimplemented/retrained as reference baselines, but their pretrained/refit weights are not valid for the formal OOF comparison.
+Third-party architectures may be reimplemented/retrained as external references, but their pretrained/refit weights are not valid for the formal OOF comparison.
 
 ## 8. Early stopping and model selection
 
@@ -138,9 +138,9 @@ checkpoints/
 
 Large checkpoints should not be committed directly to GitHub.
 
-## 10. Fair comparison with the third-party reference
+## 10. External reference comparability
 
-The third-party GATv2 architecture is a reference architecture, not the base model for Own-GNN.
+The third-party GATv2 architecture is an external reference architecture, not the internal baseline or base model for Own-GNN. After Own-GNN v0 is frozen, later Own-GNN variants are judged primarily against Own-GNN v0 or the immediately preceding accepted Own-GNN variant.
 
 For the formal OOF comparison it should be:
 
@@ -171,9 +171,10 @@ mean OOF wMAE ± standard deviation
 
 At minimum, confirm:
 
-- the third-party reference;
-- Own-GNN baseline;
+- Own-GNN v0 internal baseline;
 - Own-GNN final.
+
+Multi-seed confirmation of the third-party external reference is optional unless a formal statistical comparison against that external model is specifically required.
 
 ## 13. Kaggle Private
 
@@ -194,7 +195,7 @@ Do not repeatedly modify the model in response to Private score without explicit
 
 ## 14. Results registry
 
-Every formal result should be appended to `results.csv`.
+Every formal result should be appended to `results.csv`. Use `internal_baseline` for Own-GNN v0, `own_model` (or a more specific owned-model category) for later variants, and `external_reference` / `historical_reference` for contextual models that are not the development baseline.
 
 Never overwrite an older row merely because a newer run performs better. The registry should preserve the experimental path, including failed or neutral changes when they are scientifically informative.
 

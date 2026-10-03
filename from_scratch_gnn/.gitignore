@@ -12,3 +12,4 @@ training_history/
 *.onnx
 # Third-party GATv2 run outputs, including configs, histories, predictions and logs.
 baselines/third_party_gatv2/artifacts/
+models/own_gnn_v0/artifacts/
