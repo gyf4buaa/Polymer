@@ -40,6 +40,35 @@ provenance. They do not contribute checkpoints or predictions to the formal
 result. The formal result starts from random initialization for all five frozen
 folds, on CUDA, from the committed source revision.
 
+## Formal Stage 1A CUDA result
+
+Completed 2026-10-03 on an NVIDIA RTX 4070 from source commit
+`9931e376b8a0eeb42ec002b4adbebf25da575b16`. All folds were freshly initialized
+with seeds 42–46; batch size was 64, the maximum was 600 epochs, and early
+stopping patience was 40. No CPU pilot checkpoint was loaded.
+
+| Fold | Best epoch | Best validation wMAE |
+|---:|---:|---:|
+| 0 | 180 | 0.02211136 |
+| 1 | 105 | 0.02234731 |
+| 2 | 69 | 0.02578474 |
+| 3 | 133 | 0.02519220 |
+| 4 | 133 | 0.02490654 |
+
+The Stage 0 validator was rerun on the complete 7,973-row OOF file. It found
+no duplicate, missing, or extra sample IDs and reported overall OOF wMAE
+`0.02406818`. Target MAEs: Tg `54.32066`, FFV `0.00719931`, Tc `0.02426117`,
+Density `0.02983760`, and Rg `1.54587552`.
+
+The recorded training duration is 3,788.1 seconds (63m 08s); the UTC start to
+completion timestamps span 66m 20s. All formal outputs remain in the ignored
+production directory
+`artifacts/production_gpu_20261003/`, including `source_manifest.json`,
+`config.json`, `run_metadata.json`, `oof_predictions.csv`, `metrics.json`,
+`fold_metrics.csv`, five training histories, and five best checkpoints. The
+source manifest SHA-256 is
+`e7c422247c7b1b3e2963282548b24e4771bb87c1c63ac53805677e9dc9fb189f`.
+
 ## Necessary benchmark/leakage corrections
 
 The public preparation script merges CSVs under its raw-data directory,
