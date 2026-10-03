@@ -164,17 +164,22 @@ For every fold:
 
 After five folds, concatenate all held-out predictions into one OOF file.
 
-The first formal result is:
+The first formal Own-GNN result completed on the frozen Stage 0 benchmark:
 
-```text
-Own-GNN v0
-OOF wMAE = ?
-Tg MAE = ?
-FFV MAE = ?
-Tc MAE = ?
-Density MAE = ?
-Rg MAE = ?
-```
+| Fold | Best epoch | Validation wMAE |
+|---:|---:|---:|
+| 0 | 59 | 0.02221611 |
+| 1 | 80 | 0.02075641 |
+| 2 | 130 | 0.02326369 |
+| 3 | 40 | 0.02463983 |
+| 4 | 45 | 0.02366061 |
+
+The Stage 0 validator accepted all 7,973 OOF rows with no duplicate, missing,
+or extra sample IDs. Overall OOF wMAE is **0.02290702**; target MAEs are Tg
+53.73353, FFV 0.00583204, Tc 0.02455388, Density 0.02348644, and Rg 1.58152.
+Compared with the frozen third-party GATv2 result (0.02406818), this is a
+4.82% lower OOF wMAE for this single-seed run. The full metrics and histories
+are in the ignored production artifact directory on the RTX node.
 
 This is the first fully owned benchmark point.
 
@@ -336,7 +341,7 @@ Use the same frozen OOF protocol:
 | Descriptor baseline | TBD | | | | | |
 | Third-party GATv2 retrained from scratch | 0.02406818 | 54.32066 | 0.00719931 | 0.02426117 | 0.02983760 | 1.54587552 |
 | Historical Own-GNN | TBD | | | | | |
-| Own-GNN v0 | TBD | | | | | |
+| Own-GNN v0 | 0.02290702 | 53.73353 | 0.00583204 | 0.02455388 | 0.02348644 | 1.58152 |
 | Own-GNN final | TBD | | | | | |
 
 This table explains **why the model improved**.

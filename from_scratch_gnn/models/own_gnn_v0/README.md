@@ -78,6 +78,51 @@ All run products and graph caches are Git-ignored under `artifacts/`.
 
 ## Formal result
 
-The source implementation is ready for its first formal GPU run. The validated
-five-fold OOF result will be recorded here after the Stage 0 validator accepts
-all 7,973 sample IDs.
+Formal run: `production_gpu_20261003`, source commit
+`b3f5df52c81f8032f5f2a2390b437d5d3302b160`, RTX 4070 CUDA, fold seeds 42–46.
+The source training CSV SHA256 is
+`1f79c85c785698e8c3499d99721adfe3be9660a487f137a923dd34eb7ef845e1`; the frozen
+folds SHA256 is
+`1bb066dd45d9b9a0f7861efbe7efd38c438522519ed36a745bf61f2a9191284a`.
+
+Graph audit built 7,973/7,973 samples. The dummy-atom counts were 2 with one
+dummy, 7,955 with two, 8 with three, and 8 with four. Endpoint closure was
+applied to 7,940 graphs; 1,244 of those retain an ordinary endpoint bond
+alongside the marked parallel polymer edge. The other 33 graphs use the
+documented lossless fallback: 2 one-dummy graphs, 8 three-dummy graphs, 8
+four-dummy graphs, and 15 shared-endpoint graphs. No sample was dropped.
+
+| Fold | Best epoch | Validation wMAE |
+|---:|---:|---:|
+| 0 | 59 | 0.02221611 |
+| 1 | 80 | 0.02075641 |
+| 2 | 130 | 0.02326369 |
+| 3 | 40 | 0.02463983 |
+| 4 | 45 | 0.02366061 |
+
+The independent Stage 0 validator accepted all 7,973 sample IDs, with zero
+duplicates, omissions, or extra IDs. Full OOF metrics:
+
+| Metric | Own-GNN v0 |
+|---|---:|
+| OOF wMAE | 0.0229070190 |
+| Tg MAE | 53.73353017 |
+| FFV MAE | 0.00583204 |
+| Tc MAE | 0.02455388 |
+| Density MAE | 0.02348644 |
+| Rg MAE | 1.58151550 |
+
+Against the frozen Third-party GATv2 wMAE of 0.0240681831, Own-GNN v0 is
+0.0011611640 lower (4.82% relative). This is the first single-seed baseline
+result, not a multi-seed final claim.
+
+The formal run took 590.7 seconds total (9m 51s), averaged 1.063 seconds per
+executed epoch, and processed about 6,008 training samples per second. CUDA
+utilization averaged 36.3% (maximum 42% over 40 samples). Peak PyTorch CUDA
+allocation was 136.7 MiB (160 MiB reserved); peak `nvidia-smi` used memory was
+1,764 MiB. No NaN or OOM occurred.
+
+The verified files remain outside Git at
+`/home/gyf/work/polymer/from_scratch_gnn/models/own_gnn_v0/artifacts/production_gpu_20261003/`:
+OOF predictions, validator metrics, fold metrics, configs, source/run metadata,
+graph diagnostics, five training histories, and five best checkpoints.
