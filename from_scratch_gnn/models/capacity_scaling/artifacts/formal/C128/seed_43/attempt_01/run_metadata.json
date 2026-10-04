@@ -1,0 +1,309 @@
+{
+  "experiment_id": "stage5a_capacity_c128",
+  "seed": 43,
+  "model_name": "Stage 5A G0 width scaling",
+  "git_commit": "72490c1a748ed9395025f4120c9eb04f28268695",
+  "branch": "stage5a/capacity-scaling",
+  "benchmark_version": "nopp2025_train_v1",
+  "benchmark_fold_sha256": "1bb066dd45d9b9a0f7861efbe7efd38c438522519ed36a745bf61f2a9191284a",
+  "source_train_sha256": "1f79c85c785698e8c3499d99721adfe3be9660a487f137a923dd34eb7ef845e1",
+  "fold_metrics": [
+    {
+      "fold": 0,
+      "sample_count": 1595,
+      "train_sample_count": 6378,
+      "best_epoch": 63,
+      "epochs_completed": 103,
+      "best_validation_wmae": 0.021569898178158915,
+      "Tg_mae": 53.41564774055094,
+      "FFV_mae": 0.006145455441959281,
+      "Tc_mae": 0.021171026444051996,
+      "Density_mae": 0.025652335472269888,
+      "Rg_mae": 1.3766111930277243,
+      "seed": 43,
+      "duration_seconds": 198.6469202139997,
+      "seconds_per_epoch": 1.9286108758640748,
+      "training_samples_per_second": 3307.043468342191,
+      "peak_vram_allocated_mb": 72.1396484375,
+      "peak_vram_reserved_mb": 116.0,
+      "gpu_utilization_sample_count": 13,
+      "gpu_utilization_mean_percent": 83.07692307692308,
+      "gpu_utilization_max_percent": 90.0,
+      "nvidia_smi_peak_memory_used_mb": 5310.0,
+      "checkpoint_path": "/home/gyf/work/polymer/from_scratch_gnn/models/capacity_scaling/artifacts/formal/C128/seed_43/attempt_01/checkpoints/fold_0_best.pt",
+      "normalizer": {
+        "Tg": {
+          "mean": 90.75401226996591,
+          "std": 110.3177894028402
+        },
+        "FFV": {
+          "mean": 0.36747992721589895,
+          "std": 0.030055269263595533
+        },
+        "Tc": {
+          "mean": 0.2582106298262548,
+          "std": 0.08733454125211523
+        },
+        "Density": {
+          "mean": 0.9799079665891393,
+          "std": 0.13854222300903618
+        },
+        "Rg": {
+          "mean": 16.432243626213417,
+          "std": 4.637228636467025
+        }
+      }
+    },
+    {
+      "fold": 1,
+      "sample_count": 1595,
+      "train_sample_count": 6378,
+      "best_epoch": 61,
+      "epochs_completed": 101,
+      "best_validation_wmae": 0.02073437504495277,
+      "Tg_mae": 50.57569069398671,
+      "FFV_mae": 0.006375097433999324,
+      "Tc_mae": 0.023651939403701812,
+      "Density_mae": 0.025290798345007182,
+      "Rg_mae": 1.3183582563119598,
+      "seed": 44,
+      "duration_seconds": 189.0157565249974,
+      "seconds_per_epoch": 1.8714431339108655,
+      "training_samples_per_second": 3408.0650832662577,
+      "peak_vram_allocated_mb": 71.57958984375,
+      "peak_vram_reserved_mb": 118.0,
+      "gpu_utilization_sample_count": 12,
+      "gpu_utilization_mean_percent": 80.5,
+      "gpu_utilization_max_percent": 87.0,
+      "nvidia_smi_peak_memory_used_mb": 5280.0,
+      "checkpoint_path": "/home/gyf/work/polymer/from_scratch_gnn/models/capacity_scaling/artifacts/formal/C128/seed_43/attempt_01/checkpoints/fold_1_best.pt",
+      "normalizer": {
+        "Tg": {
+          "mean": 96.7719955164402,
+          "std": 110.65049577765288
+        },
+        "FFV": {
+          "mean": 0.3672827464146907,
+          "std": 0.029443306564146357
+        },
+        "Tc": {
+          "mean": 0.2554143703166546,
+          "std": 0.09074018826426995
+        },
+        "Density": {
+          "mean": 0.9918253697630001,
+          "std": 0.1479012593594187
+        },
+        "Rg": {
+          "mean": 16.542255612591184,
+          "std": 4.581146423829681
+        }
+      }
+    },
+    {
+      "fold": 2,
+      "sample_count": 1595,
+      "train_sample_count": 6378,
+      "best_epoch": 68,
+      "epochs_completed": 108,
+      "best_validation_wmae": 0.022634441794274603,
+      "Tg_mae": 43.74853164419768,
+      "FFV_mae": 0.00677660239610862,
+      "Tc_mae": 0.023393229612203713,
+      "Density_mae": 0.025427537142451464,
+      "Rg_mae": 1.4842918262465485,
+      "seed": 45,
+      "duration_seconds": 201.32864194099966,
+      "seconds_per_epoch": 1.8641540920462931,
+      "training_samples_per_second": 3421.3909822223072,
+      "peak_vram_allocated_mb": 71.4765625,
+      "peak_vram_reserved_mb": 118.0,
+      "gpu_utilization_sample_count": 14,
+      "gpu_utilization_mean_percent": 81.0,
+      "gpu_utilization_max_percent": 88.0,
+      "nvidia_smi_peak_memory_used_mb": 5201.0,
+      "checkpoint_path": "/home/gyf/work/polymer/from_scratch_gnn/models/capacity_scaling/artifacts/formal/C128/seed_43/attempt_01/checkpoints/fold_2_best.pt",
+      "normalizer": {
+        "Tg": {
+          "mean": 97.67186096509757,
+          "std": 113.78346446610045
+        },
+        "FFV": {
+          "mean": 0.3670836126372653,
+          "std": 0.030077557781802954
+        },
+        "Tc": {
+          "mean": 0.2560236502347418,
+          "std": 0.08977990323082034
+        },
+        "Density": {
+          "mean": 0.987595495073347,
+          "std": 0.15020274386845045
+        },
+        "Rg": {
+          "mean": 16.323047615618556,
+          "std": 4.673642412830098
+        }
+      }
+    },
+    {
+      "fold": 3,
+      "sample_count": 1594,
+      "train_sample_count": 6379,
+      "best_epoch": 46,
+      "epochs_completed": 86,
+      "best_validation_wmae": 0.02375672687384613,
+      "Tg_mae": 54.03277039562494,
+      "FFV_mae": 0.0064052611874100725,
+      "Tc_mae": 0.026016848338272766,
+      "Density_mae": 0.020982102651782557,
+      "Rg_mae": 1.5083823666843796,
+      "seed": 46,
+      "duration_seconds": 159.28002176599693,
+      "seconds_per_epoch": 1.8520932763488016,
+      "training_samples_per_second": 3444.2109808721393,
+      "peak_vram_allocated_mb": 75.6962890625,
+      "peak_vram_reserved_mb": 118.0,
+      "gpu_utilization_sample_count": 10,
+      "gpu_utilization_mean_percent": 83.2,
+      "gpu_utilization_max_percent": 88.0,
+      "nvidia_smi_peak_memory_used_mb": 5201.0,
+      "checkpoint_path": "/home/gyf/work/polymer/from_scratch_gnn/models/capacity_scaling/artifacts/formal/C128/seed_43/attempt_01/checkpoints/fold_3_best.pt",
+      "normalizer": {
+        "Tg": {
+          "mean": 97.24972917316666,
+          "std": 112.09589903923602
+        },
+        "FFV": {
+          "mean": 0.3672064315779197,
+          "std": 0.02917091544594437
+        },
+        "Tc": {
+          "mean": 0.2549583431719796,
+          "std": 0.08956686465999587
+        },
+        "Density": {
+          "mean": 0.9843351114269777,
+          "std": 0.14595462039648974
+        },
+        "Rg": {
+          "mean": 16.315414667957317,
+          "std": 4.444335945833389
+        }
+      }
+    },
+    {
+      "fold": 4,
+      "sample_count": 1594,
+      "train_sample_count": 6379,
+      "best_epoch": 18,
+      "epochs_completed": 58,
+      "best_validation_wmae": 0.024311073074027266,
+      "Tg_mae": 53.711856344768314,
+      "FFV_mae": 0.007552806520515717,
+      "Tc_mae": 0.026248741262695736,
+      "Density_mae": 0.025069997747857158,
+      "Rg_mae": 1.6462493394897941,
+      "seed": 47,
+      "duration_seconds": 107.75901583599625,
+      "seconds_per_epoch": 1.8579140661378664,
+      "training_samples_per_second": 3433.4203697915523,
+      "peak_vram_allocated_mb": 71.154296875,
+      "peak_vram_reserved_mb": 118.0,
+      "gpu_utilization_sample_count": 8,
+      "gpu_utilization_mean_percent": 81.5,
+      "gpu_utilization_max_percent": 89.0,
+      "nvidia_smi_peak_memory_used_mb": 5200.0,
+      "checkpoint_path": "/home/gyf/work/polymer/from_scratch_gnn/models/capacity_scaling/artifacts/formal/C128/seed_43/attempt_01/checkpoints/fold_4_best.pt",
+      "normalizer": {
+        "Tg": {
+          "mean": 99.81946657360723,
+          "std": 108.56153620720065
+        },
+        "FFV": {
+          "mean": 0.3670074261956134,
+          "std": 0.029268911164893146
+        },
+        "Tc": {
+          "mean": 0.2570795407014157,
+          "std": 0.08990143881133324
+        },
+        "Density": {
+          "mean": 0.9836272978891171,
+          "std": 0.14719378194147198
+        },
+        "Rg": {
+          "mean": 16.48337015092213,
+          "std": 4.681611401703817
+        }
+      }
+    }
+  ],
+  "overall_oof_wmae": 0.02260094363095965,
+  "target_mae": {
+    "Tg": 51.18984174486928,
+    "FFV": 0.006652392953991746,
+    "Tc": 0.02403898135079142,
+    "Density": 0.024504447753408955,
+    "Rg": 1.4698395376584208
+  },
+  "oof_validation": {
+    "training_sample_count": 7973,
+    "prediction_row_count": 7973,
+    "duplicate_training_sample_id_count": 0,
+    "duplicate_prediction_sample_id_count": 0,
+    "missing_prediction_sample_id_count": 0,
+    "extra_prediction_sample_id_count": 0,
+    "aligned_by": "sample_id",
+    "truth_source_sha256": "1f79c85c785698e8c3499d99721adfe3be9660a487f137a923dd34eb7ef845e1"
+  },
+  "graph_diagnostics_summary": {
+    "source_sample_count": 7973,
+    "graph_count": 7973,
+    "source_rows_dropped": 0,
+    "dummy_atom_count_distribution": {
+      "1": 2,
+      "2": 7955,
+      "3": 8,
+      "4": 8
+    },
+    "endpoint_closure_count": 0,
+    "endpoint_neighbors_already_bonded_count": 1244,
+    "fallback_count": 0,
+    "fallback_reasons": {}
+  },
+  "runtime": {
+    "device": "cuda",
+    "device_name": "NVIDIA GeForce RTX 4070",
+    "processor": "x86_64",
+    "python": "3.11.17 (main, Oct  1 2026, 15:41:07) [GCC 13.3.0]",
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "torch": "2.11.0+cu128",
+    "torch_geometric": "2.7.0",
+    "rdkit": "2026.03.2",
+    "numpy": "2.4.6",
+    "fold_sizes": {
+      "0": 1595,
+      "1": 1595,
+      "2": 1595,
+      "3": 1594,
+      "4": 1594
+    },
+    "started_at_utc": "2026-10-04T09:26:22+00:00"
+  },
+  "effective_config_sha256": "9b054dbff4922b38f4832923488e1ea6c505077df20bada796822ae8ddedfc98",
+  "source_config_sha256": "00b561aa090161ec34f637e79cca13e59b72de77701b469e1bac1af76bfa99ac",
+  "started_at_utc": "2026-10-04T09:26:22+00:00",
+  "completed_at_utc": "2026-10-04T09:40:45+00:00",
+  "duration_seconds": 863.7025599580084,
+  "gpu_sampling": {
+    "gpu_utilization_sample_count": 58,
+    "gpu_utilization_mean_percent": 81.32758620689656,
+    "gpu_utilization_max_percent": 90.0,
+    "nvidia_smi_peak_memory_used_mb": 5310.0
+  },
+  "stage": "5A",
+  "hidden_dim": 128,
+  "historical_c256_reused": true,
+  "formal_matrix_job": "C128-seed43"
+}

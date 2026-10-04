@@ -1,0 +1,46 @@
+{
+  "fold": 4,
+  "sample_count": 1594,
+  "train_sample_count": 6379,
+  "best_epoch": 109,
+  "epochs_completed": 149,
+  "best_validation_wmae": 0.024454064420998817,
+  "Tg_mae": 62.16566139126555,
+  "FFV_mae": 0.005623915865340054,
+  "Tc_mae": 0.026056567732861288,
+  "Density_mae": 0.02279915590634913,
+  "Rg_mae": 1.755341108527846,
+  "seed": 50,
+  "duration_seconds": 311.59339013199497,
+  "seconds_per_epoch": 2.0912308062549996,
+  "training_samples_per_second": 3050.3567472896916,
+  "peak_vram_allocated_mb": 203.40478515625,
+  "peak_vram_reserved_mb": 250.0,
+  "gpu_utilization_sample_count": 20,
+  "gpu_utilization_mean_percent": 83.6,
+  "gpu_utilization_max_percent": 90.0,
+  "nvidia_smi_peak_memory_used_mb": 5431.0,
+  "checkpoint_path": "/home/gyf/work/polymer/from_scratch_gnn/models/capacity_scaling/artifacts/formal/C384/seed_46/attempt_01/checkpoints/fold_4_best.pt",
+  "normalizer": {
+    "Tg": {
+      "mean": 99.81946657360723,
+      "std": 108.56153620720065
+    },
+    "FFV": {
+      "mean": 0.3670074261956134,
+      "std": 0.029268911164893146
+    },
+    "Tc": {
+      "mean": 0.2570795407014157,
+      "std": 0.08990143881133324
+    },
+    "Density": {
+      "mean": 0.9836272978891171,
+      "std": 0.14719378194147198
+    },
+    "Rg": {
+      "mean": 16.48337015092213,
+      "std": 4.681611401703817
+    }
+  }
+}
