@@ -1,0 +1,20 @@
+{
+  "experiment_id": "own_gnn_elemental_physical_priors_seed_44",
+  "variant": "E",
+  "seed": 44,
+  "status": "formal_oof_model",
+  "source_commit": "7df330921c156b0e2c88841f0947f0bb3369a52c",
+  "train_sha256": "1f79c85c785698e8c3499d99721adfe3be9660a487f137a923dd34eb7ef845e1",
+  "folds_sha256": "1bb066dd45d9b9a0f7861efbe7efd38c438522519ed36a745bf61f2a9191284a",
+  "effective_config_sha256": "cd6e14e780c38276b7508cb1595c38b8247790f308cc7f0d59cd53c6ea5fea16",
+  "element_feature_manifest_sha256": "0ddf47c3d6a01111e8fd549e4c0cd3e9ab7c6eec92d19a97206de022ad146580",
+  "overall_oof_wmae": 0.02287355877058426,
+  "target_mae": {
+    "Tg": 52.413130850595515,
+    "FFV": 0.0061328406986699575,
+    "Tc": 0.024221912638086273,
+    "Density": 0.02559476037581145,
+    "Rg": 1.5453633728811857
+  },
+  "run_metadata": "models/elemental_physical_priors/artifacts/formal/seed_44/attempt_01/run_metadata.json"
+}

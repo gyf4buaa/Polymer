@@ -577,9 +577,22 @@ Stage 4A tested fixed RDKit global descriptors (D) and a binary Morgan fingerpri
 | D | 0.02303453 ± 0.00007864 | +0.00024912 ± 0.00013927 | 0/5 |
 | M | 0.02587587 ± 0.00014020 | +0.00309046 ± 0.00022608 | 0/5 |
 
-D had lower error than M in all five seeds, but both were worse than G0 in every seed. D improved Tg and Rg on average while worsening FFV, Tc, and Density; M worsened all five targets. The preregistered stability rule was a negative paired mean delta and improvement in at least four of five seeds, so neither variant qualifies. D+M was not trained, and Stage 4B is not warranted by this result. **G0 remains the model to carry forward.**
+D had lower error than M in all five seeds, but both were worse than G0 in every seed. D improved Tg and Rg on average while worsening FFV, Tc, and Density; M worsened all five targets. The preregistered stability rule was a negative paired mean delta and improvement in at least four of five seeds, so neither variant qualifies. D+M was not trained. **G0 remained the model to carry forward into the separately preregistered Stage 4B test.**
 
 D adds 10,240 trainable projection parameters (1,253,897 total); M adds 1,048,576 (2,292,233 total) to G0's 1,243,657. Any Morgan result therefore also reflects the substantially larger model capacity. The 20 descriptors covered all 7,973 original SMILES with no non-finite or constant columns. Feature matrix hashes, full per-seed and per-target tables, fold scalers, diagnostics, runtime, and execution notes are recorded in the [Stage 4A aggregate report](experiments/stage4a/aggregate_summary.md) and [feature manifest](experiments/stage4a/feature_manifest.json).
+
+### Stage 4B result (complete)
+
+Stage 4B added only five fixed RDKit node-level elemental properties through a zero-initialized `Linear(5, 256, bias=False)` residual. G0's five historical seeds were reused, and E completed five new frozen five-fold OOF runs at concurrency 2. Graph representation, dummy handling, GINE, readout, heads, optimizer, loss, folds, normalization, and metric remained fixed.
+
+| Model | OOF wMAE, mean ± sample SD | Paired delta vs G0 | Seeds with lower wMAE |
+|---|---:|---:|---:|
+| G0 | 0.02278541 ± 0.00010244 | — | — |
+| E | 0.02281696 ± 0.00010178 | +0.00003155 ± 0.00004865 | 2/5 |
+
+E did not meet the preregistered stability rule (negative paired mean and lower error in at least four of five seeds). It improved Tc and Rg on average, while Tg and Density worsened and FFV was effectively unchanged; there was no stable overall gain. **G0 remains the carry-forward model, and Stage 4B recommends stopping further simple 2D feature engineering for now.**
+
+The audit covered all 7,973 source SMILES: 15,968 dummy atoms and 257,465 real atoms across 18 observed real elements; every observed real element had finite values for all five properties. The fixed Z=1–118 RDKit reference means/stds and both table hashes are in the [element feature manifest](experiments/stage4b/element_feature_manifest.json). The [Stage 4B aggregate report](experiments/stage4b/aggregate_summary.md) contains per-seed, per-target, execution, parameter-count, and projection diagnostics; the [execution notes](experiments/stage4b/formal_execution_notes.json) retain resource samples and run status. Formal training used source commit `7df330921c156b0e2c88841f0947f0bb3369a52c`.
 
 ---
 

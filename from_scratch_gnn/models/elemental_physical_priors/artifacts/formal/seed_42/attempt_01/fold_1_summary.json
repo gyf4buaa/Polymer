@@ -1,0 +1,46 @@
+{
+  "fold": 1,
+  "sample_count": 1595,
+  "train_sample_count": 6378,
+  "best_epoch": 90,
+  "epochs_completed": 130,
+  "best_validation_wmae": 0.020560219435465214,
+  "Tg_mae": 53.20636959807247,
+  "FFV_mae": 0.005643396428004326,
+  "Tc_mae": 0.023448204624842806,
+  "Density_mae": 0.02375343108685484,
+  "Rg_mae": 1.3407176282115518,
+  "seed": 43,
+  "duration_seconds": 220.4196231019887,
+  "seconds_per_epoch": 1.69553556232299,
+  "training_samples_per_second": 3761.643307122229,
+  "peak_vram_allocated_mb": 135.72216796875,
+  "peak_vram_reserved_mb": 168.0,
+  "gpu_utilization_sample_count": 15,
+  "gpu_utilization_mean_percent": 72.73333333333333,
+  "gpu_utilization_max_percent": 81.0,
+  "nvidia_smi_peak_memory_used_mb": 4780.0,
+  "checkpoint_path": "/home/gyf/work/polymer-stage4b/from_scratch_gnn/models/elemental_physical_priors/artifacts/formal/seed_42/attempt_01/checkpoints/fold_1_best.pt",
+  "normalizer": {
+    "Tg": {
+      "mean": 96.7719955164402,
+      "std": 110.65049577765288
+    },
+    "FFV": {
+      "mean": 0.3672827464146907,
+      "std": 0.029443306564146357
+    },
+    "Tc": {
+      "mean": 0.2554143703166546,
+      "std": 0.09074018826426995
+    },
+    "Density": {
+      "mean": 0.9918253697630001,
+      "std": 0.1479012593594187
+    },
+    "Rg": {
+      "mean": 16.542255612591184,
+      "std": 4.581146423829681
+    }
+  }
+}

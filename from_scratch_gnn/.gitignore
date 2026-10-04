@@ -15,6 +15,14 @@ baselines/third_party_gatv2/artifacts/
 models/own_gnn_v0/artifacts/
 models/own_gnn_repr_keep_dummy/artifacts/
 models/own_gnn_repr_endpoint_marker/artifacts/
+# Stage 4B compact formal evidence is versioned. Keep bulky or exploratory
+# state out of Git while preserving OOF predictions and training histories.
+models/elemental_physical_priors/artifacts/smoke/
+models/elemental_physical_priors/artifacts/tiny/
+models/elemental_physical_priors/artifacts/failed_attempts/
+models/elemental_physical_priors/artifacts/formal/**/checkpoints/
+models/elemental_physical_priors/artifacts/formal/**/cache/
+models/elemental_physical_priors/artifacts/formal/**/graph_diagnostics.json
 models/operator_ablation/gatv2/artifacts/
 models/operator_ablation/pna/artifacts/
 # Stage 3C compact formal run evidence is versioned. Keep nonformal and bulky
