@@ -64,7 +64,13 @@ class OwnGNNv0(nn.Module):
             }
         )
 
-    def forward(self, data: Data) -> torch.Tensor:
+    def _initial_node_embeddings(self, data: Data) -> torch.Tensor:
+        return sum(
+            embedding(data.x[:, feature_index])
+            for feature_index, embedding in enumerate(self.atom_embeddings)
+        )
+
+    def encode_nodes(self, data: Data) -> torch.Tensor:
         if data.x.ndim != 2 or data.x.size(1) != len(NODE_CARDINALITIES):
             raise ValueError(
                 f"Expected node features shaped [N, {len(NODE_CARDINALITIES)}], "
@@ -76,15 +82,16 @@ class OwnGNNv0(nn.Module):
                 f"got {tuple(data.edge_attr.shape)}"
             )
 
-        hidden = sum(
-            embedding(data.x[:, feature_index])
-            for feature_index, embedding in enumerate(self.atom_embeddings)
-        )
+        hidden = self._initial_node_embeddings(data)
         edge_index = data.edge_index
         edge_attr = data.edge_attr
         for conv, norm in zip(self.convs, self.norms):
             update = conv(hidden, edge_index, edge_attr=edge_attr)
             hidden = norm(hidden + F.dropout(F.relu(update), p=self.dropout, training=self.training))
+        return hidden
+
+    def forward(self, data: Data) -> torch.Tensor:
+        hidden = self.encode_nodes(data)
 
         batch = getattr(data, "batch", None)
         if batch is None:

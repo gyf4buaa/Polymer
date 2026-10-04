@@ -1,0 +1,26 @@
+{
+  "stage": "3C",
+  "readout_variant": "R2",
+  "readout": {
+    "variant": "R2",
+    "mean_pooling": "property_specific_attentive_mean",
+    "max_pooling": "global_max",
+    "gate_per_target": "Linear(256, 1, bias=False)",
+    "gate_initialization": "all_zero",
+    "targets": [
+      "Tg",
+      "FFV",
+      "Tc",
+      "Density",
+      "Rg"
+    ]
+  },
+  "parameter_count": {
+    "total_trainable": 1244937,
+    "historical_r0_total_trainable": 1243657,
+    "readout_gate_trainable": 1280,
+    "new_parameters_vs_r0": 1280
+  },
+  "readout_dimension": 512,
+  "selection_role": "formal readout ablation; smoke outputs are non-selection"
+}

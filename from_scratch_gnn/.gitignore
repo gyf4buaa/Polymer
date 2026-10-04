@@ -17,3 +17,10 @@ models/own_gnn_repr_keep_dummy/artifacts/
 models/own_gnn_repr_endpoint_marker/artifacts/
 models/operator_ablation/gatv2/artifacts/
 models/operator_ablation/pna/artifacts/
+# Stage 3C compact formal run evidence is versioned. Keep nonformal and bulky
+# state out of the repository while allowing its training-history CSVs.
+models/readout_ablation/*/artifacts/smoke*/
+models/readout_ablation/*/artifacts/tiny/
+models/readout_ablation/*/artifacts/failed_attempts/
+!models/readout_ablation/*/artifacts/formal/**/training_history/
+!models/readout_ablation/*/artifacts/formal/**/training_history/**

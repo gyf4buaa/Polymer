@@ -1,0 +1,19 @@
+{
+  "experiment_id": "own_gnn_readout_r2_property_attentive_mean",
+  "readout_variant": "R2",
+  "seed": 45,
+  "status": "formal_oof_model",
+  "source_commit": "a9ee75a1bf940f32f0966070caf2450f0c2fe1f4",
+  "train_sha256": "1f79c85c785698e8c3499d99721adfe3be9660a487f137a923dd34eb7ef845e1",
+  "folds_sha256": "1bb066dd45d9b9a0f7861efbe7efd38c438522519ed36a745bf61f2a9191284a",
+  "effective_config_sha256": "86ca4a73c826c9767c5dd6f908e6e51718dae603841803d00976c4c3b9cbda94",
+  "overall_oof_wmae": 0.02299646709682989,
+  "target_mae": {
+    "Tg": 54.30147580547877,
+    "FFV": 0.005734093723189943,
+    "Tc": 0.024590229804685188,
+    "Density": 0.025366585728655765,
+    "Rg": 1.555673176001315
+  },
+  "run_metadata": "models/readout_ablation/r2_property/artifacts/formal/seed_45/attempt_01/run_metadata.json"
+}
