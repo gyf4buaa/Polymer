@@ -20,10 +20,12 @@ from from_scratch_gnn.models.readout_ablation.model import (
     normalized_attention_entropy,
 )
 from from_scratch_gnn.models.readout_ablation.runner import (
+    _attention_entropy_for_run,
     _load_readout_config,
     _output_dir,
     _parameter_counts,
 )
+from from_scratch_gnn.models.readout_ablation import runner as readout_runner
 from from_scratch_gnn.scripts.aggregate_readout_ablation import (
     _historical_r0,
     _paired,
@@ -282,6 +284,26 @@ def test_seed_and_variant_artifact_paths_are_isolated(tmp_path):
     (r1_42 / "run_metadata.json").write_text("{}", encoding="utf-8")
     with pytest.raises(FileExistsError):
         _output_dir(r1_root, 42)
+
+
+def test_attention_diagnostics_reject_graph_cache_row_mismatch(tmp_path, monkeypatch):
+    monkeypatch.setattr(
+        readout_runner.frozen_engine,
+        "_load_frozen_inputs",
+        lambda train_csv, folds_csv: ([{}, {}], [0, 1], {}),
+    )
+    monkeypatch.setattr(readout_runner, "_safe_variant_root", lambda variant: tmp_path)
+    monkeypatch.setattr(readout_runner, "_load_graph_cache", lambda path: [_graphs()[0]])
+
+    with pytest.raises(RuntimeError, match="does not align"):
+        _attention_entropy_for_run(
+            variant="r1_shared",
+            config={},
+            output_dir=tmp_path,
+            train_csv=tmp_path / "train.csv",
+            folds_csv=tmp_path / "folds.csv",
+            device=torch.device("cpu"),
+        )
 
 
 def test_historical_r0_seed_scores_and_paired_summary_are_reused():

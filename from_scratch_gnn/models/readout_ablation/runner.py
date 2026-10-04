@@ -313,7 +313,7 @@ def _attention_entropy_for_run(
     folds_csv: Path,
     device: torch.device,
 ) -> dict[str, Any]:
-    _, fold_ids, _ = frozen_engine._load_frozen_inputs(train_csv, folds_csv)
+    rows, fold_ids, _ = frozen_engine._load_frozen_inputs(train_csv, folds_csv)
     graphs = _load_graph_cache(
         _safe_variant_root(variant) / "artifacts" / "cache" / "polymer_graphs_v1.pt"
     )
