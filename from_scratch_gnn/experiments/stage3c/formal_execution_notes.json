@@ -1,0 +1,92 @@
+{
+  "formal_source_commit": "a9ee75a1bf940f32f0966070caf2450f0c2fe1f4",
+  "train_sha256": "1f79c85c785698e8c3499d99721adfe3be9660a487f137a923dd34eb7ef845e1",
+  "folds_sha256": "1bb066dd45d9b9a0f7861efbe7efd38c438522519ed36a745bf61f2a9191284a",
+  "successful_formal_run_wall_seconds_by_variant_seed": {
+    "R1": {
+      "42": 782,
+      "43": 704,
+      "44": 712,
+      "45": 631,
+      "46": 720
+    },
+    "R2": {
+      "42": 792,
+      "43": 763,
+      "44": 674,
+      "45": 1001,
+      "46": 697
+    }
+  },
+  "batch_wall_runtime_seconds": 7476,
+  "initial_failed_attempt": {
+    "variant": "R1",
+    "seed": 42,
+    "source_commit": "b149d46b934e33ab9cdcec19f91070f80cf0098f",
+    "elapsed_seconds": 645,
+    "failure_stage": "post-training attention diagnostics",
+    "error": "NameError: name 'rows' is not defined",
+    "training_completed": true,
+    "formal_result_used": false,
+    "archived_remote_path": "from_scratch_gnn/models/readout_ablation/r1_shared/artifacts/failed_attempts/seed_42_attempt_01_b149d46"
+  },
+  "recovery": {
+    "fix": "Bind rows returned by _load_frozen_inputs before checking graph-cache alignment, with a regression test.",
+    "new_source_commit": "a9ee75a1bf940f32f0966070caf2450f0c2fe1f4",
+    "successful_runs_restarted_on_fixed_source": 10,
+    "same_frozen_configs_and_seeds": true
+  },
+  "cpu_tiny_overfit": {
+    "status": "passed",
+    "steps": 120,
+    "selected_training_records": 16,
+    "R1": {
+      "masked_huber_start": 0.34745914,
+      "masked_huber_end": 0.00356975,
+      "gate_moved_from_zero": true,
+      "checkpoint_round_trip": true
+    },
+    "R2": {
+      "masked_huber_start": 0.34745914,
+      "masked_huber_end": 0.00175690,
+      "gate_moved_from_zero": true,
+      "checkpoint_round_trip": true
+    }
+  },
+  "final_source_cuda_smoke": {
+    "status": "passed",
+    "source_commit": "a9ee75a1bf940f32f0966070caf2450f0c2fe1f4",
+    "seed": 43,
+    "fold": 0,
+    "epochs": 5,
+    "batch_size": 64,
+    "device": "NVIDIA GeForce RTX 4070",
+    "R1": {
+      "effective_config_sha256": "1b2afb39c119199cffc011d5671128a1b67f7274468d75a231c57840bc2c2c85",
+      "trainable_parameters": 1243913,
+      "gate_l2_norm": 0.23516488075256348,
+      "peak_vram_allocated_mb": 127.0732421875
+    },
+    "R2": {
+      "effective_config_sha256": "a94823b5573654b08bb2110aa3fbabd5b5ea3e88405fd0c4875e75528c7c566b",
+      "trainable_parameters": 1244937,
+      "gate_l2_norms": {
+        "Tg": 0.2901245355606079,
+        "FFV": 0.36184021830558777,
+        "Tc": 0.24362705647945404,
+        "Density": 0.2855377197265625,
+        "Rg": 0.38038644194602966
+      },
+      "peak_vram_allocated_mb": 127.0263671875
+    },
+    "both_variants": {
+      "cuda_used": true,
+      "attention_sums_to_one_per_graph": true,
+      "finite_activations_and_predictions": true,
+      "gates_updated_from_zero": true,
+      "artifacts_isolated_from_formal": true,
+      "nvidia_smi_peak_memory_used_mb": 4055.0
+    }
+  },
+  "formal_batch_failures": 0
+}

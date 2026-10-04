@@ -1,0 +1,69 @@
+{
+  "metric": "competition_style_weighted_mae",
+  "n_samples": 7973,
+  "overall_oof_wmae": 0.022917875334605185,
+  "target_mae": {
+    "Tg": 51.10647856338989,
+    "FFV": 0.006171075424080817,
+    "Tc": 0.02491118930840743,
+    "Density": 0.0249505059439196,
+    "Rg": 1.5750450966329568
+  },
+  "target_contribution": {
+    "Tg": 0.006722523632109644,
+    "FFV": 0.00339489783899869,
+    "Tc": 0.005111970685839976,
+    "Density": 0.0020412590975477274,
+    "Rg": 0.005647224080109148
+  },
+  "target_counts": {
+    "Tg": 511,
+    "FFV": 7030,
+    "Tc": 737,
+    "Density": 613,
+    "Rg": 614
+  },
+  "target_weights": {
+    "Tg": {
+      "valid_count": 511,
+      "value_range": 620.2797376,
+      "task_balance_factor": 1.2730481750460207,
+      "weight": 0.0020523774965981105
+    },
+    "FFV": {
+      "valid_count": 7030,
+      "value_range": 0.55010467,
+      "task_balance_factor": 0.34322398250059116,
+      "weight": 0.6239248659724906
+    },
+    "Tc": {
+      "valid_count": 737,
+      "value_range": 0.47750000000000004,
+      "task_balance_factor": 1.0600382703530662,
+      "weight": 2.2199754352943795
+    },
+    "Density": {
+      "valid_count": 613,
+      "value_range": 1.092307675,
+      "task_balance_factor": 1.1623182355118482,
+      "weight": 1.0640941761320575
+    },
+    "Rg": {
+      "valid_count": 614,
+      "value_range": 24.944550504999995,
+      "task_balance_factor": 1.1613713365884744,
+      "weight": 0.04655811842974216
+    }
+  },
+  "validation": {
+    "training_sample_count": 7973,
+    "prediction_row_count": 7973,
+    "duplicate_training_sample_id_count": 0,
+    "duplicate_prediction_sample_id_count": 0,
+    "missing_prediction_sample_id_count": 0,
+    "extra_prediction_sample_id_count": 0,
+    "aligned_by": "sample_id",
+    "truth_source_sha256": "1f79c85c785698e8c3499d99721adfe3be9660a487f137a923dd34eb7ef845e1"
+  },
+  "input_oof_csv": "/home/gyf/work/polymer/from_scratch_gnn/models/readout_ablation/r2_property/artifacts/formal/seed_42/attempt_01/oof_predictions.csv"
+}

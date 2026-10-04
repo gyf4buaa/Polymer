@@ -455,9 +455,65 @@ can materially change performance under this frozen setup, but neither tested
 replacement improves on GINE. **Keep keep-dummy GINE as the next-stage baseline.**
 This is a result on one benchmark and one fixed architecture family, not a
 claim that GINE is universally best for polymer properties. Stage 3B is
-complete; no Stage 3C experiment was started.
+complete; Stage 3C had not started when Stage 3B closed.
 
-### 3C. Depth and capacity
+### 3C. Readout and property-specific pooling (complete)
+
+Stage 3C froze the Stage 3A.1 keep-dummy polymer representation and the Stage
+3B GINE operator, including the four-layer, 256-wide trunk, five existing
+property heads, optimizer, loss, training protocol, folds, and metric. The sole
+scientific variable was graph readout:
+
+- **R0:** historical shared global mean + global max; its five Stage 3A.1
+  seeds were reused without retraining.
+- **R1:** zero-initialized shared `Linear(256, 1, bias=False)` attentive mean
+  plus unchanged global max.
+- **R2:** five zero-initialized property-specific `Linear(256, 1, bias=False)`
+  attentive means plus unchanged shared global max.
+
+Zero initialization makes both attentive means equal uniform global mean at
+initialization. Regression tests confirm same-seed common-parameter
+initialization and R0/R1/R2 forward equivalence within `atol=rtol=1e-6`.
+Formal execution added ten frozen five-fold OOF runs (five seeds each for R1
+and R2), all on source commit
+`a9ee75a1bf940f32f0966070caf2450f0c2fe1f4` and the unchanged frozen train/fold
+hashes. All 10/10 runs completed; historical R0 contributed 0 new runs.
+
+| Model | Mean OOF wMAE ± sample SD | Paired delta vs R0 | Lower seeds vs R0 |
+|---|---:|---:|---:|
+| R0 | 0.0227854068 ± 0.0001024446 | — | — |
+| R1 | 0.0227642509 ± 0.0001211940 | −0.0000211559 ± 0.0001297928 | 2/5 |
+| R2 | 0.0229552392 ± 0.0000825439 | +0.0001698325 ± 0.0001507520 | 1/5 |
+
+R2 − R1 was `+0.0001909883 ± 0.0001804049`, with R2 lower in 1/5 paired
+seeds. Per-target effects were mixed: shared attention lowered FFV and Rg mean
+MAE but raised Tg, Tc, and Density; property-specific attention lowered Tc
+and Rg mean MAE but raised Tg, FFV, and Density. The detailed seed-level,
+per-target, parameter, entropy, gate-norm, and provenance tables are in
+[`experiments/stage3c/aggregate_summary.md`](experiments/stage3c/aggregate_summary.md)
+and [`experiments/stage3c/aggregate_summary.json`](experiments/stage3c/aggregate_summary.json).
+
+**Decision:** retain the historical **R0 mean + max readout** for the next
+stage. R1's small mean difference is inconsistent across paired seeds, and R2
+does not improve overall OOF wMAE over either R0 or R1. The learned gates did
+move away from zero, but the measured weighting did not produce a reliable
+generalization gain. Close the readout axis for this benchmark; no additional
+attention variants or Stage 4 features were started.
+
+The first R1 seed-42 attempt on the implementation commit preceding the final
+formal source completed training but failed in post-training attention
+diagnostics because the row list had not been bound. It was excluded. The
+alignment check was fixed and regression-tested, and all ten successful formal
+runs were restarted on the single source commit recorded above. Details are in
+[`experiments/stage3c/formal_execution_notes.json`](experiments/stage3c/formal_execution_notes.json).
+
+CPU tiny-overfit checks passed for both learned readouts, with loss reduction,
+nonzero trained gates, and checkpoint round-trip. Five-epoch fold-0 CUDA
+smokes also passed for R1 and R2 on the final formal source commit and RTX
+4070; all graph-wise attention sums were one within tolerance and artifacts
+were isolated from formal runs.
+
+### 3D. Depth and capacity
 
 Compare a controlled range, for example:
 
@@ -467,16 +523,6 @@ Compare a controlled range, for example:
 - 8 layers.
 
 Track both OOF score and train/validation behavior.
-
-### 3D. Readout
-
-Compare:
-
-- mean pooling;
-- sum pooling;
-- max pooling;
-- mean + max;
-- learned/attention pooling.
 
 ### 3E. Multi-task head
 

@@ -1,0 +1,19 @@
+{
+  "stage": "3C",
+  "readout_variant": "R1",
+  "readout": {
+    "variant": "R1",
+    "mean_pooling": "shared_attentive_mean",
+    "max_pooling": "global_max",
+    "gate": "Linear(256, 1, bias=False)",
+    "gate_initialization": "all_zero"
+  },
+  "parameter_count": {
+    "total_trainable": 1243913,
+    "historical_r0_total_trainable": 1243657,
+    "readout_gate_trainable": 256,
+    "new_parameters_vs_r0": 256
+  },
+  "readout_dimension": 512,
+  "selection_role": "formal readout ablation; smoke outputs are non-selection"
+}

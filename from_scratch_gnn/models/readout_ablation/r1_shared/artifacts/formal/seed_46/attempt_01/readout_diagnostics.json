@@ -1,0 +1,99 @@
+{
+  "readout_variant": "R1",
+  "gate_l2_norms_by_fold": {
+    "0": {
+      "shared": 0.4382522702217102
+    },
+    "1": {
+      "shared": 0.7001894116401672
+    },
+    "2": {
+      "shared": 0.3509645462036133
+    },
+    "3": {
+      "shared": 0.5110978484153748
+    },
+    "4": {
+      "shared": 0.4422338902950287
+    }
+  },
+  "gate_l2_norm_mean_by_gate": {
+    "shared": 0.48854759335517883
+  },
+  "normalized_attention_entropy_mean_by_target": {
+    "Tg": 0.956386869111893,
+    "FFV": 0.9563868695753933,
+    "Tc": 0.9563868685362555,
+    "Density": 0.956386868401691,
+    "Rg": 0.9563868692464577
+  },
+  "folds": {
+    "0": {
+      "gate_l2_norms": {
+        "shared": 0.4382522702217102
+      },
+      "normalized_attention_entropy_mean_by_target": {
+        "Tg": 0.9593835392342092,
+        "FFV": 0.9593835405421481,
+        "Tc": 0.959383539607906,
+        "Density": 0.9593835403552997,
+        "Rg": 0.9593835410653236
+      },
+      "oof_graph_count": 1595
+    },
+    "1": {
+      "gate_l2_norms": {
+        "shared": 0.7001894116401672
+      },
+      "normalized_attention_entropy_mean_by_target": {
+        "Tg": 0.9599114551813251,
+        "FFV": 0.9599114546581495,
+        "Tc": 0.95991145342495,
+        "Density": 0.9599114537612772,
+        "Rg": 0.9599114551439555
+      },
+      "oof_graph_count": 1595
+    },
+    "2": {
+      "gate_l2_norms": {
+        "shared": 0.3509645462036133
+      },
+      "normalized_attention_entropy_mean_by_target": {
+        "Tg": 0.9651063674295958,
+        "FFV": 0.9651063667943112,
+        "Tc": 0.9651063676164442,
+        "Density": 0.9651063649631967,
+        "Rg": 0.9651063658974387
+      },
+      "oof_graph_count": 1595
+    },
+    "3": {
+      "gate_l2_norms": {
+        "shared": 0.5110978484153748
+      },
+      "normalized_attention_entropy_mean_by_target": {
+        "Tg": 0.9439656270417844,
+        "FFV": 0.9439656267426394,
+        "Tc": 0.943965626331315,
+        "Density": 0.9439656256208455,
+        "Rg": 0.9439656271165706
+      },
+      "oof_graph_count": 1594
+    },
+    "4": {
+      "gate_l2_norms": {
+        "shared": 0.4422338902950287
+      },
+      "normalized_attention_entropy_mean_by_target": {
+        "Tg": 0.9535577953460076,
+        "FFV": 0.953557797813954,
+        "Tc": 0.9535577943737863,
+        "Density": 0.9535577959816908,
+        "Rg": 0.9535577956825457
+      },
+      "oof_graph_count": 1594
+    }
+  },
+  "oof_graph_count": 7973,
+  "stored_atom_attention_tensors": false
+}

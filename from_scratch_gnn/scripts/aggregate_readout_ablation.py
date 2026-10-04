@@ -18,6 +18,7 @@ EXPECTED_TRAIN_SHA256 = "1f79c85c785698e8c3499d99721adfe3be9660a487f137a923dd34e
 EXPECTED_FOLDS_SHA256 = "1bb066dd45d9b9a0f7861efbe7efd38c438522519ed36a745bf61f2a9191284a"
 HISTORICAL_SUMMARY = TRACK_ROOT / "experiments" / "stage3a1" / "paired_summary.json"
 EXPERIMENT_ROOT = TRACK_ROOT / "experiments" / "stage3c"
+EXECUTION_NOTES = EXPERIMENT_ROOT / "formal_execution_notes.json"
 
 
 def _stats(values: Mapping[str, float]) -> dict[str, Any]:
@@ -209,6 +210,7 @@ def _build_summary() -> dict[str, Any]:
         for fold in run["metadata"]["fold_metrics"]
     ]
     runtimes = [float(run["metadata"]["duration_seconds"]) for run in formal_runs]
+    execution_notes = json.loads(EXECUTION_NOTES.read_text(encoding="utf-8"))
     parameter_counts = {
         variant: json.loads(
             next(iter(runs.values()))["directory"].joinpath("readout_metadata.json").read_text(encoding="utf-8")
@@ -234,8 +236,14 @@ def _build_summary() -> dict[str, Any]:
             "r1_successful_runs": len(r1),
             "r2_successful_runs": len(r2),
             "new_formal_runs": len(formal_runs),
-            "total_runtime_seconds": sum(runtimes),
-            "total_runtime_hours": sum(runtimes) / 3600.0,
+            "training_runtime_seconds_from_run_metadata": sum(runtimes),
+            "training_runtime_hours_from_run_metadata": sum(runtimes) / 3600.0,
+            "batch_wall_runtime_seconds": float(
+                execution_notes["batch_wall_runtime_seconds"]
+            ),
+            "batch_wall_runtime_hours": float(
+                execution_notes["batch_wall_runtime_seconds"]
+            ) / 3600.0,
             "device_names": sorted(
                 {
                     str(run["metadata"]["runtime"].get("device_name"))
@@ -259,6 +267,7 @@ def _build_summary() -> dict[str, Any]:
         "paired_overall_delta": paired,
         "per_target_mae": per_target,
         "attention_diagnostics": diagnostics,
+        "execution_notes": execution_notes,
         "readout_equivalence": {
             "r1_zero_init_equals_r0": True,
             "r2_zero_init_equals_r0": True,
@@ -380,12 +389,19 @@ def _render_markdown(summary: Mapping[str, Any]) -> str:
         f"- Formal source commit: `{summary['formal_source_commit']}`",
         f"- R0: historical five seeds reused; new runs 0.",
         f"- R1/R2: {execution['r1_successful_runs']}/{execution['r2_successful_runs']} successful five-fold OOF runs; total new runs {execution['new_formal_runs']}/10.",
-        f"- Total runtime: {execution['total_runtime_seconds']:.1f} s ({execution['total_runtime_hours']:.2f} h).",
+        f"- Sum of run-metadata training durations: {execution['training_runtime_seconds_from_run_metadata']:.1f} s ({execution['training_runtime_hours_from_run_metadata']:.2f} h).",
+        f"- Formal queue wall time from RUN_START/RUN_SUCCESS records: {execution['batch_wall_runtime_seconds']:.0f} s ({execution['batch_wall_runtime_hours']:.2f} h), including post-run diagnostics.",
         f"- CUDA device(s): {', '.join(execution['device_names'])}.",
         f"- Peak PyTorch allocated/reserved VRAM: {execution['max_peak_vram_allocated_mb']:.1f}/{execution['max_peak_vram_reserved_mb']:.1f} MiB.",
         f"- Peak `nvidia-smi` memory: {execution['max_nvidia_smi_memory_mb']:.1f} MiB.",
         "- Initialization tests confirm R1 and R2 equal R0 within atol=rtol=1e-6; no R0 retraining was performed.",
         "- No attention tensors were saved per atom; only fold gate norms and per-target OOF mean entropy are retained.",
+        "",
+        "## Execution notes",
+        "",
+        f"- An initial R1 seed-42 attempt on `{summary['execution_notes']['initial_failed_attempt']['source_commit']}` completed five-fold training but failed while writing post-run attention diagnostics: `{summary['execution_notes']['initial_failed_attempt']['error']}`. It was excluded from formal results.",
+        f"- The complete ten-run queue was then executed on `{summary['formal_source_commit']}` with the frozen configurations. Failed-attempt training scores were not reused; the failed attempt and original logs remain outside the synced formal artifacts.",
+        f"- Final-source R1/R2 CUDA fold-0 smokes passed on seed {summary['execution_notes']['final_source_cuda_smoke']['seed']} for five epochs on the NVIDIA RTX 4070; graph-wise attention sums were one, activations and predictions were finite, gates updated, and smoke artifacts stayed isolated.",
         "",
         "## Interpretation",
         "",
@@ -395,14 +411,17 @@ def _render_markdown(summary: Mapping[str, Any]) -> str:
     r2r0 = summary["paired_overall_delta"]["R2-R0"]
     r2r1 = summary["paired_overall_delta"]["R2-R1"]
     lines.append(
-        f"R1 − R0 mean paired delta is {_format_float(r1r0['mean'], 8)} (R1 lower in {r1r0['left_lower_seed_count']}/5 seeds)."
+        f"R1 − R0 mean paired delta is {_format_float(r1r0['mean'], 8)} (R1 lower in {r1r0['left_lower_seed_count']}/5 seeds). This small mixed-seed change does not establish a reliable benefit from learned shared node weighting."
     )
     lines.append(
-        f"R2 − R0 mean paired delta is {_format_float(r2r0['mean'], 8)} (R2 lower in {r2r0['left_lower_seed_count']}/5 seeds); R2 − R1 is {_format_float(r2r1['mean'], 8)} (R2 lower in {r2r1['left_lower_seed_count']}/5 seeds)."
+        f"R2 − R0 is {_format_float(r2r0['mean'], 8)} (R2 lower in {r2r0['left_lower_seed_count']}/5 seeds); R2 − R1 is {_format_float(r2r1['mean'], 8)} (R2 lower in {r2r1['left_lower_seed_count']}/5 seeds). Property-specific pooling does not improve overall OOF wMAE over either baseline."
+    )
+    lines.append(
+        "Per-target changes are mixed: R1 improves mean FFV and Rg MAE while increasing Tg, Tc, and Density; R2 improves only Tc and Rg mean MAE while increasing Tg, FFV, and Density. No readout shows consistent benefit across multiple properties."
     )
     lines += [
         "",
-        "Readout recommendation is limited to the predefined Stage 3C question and does not start Stage 4.",
+        "**Decision:** retain R0 (`global mean || global max`) as the next-stage readout and close the learned-pooling axis for this benchmark. These results do not start Stage 4.",
         "",
     ]
     return "\n".join(lines)
