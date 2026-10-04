@@ -596,6 +596,25 @@ The audit covered all 7,973 source SMILES: 15,968 dummy atoms and 257,465 real a
 
 ---
 
+## Stage 5A — Pure Capacity Scaling (complete)
+
+Stage 5A varied only GINE `hidden_dim` across 128, 256, 384, and 512. The frozen four-layer G0 graph, readout, heads, and training protocol were held fixed. Historical C256/G0 results were reused (zero new C256 runs); C128, C384, and C512 each completed five frozen five-fold OOF runs, all from formal source commit `72490c1a748ed9395025f4120c9eb04f28268695`.
+
+| Width | Trainable parameters | OOF wMAE, mean ± sample SD | Paired delta vs C256 | Lower seeds |
+|---:|---:|---:|---:|---:|
+| 128 | 326,921 | 0.02252159 ± 0.00011844 | −0.00026382 ± 0.00014015 | 5/5 |
+| 256 (G0) | 1,243,657 | 0.02278541 ± 0.00010244 | — | — |
+| 384 | 2,750,217 | 0.02296952 ± 0.00013656 | +0.00018411 ± 0.00014279 | 1/5 |
+| 512 | 4,846,601 | 0.02317776 ± 0.00007308 | +0.00039235 ± 0.00012450 | 0/5 |
+
+C128 had lower OOF wMAE than C256 in all five paired seeds. C384 and C512 were worse on average; C512 was worse in all five seeds. These descriptive results do not constitute a significance test. They suggest that the current setting does not benefit from more width and that C128 is a promising smaller candidate, but the carry-forward baseline is left unchanged pending a separate decision. No next-stage experiment was started.
+
+The [aggregate report](experiments/stage5a/aggregate_summary.md) includes all seed scores, paired values, per-target mean ± SD and paired deltas, parameter counts, runtime and memory costs, best validation metrics, train loss at the best epoch, and the per-fold early-stop distribution. The [machine-readable summary](experiments/stage5a/aggregate_summary.json), [capacity curve](experiments/stage5a/capacity_curve.csv), and [formal execution notes](experiments/stage5a/formal_execution_notes.json) preserve the detailed results and provenance. The [parameter audit](experiments/stage5a/parameter_audit.json) includes the machine-readable config diff that verifies the width-only invariant.
+
+Formal execution used concurrency 2, with a 9,632 s wall time and 15,342.5 s summed process/training time. One C128-seed46 attempt was interrupted by an SSH timeout and excluded; attempt 02 completed with the same frozen source and configuration, so all 15 preregistered OOF runs passed. Host CPU/RAM peak sampling covers only the resumed final three-job segment because the initial queue's in-memory samples were lost at disconnect; GPU utilization and VRAM are retained per fold. The only post-training source edit was a reporting-only fix to the aggregator's capacity-curve key lookup; it did not affect model or training code.
+
+---
+
 ## Stage 5 — Final ablation
 
 Development experiments and final ablations are not the same thing.

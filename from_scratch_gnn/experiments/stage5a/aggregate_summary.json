@@ -1,0 +1,1898 @@
+{
+  "stage": "5A",
+  "formal_source_commit": "72490c1a748ed9395025f4120c9eb04f28268695",
+  "benchmark_version": "nopp2025_train_v1",
+  "train_sha256": "1f79c85c785698e8c3499d99721adfe3be9660a487f137a923dd34eb7ef845e1",
+  "folds_sha256": "1bb066dd45d9b9a0f7861efbe7efd38c438522519ed36a745bf61f2a9191284a",
+  "widths": {
+    "128": {
+      "hidden_dim": 128,
+      "parameter_count": 326921,
+      "by_seed_oof_wmae": {
+        "42": 0.02252006310640074,
+        "43": 0.02260094363095965,
+        "44": 0.022648408285530143,
+        "45": 0.022339296430219622,
+        "46": 0.022499241950527736
+      },
+      "mean_oof_wmae": 0.022521590680727576,
+      "sample_sd_oof_wmae": 0.00011844047934671682,
+      "per_target": {
+        "Tg": {
+          "by_seed": {
+            "42": 52.300622597176464,
+            "43": 51.18984174486928,
+            "44": 49.86211025589916,
+            "45": 51.71156776224857,
+            "46": 51.28050288674355
+          },
+          "mean": 51.26892904938741,
+          "sample_sd": 0.9008119226331005
+        },
+        "FFV": {
+          "by_seed": {
+            "42": 0.005819786211428345,
+            "43": 0.006652392953991746,
+            "44": 0.006209265654464859,
+            "45": 0.006038710696068906,
+            "46": 0.00613726886602018
+          },
+          "mean": 0.006171484876394807,
+          "sample_sd": 0.0003062644427434914
+        },
+        "Tc": {
+          "by_seed": {
+            "42": 0.02360888902396353,
+            "43": 0.02403898135079142,
+            "44": 0.024536002329383758,
+            "45": 0.024165490759460066,
+            "46": 0.02395488469251407
+          },
+          "mean": 0.02406084963122257,
+          "sample_sd": 0.00033641307671044256
+        },
+        "Density": {
+          "by_seed": {
+            "42": 0.023127721112067186,
+            "43": 0.024504447753408955,
+            "44": 0.025769620980626906,
+            "45": 0.024322316969689804,
+            "46": 0.024647681001224116
+          },
+          "mean": 0.024474357563403392,
+          "sample_sd": 0.0009414350519066956
+        },
+        "Rg": {
+          "by_seed": {
+            "42": 1.5903107513437291,
+            "43": 1.4698395376584208,
+            "44": 1.5424645663137757,
+            "45": 1.4687993419109937,
+            "46": 1.5187310462203365
+          },
+          "mean": 1.5180290486894512,
+          "sample_sd": 0.05140044956906067
+        }
+      },
+      "performance": {
+        "mean_fold_epoch_seconds": 1.8118365596303905,
+        "mean_seed_runtime_seconds": 921.8219189192023,
+        "sample_sd_seed_runtime_seconds": 89.65833341809274,
+        "summed_seed_runtime_seconds": 4609.109594596011,
+        "peak_pytorch_allocated_mb": 76.50439453125,
+        "peak_pytorch_reserved_mb": 118.0,
+        "peak_nvidia_smi_vram_mb": 5332.0,
+        "mean_gpu_utilization_percent": 80.19930835830836
+      },
+      "training_behavior": {
+        "mean_best_epoch": 60.92,
+        "sd_best_epoch": 22.852643902475123,
+        "mean_best_validation_wmae": 0.02252191835099233,
+        "sd_best_validation_wmae": 0.0013768226300593267,
+        "mean_training_loss_at_best_epoch": 0.04504222265034914,
+        "training_loss_at_best_epoch_fold_count": 25,
+        "early_stop_epochs": [
+          {
+            "seed": 42,
+            "fold": 0,
+            "best_epoch": 49,
+            "epochs_completed": 89
+          },
+          {
+            "seed": 42,
+            "fold": 1,
+            "best_epoch": 114,
+            "epochs_completed": 154
+          },
+          {
+            "seed": 42,
+            "fold": 2,
+            "best_epoch": 92,
+            "epochs_completed": 132
+          },
+          {
+            "seed": 42,
+            "fold": 3,
+            "best_epoch": 84,
+            "epochs_completed": 124
+          },
+          {
+            "seed": 42,
+            "fold": 4,
+            "best_epoch": 64,
+            "epochs_completed": 104
+          },
+          {
+            "seed": 43,
+            "fold": 0,
+            "best_epoch": 63,
+            "epochs_completed": 103
+          },
+          {
+            "seed": 43,
+            "fold": 1,
+            "best_epoch": 61,
+            "epochs_completed": 101
+          },
+          {
+            "seed": 43,
+            "fold": 2,
+            "best_epoch": 68,
+            "epochs_completed": 108
+          },
+          {
+            "seed": 43,
+            "fold": 3,
+            "best_epoch": 46,
+            "epochs_completed": 86
+          },
+          {
+            "seed": 43,
+            "fold": 4,
+            "best_epoch": 18,
+            "epochs_completed": 58
+          },
+          {
+            "seed": 44,
+            "fold": 0,
+            "best_epoch": 94,
+            "epochs_completed": 134
+          },
+          {
+            "seed": 44,
+            "fold": 1,
+            "best_epoch": 68,
+            "epochs_completed": 108
+          },
+          {
+            "seed": 44,
+            "fold": 2,
+            "best_epoch": 41,
+            "epochs_completed": 81
+          },
+          {
+            "seed": 44,
+            "fold": 3,
+            "best_epoch": 30,
+            "epochs_completed": 70
+          },
+          {
+            "seed": 44,
+            "fold": 4,
+            "best_epoch": 49,
+            "epochs_completed": 89
+          },
+          {
+            "seed": 45,
+            "fold": 0,
+            "best_epoch": 91,
+            "epochs_completed": 131
+          },
+          {
+            "seed": 45,
+            "fold": 1,
+            "best_epoch": 66,
+            "epochs_completed": 106
+          },
+          {
+            "seed": 45,
+            "fold": 2,
+            "best_epoch": 50,
+            "epochs_completed": 90
+          },
+          {
+            "seed": 45,
+            "fold": 3,
+            "best_epoch": 51,
+            "epochs_completed": 91
+          },
+          {
+            "seed": 45,
+            "fold": 4,
+            "best_epoch": 42,
+            "epochs_completed": 82
+          },
+          {
+            "seed": 46,
+            "fold": 0,
+            "best_epoch": 29,
+            "epochs_completed": 69
+          },
+          {
+            "seed": 46,
+            "fold": 1,
+            "best_epoch": 63,
+            "epochs_completed": 103
+          },
+          {
+            "seed": 46,
+            "fold": 2,
+            "best_epoch": 83,
+            "epochs_completed": 123
+          },
+          {
+            "seed": 46,
+            "fold": 3,
+            "best_epoch": 44,
+            "epochs_completed": 84
+          },
+          {
+            "seed": 46,
+            "fold": 4,
+            "best_epoch": 63,
+            "epochs_completed": 103
+          }
+        ],
+        "mean_epochs_completed": 100.92,
+        "sd_epochs_completed": 22.852643902475123
+      },
+      "execution": {
+        "queue_records": [
+          {
+            "job": {
+              "phase": "formal",
+              "hidden_dim": 128,
+              "seed": 42
+            },
+            "attempt": 1,
+            "pid": null,
+            "command": [],
+            "output_dir": "/home/gyf/work/polymer/from_scratch_gnn/models/capacity_scaling/artifacts/formal/C128/seed_42/attempt_01",
+            "started_at_utc": "2026-10-04T09:08:06+00:00",
+            "completed_at_utc": "2026-10-04T09:25:59+00:00",
+            "process_wall_seconds": 1073.1836464980006,
+            "log_path": "/tmp/stage5a_runs/formal/C128-seed42_attempt_01.log",
+            "status": "passed",
+            "return_code": 0
+          },
+          {
+            "job": {
+              "phase": "formal",
+              "hidden_dim": 128,
+              "seed": 43
+            },
+            "attempt": 1,
+            "pid": null,
+            "command": [],
+            "output_dir": "/home/gyf/work/polymer/from_scratch_gnn/models/capacity_scaling/artifacts/formal/C128/seed_43/attempt_01",
+            "started_at_utc": "2026-10-04T09:26:22+00:00",
+            "completed_at_utc": "2026-10-04T09:40:45+00:00",
+            "process_wall_seconds": 863.7025599580084,
+            "log_path": "/tmp/stage5a_runs/formal/C128-seed43_attempt_01.log",
+            "status": "passed",
+            "return_code": 0
+          },
+          {
+            "job": {
+              "phase": "formal",
+              "hidden_dim": 128,
+              "seed": 44
+            },
+            "attempt": 1,
+            "pid": null,
+            "command": [],
+            "output_dir": "/home/gyf/work/polymer/from_scratch_gnn/models/capacity_scaling/artifacts/formal/C128/seed_44/attempt_01",
+            "started_at_utc": "2026-10-04T09:58:00+00:00",
+            "completed_at_utc": "2026-10-04T10:12:59+00:00",
+            "process_wall_seconds": 898.7325999689929,
+            "log_path": "/tmp/stage5a_runs/formal/C128-seed44_attempt_01.log",
+            "status": "passed",
+            "return_code": 0
+          },
+          {
+            "job": {
+              "phase": "formal",
+              "hidden_dim": 128,
+              "seed": 45
+            },
+            "attempt": 1,
+            "pid": null,
+            "command": [],
+            "output_dir": "/home/gyf/work/polymer/from_scratch_gnn/models/capacity_scaling/artifacts/formal/C128/seed_45/attempt_01",
+            "started_at_utc": "2026-10-04T10:23:52+00:00",
+            "completed_at_utc": "2026-10-04T10:39:16+00:00",
+            "process_wall_seconds": 924.6425754130032,
+            "log_path": "/tmp/stage5a_runs/formal/C128-seed45_attempt_01.log",
+            "status": "passed",
+            "return_code": 0
+          },
+          {
+            "job": {
+              "phase": "formal",
+              "hidden_dim": 128,
+              "seed": 46
+            },
+            "attempt": 2,
+            "pid": null,
+            "command": [],
+            "output_dir": "/home/gyf/work/polymer/from_scratch_gnn/models/capacity_scaling/artifacts/formal/C128/seed_46/attempt_02",
+            "started_at_utc": "2026-10-04T11:19:13+00:00",
+            "completed_at_utc": "2026-10-04T11:33:21+00:00",
+            "process_wall_seconds": 848.8482127580064,
+            "log_path": "/tmp/stage5a_runs/formal_resume/C128-seed46_attempt_02.log",
+            "status": "passed",
+            "return_code": 0
+          }
+        ],
+        "source_commit": "72490c1a748ed9395025f4120c9eb04f28268695",
+        "concurrency": 2,
+        "formal_wall_seconds": 9632.0,
+        "host_cpu_peak_percent": 87.6,
+        "host_ram_peak_mb": 3332.59375,
+        "queue_gpu_utilization_mean_percent": 80.09326398226243,
+        "queue_nvidia_smi_peak_vram_mb": 5458.0
+      }
+    },
+    "256": {
+      "hidden_dim": 256,
+      "parameter_count": 1243657,
+      "by_seed_oof_wmae": {
+        "42": 0.022772872219188344,
+        "43": 0.022648625887830755,
+        "44": 0.02288966669365641,
+        "45": 0.02273300693214453,
+        "46": 0.022882862181573347
+      },
+      "mean_oof_wmae": 0.022785406782878676,
+      "sample_sd_oof_wmae": 0.00010244456625914383,
+      "per_target": {
+        "Tg": {
+          "by_seed": {
+            "42": 51.503853743494275,
+            "43": 50.73961480611636,
+            "44": 53.269823356068606,
+            "45": 51.785615358289725,
+            "46": 51.6852093284692
+          },
+          "mean": 51.79682331848763,
+          "sample_sd": 0.9200317144472869
+        },
+        "FFV": {
+          "by_seed": {
+            "42": 0.005826482132443814,
+            "43": 0.005932659072097206,
+            "44": 0.005782235612051567,
+            "45": 0.005830745427190687,
+            "46": 0.0061021918580007545
+          },
+          "mean": 0.005894862820356806,
+          "sample_sd": 0.00012834108182154102
+        },
+        "Tc": {
+          "by_seed": {
+            "42": 0.0241218720432738,
+            "43": 0.024749099197183353,
+            "44": 0.024486009558386916,
+            "45": 0.025041377024014606,
+            "46": 0.024910596764485968
+          },
+          "mean": 0.02466179091746893,
+          "sample_sd": 0.00036606835919398965
+        },
+        "Density": {
+          "by_seed": {
+            "42": 0.025295447238194987,
+            "43": 0.025097145150285126,
+            "44": 0.024347393122904078,
+            "45": 0.02361231410612356,
+            "46": 0.024655663322692426
+          },
+          "mean": 0.024601592588040035,
+          "sample_sd": 0.0006658114494159638
+        },
+        "Rg": {
+          "by_seed": {
+            "42": 1.6102015654144703,
+            "43": 1.5559213601480106,
+            "44": 1.5855684790324207,
+            "45": 1.5738706987724251,
+            "46": 1.5613784694842363
+          },
+          "mean": 1.5773881145703126,
+          "sample_sd": 0.021639913436400655
+        }
+      },
+      "performance": {
+        "mean_fold_epoch_seconds": 1.0819631321175474,
+        "mean_seed_runtime_seconds": 563.9452431495986,
+        "sample_sd_seed_runtime_seconds": 76.13659921482925,
+        "summed_seed_runtime_seconds": 2819.7262157479927,
+        "peak_pytorch_allocated_mb": 141.80419921875,
+        "peak_pytorch_reserved_mb": 168.0,
+        "peak_nvidia_smi_vram_mb": 2261.0,
+        "mean_gpu_utilization_percent": 36.52215007215007
+      },
+      "training_behavior": {
+        "mean_best_epoch": 63.84,
+        "sd_best_epoch": 26.74054349983685,
+        "mean_best_validation_wmae": 0.02278572100068213,
+        "sd_best_validation_wmae": 0.0014170415280996731,
+        "mean_training_loss_at_best_epoch": 0.0420550955330953,
+        "training_loss_at_best_epoch_fold_count": 25,
+        "early_stop_epochs": [
+          {
+            "seed": 42,
+            "fold": 0,
+            "best_epoch": 58,
+            "epochs_completed": 98
+          },
+          {
+            "seed": 42,
+            "fold": 1,
+            "best_epoch": 78,
+            "epochs_completed": 118
+          },
+          {
+            "seed": 42,
+            "fold": 2,
+            "best_epoch": 63,
+            "epochs_completed": 103
+          },
+          {
+            "seed": 42,
+            "fold": 3,
+            "best_epoch": 54,
+            "epochs_completed": 94
+          },
+          {
+            "seed": 42,
+            "fold": 4,
+            "best_epoch": 50,
+            "epochs_completed": 90
+          },
+          {
+            "seed": 43,
+            "fold": 0,
+            "best_epoch": 52,
+            "epochs_completed": 92
+          },
+          {
+            "seed": 43,
+            "fold": 1,
+            "best_epoch": 95,
+            "epochs_completed": 135
+          },
+          {
+            "seed": 43,
+            "fold": 2,
+            "best_epoch": 25,
+            "epochs_completed": 65
+          },
+          {
+            "seed": 43,
+            "fold": 3,
+            "best_epoch": 54,
+            "epochs_completed": 94
+          },
+          {
+            "seed": 43,
+            "fold": 4,
+            "best_epoch": 41,
+            "epochs_completed": 81
+          },
+          {
+            "seed": 44,
+            "fold": 0,
+            "best_epoch": 130,
+            "epochs_completed": 170
+          },
+          {
+            "seed": 44,
+            "fold": 1,
+            "best_epoch": 88,
+            "epochs_completed": 128
+          },
+          {
+            "seed": 44,
+            "fold": 2,
+            "best_epoch": 42,
+            "epochs_completed": 82
+          },
+          {
+            "seed": 44,
+            "fold": 3,
+            "best_epoch": 104,
+            "epochs_completed": 144
+          },
+          {
+            "seed": 44,
+            "fold": 4,
+            "best_epoch": 57,
+            "epochs_completed": 97
+          },
+          {
+            "seed": 45,
+            "fold": 0,
+            "best_epoch": 99,
+            "epochs_completed": 139
+          },
+          {
+            "seed": 45,
+            "fold": 1,
+            "best_epoch": 57,
+            "epochs_completed": 97
+          },
+          {
+            "seed": 45,
+            "fold": 2,
+            "best_epoch": 105,
+            "epochs_completed": 145
+          },
+          {
+            "seed": 45,
+            "fold": 3,
+            "best_epoch": 37,
+            "epochs_completed": 77
+          },
+          {
+            "seed": 45,
+            "fold": 4,
+            "best_epoch": 67,
+            "epochs_completed": 107
+          },
+          {
+            "seed": 46,
+            "fold": 0,
+            "best_epoch": 57,
+            "epochs_completed": 97
+          },
+          {
+            "seed": 46,
+            "fold": 1,
+            "best_epoch": 24,
+            "epochs_completed": 64
+          },
+          {
+            "seed": 46,
+            "fold": 2,
+            "best_epoch": 41,
+            "epochs_completed": 81
+          },
+          {
+            "seed": 46,
+            "fold": 3,
+            "best_epoch": 45,
+            "epochs_completed": 85
+          },
+          {
+            "seed": 46,
+            "fold": 4,
+            "best_epoch": 73,
+            "epochs_completed": 113
+          }
+        ],
+        "mean_epochs_completed": 103.84,
+        "sd_epochs_completed": 26.74054349983685
+      },
+      "execution": {
+        "queue_records": [],
+        "source_commit": "72490c1a748ed9395025f4120c9eb04f28268695",
+        "concurrency": 2,
+        "formal_wall_seconds": 9632.0,
+        "host_cpu_peak_percent": 87.6,
+        "host_ram_peak_mb": 3332.59375,
+        "queue_gpu_utilization_mean_percent": 80.09326398226243,
+        "queue_nvidia_smi_peak_vram_mb": 5458.0
+      }
+    },
+    "384": {
+      "hidden_dim": 384,
+      "parameter_count": 2750217,
+      "by_seed_oof_wmae": {
+        "42": 0.022897457599742207,
+        "43": 0.022910578329250503,
+        "44": 0.023189368365425414,
+        "45": 0.02300768546326124,
+        "46": 0.022842497167136978
+      },
+      "mean_oof_wmae": 0.022969517384963268,
+      "sample_sd_oof_wmae": 0.0001365575121351651,
+      "per_target": {
+        "Tg": {
+          "by_seed": {
+            "42": 53.704646597622954,
+            "43": 52.27945262603588,
+            "44": 52.629095087424645,
+            "45": 52.115329652511335,
+            "46": 53.835221869644
+          },
+          "mean": 52.91274916664777,
+          "sample_sd": 0.8055214856685652
+        },
+        "FFV": {
+          "by_seed": {
+            "42": 0.005673079730736302,
+            "43": 0.005968843508524359,
+            "44": 0.00606115817895993,
+            "45": 0.005922789778911209,
+            "46": 0.005601354111784961
+          },
+          "mean": 0.005845445061783352,
+          "sample_sd": 0.00019813614641566127
+        },
+        "Tc": {
+          "by_seed": {
+            "42": 0.025437925283867374,
+            "43": 0.024534036568423397,
+            "44": 0.02446362971508025,
+            "45": 0.024458447518689332,
+            "46": 0.024832941106796774
+          },
+          "mean": 0.024745396038571427,
+          "sample_sd": 0.0004164328980454926
+        },
+        "Density": {
+          "by_seed": {
+            "42": 0.02378688233043634,
+            "43": 0.026359168211843125,
+            "44": 0.02658265860349554,
+            "45": 0.0254889815065437,
+            "46": 0.024849200913665995
+          },
+          "mean": 0.025413378313196937,
+          "sample_sd": 0.001143594781006808
+        },
+        "Rg": {
+          "by_seed": {
+            "42": 1.5468453264134883,
+            "43": 1.5504492695823706,
+            "44": 1.6001438769552627,
+            "45": 1.6148026163841094,
+            "46": 1.5481168410427155
+          },
+          "mean": 1.5720715860755894,
+          "sample_sd": 0.03275558358174721
+        }
+      },
+      "performance": {
+        "mean_fold_epoch_seconds": 1.931298299094488,
+        "mean_seed_runtime_seconds": 1049.3065758413984,
+        "sample_sd_seed_runtime_seconds": 74.5713505520435,
+        "summed_seed_runtime_seconds": 5246.532879206992,
+        "peak_pytorch_allocated_mb": 216.54443359375,
+        "peak_pytorch_reserved_mb": 256.0,
+        "peak_nvidia_smi_vram_mb": 5446.0,
+        "mean_gpu_utilization_percent": 82.16563575554133
+      },
+      "training_behavior": {
+        "mean_best_epoch": 69.0,
+        "sd_best_epoch": 25.614123708089906,
+        "mean_best_validation_wmae": 0.022969843812438315,
+        "sd_best_validation_wmae": 0.0014019534384573358,
+        "mean_training_loss_at_best_epoch": 0.04016704105325044,
+        "training_loss_at_best_epoch_fold_count": 25,
+        "early_stop_epochs": [
+          {
+            "seed": 42,
+            "fold": 0,
+            "best_epoch": 53,
+            "epochs_completed": 93
+          },
+          {
+            "seed": 42,
+            "fold": 1,
+            "best_epoch": 80,
+            "epochs_completed": 120
+          },
+          {
+            "seed": 42,
+            "fold": 2,
+            "best_epoch": 64,
+            "epochs_completed": 104
+          },
+          {
+            "seed": 42,
+            "fold": 3,
+            "best_epoch": 127,
+            "epochs_completed": 167
+          },
+          {
+            "seed": 42,
+            "fold": 4,
+            "best_epoch": 92,
+            "epochs_completed": 132
+          },
+          {
+            "seed": 43,
+            "fold": 0,
+            "best_epoch": 39,
+            "epochs_completed": 79
+          },
+          {
+            "seed": 43,
+            "fold": 1,
+            "best_epoch": 69,
+            "epochs_completed": 109
+          },
+          {
+            "seed": 43,
+            "fold": 2,
+            "best_epoch": 38,
+            "epochs_completed": 78
+          },
+          {
+            "seed": 43,
+            "fold": 3,
+            "best_epoch": 55,
+            "epochs_completed": 95
+          },
+          {
+            "seed": 43,
+            "fold": 4,
+            "best_epoch": 93,
+            "epochs_completed": 133
+          },
+          {
+            "seed": 44,
+            "fold": 0,
+            "best_epoch": 74,
+            "epochs_completed": 114
+          },
+          {
+            "seed": 44,
+            "fold": 1,
+            "best_epoch": 84,
+            "epochs_completed": 124
+          },
+          {
+            "seed": 44,
+            "fold": 2,
+            "best_epoch": 48,
+            "epochs_completed": 88
+          },
+          {
+            "seed": 44,
+            "fold": 3,
+            "best_epoch": 53,
+            "epochs_completed": 93
+          },
+          {
+            "seed": 44,
+            "fold": 4,
+            "best_epoch": 21,
+            "epochs_completed": 61
+          },
+          {
+            "seed": 45,
+            "fold": 0,
+            "best_epoch": 106,
+            "epochs_completed": 146
+          },
+          {
+            "seed": 45,
+            "fold": 1,
+            "best_epoch": 59,
+            "epochs_completed": 99
+          },
+          {
+            "seed": 45,
+            "fold": 2,
+            "best_epoch": 39,
+            "epochs_completed": 79
+          },
+          {
+            "seed": 45,
+            "fold": 3,
+            "best_epoch": 37,
+            "epochs_completed": 77
+          },
+          {
+            "seed": 45,
+            "fold": 4,
+            "best_epoch": 71,
+            "epochs_completed": 111
+          },
+          {
+            "seed": 46,
+            "fold": 0,
+            "best_epoch": 72,
+            "epochs_completed": 112
+          },
+          {
+            "seed": 46,
+            "fold": 1,
+            "best_epoch": 88,
+            "epochs_completed": 128
+          },
+          {
+            "seed": 46,
+            "fold": 2,
+            "best_epoch": 83,
+            "epochs_completed": 123
+          },
+          {
+            "seed": 46,
+            "fold": 3,
+            "best_epoch": 71,
+            "epochs_completed": 111
+          },
+          {
+            "seed": 46,
+            "fold": 4,
+            "best_epoch": 109,
+            "epochs_completed": 149
+          }
+        ],
+        "mean_epochs_completed": 109.0,
+        "sd_epochs_completed": 25.614123708089906
+      },
+      "execution": {
+        "queue_records": [
+          {
+            "job": {
+              "phase": "formal",
+              "hidden_dim": 384,
+              "seed": 42
+            },
+            "attempt": 1,
+            "pid": null,
+            "command": [],
+            "output_dir": "/home/gyf/work/polymer/from_scratch_gnn/models/capacity_scaling/artifacts/formal/C384/seed_42/attempt_01",
+            "started_at_utc": "2026-10-04T09:08:06+00:00",
+            "completed_at_utc": "2026-10-04T09:26:19+00:00",
+            "process_wall_seconds": 1093.0288153000001,
+            "log_path": "/tmp/stage5a_runs/formal/C384-seed42_attempt_01.log",
+            "status": "passed",
+            "return_code": 0
+          },
+          {
+            "job": {
+              "phase": "formal",
+              "hidden_dim": 384,
+              "seed": 43
+            },
+            "attempt": 1,
+            "pid": null,
+            "command": [],
+            "output_dir": "/home/gyf/work/polymer/from_scratch_gnn/models/capacity_scaling/artifacts/formal/C384/seed_43/attempt_01",
+            "started_at_utc": "2026-10-04T09:40:48+00:00",
+            "completed_at_utc": "2026-10-04T09:57:58+00:00",
+            "process_wall_seconds": 1029.2427707799943,
+            "log_path": "/tmp/stage5a_runs/formal/C384-seed43_attempt_01.log",
+            "status": "passed",
+            "return_code": 0
+          },
+          {
+            "job": {
+              "phase": "formal",
+              "hidden_dim": 384,
+              "seed": 44
+            },
+            "attempt": 1,
+            "pid": null,
+            "command": [],
+            "output_dir": "/home/gyf/work/polymer/from_scratch_gnn/models/capacity_scaling/artifacts/formal/C384/seed_44/attempt_01",
+            "started_at_utc": "2026-10-04T10:07:32+00:00",
+            "completed_at_utc": "2026-10-04T10:23:48+00:00",
+            "process_wall_seconds": 976.2465965890005,
+            "log_path": "/tmp/stage5a_runs/formal/C384-seed44_attempt_01.log",
+            "status": "passed",
+            "return_code": 0
+          },
+          {
+            "job": {
+              "phase": "formal",
+              "hidden_dim": 384,
+              "seed": 45
+            },
+            "attempt": 1,
+            "pid": null,
+            "command": [],
+            "output_dir": "/home/gyf/work/polymer/from_scratch_gnn/models/capacity_scaling/artifacts/formal/C384/seed_45/attempt_01",
+            "started_at_utc": "2026-10-04T10:31:05+00:00",
+            "completed_at_utc": "2026-10-04T10:47:37+00:00",
+            "process_wall_seconds": 992.2414082010073,
+            "log_path": "/tmp/stage5a_runs/formal/C384-seed45_attempt_01.log",
+            "status": "passed",
+            "return_code": 0
+          },
+          {
+            "job": {
+              "phase": "formal",
+              "hidden_dim": 384,
+              "seed": 46
+            },
+            "attempt": 1,
+            "pid": null,
+            "command": [],
+            "output_dir": "/home/gyf/work/polymer/from_scratch_gnn/models/capacity_scaling/artifacts/formal/C384/seed_46/attempt_01",
+            "started_at_utc": "2026-10-04T11:19:13+00:00",
+            "completed_at_utc": "2026-10-04T11:38:28+00:00",
+            "process_wall_seconds": 1155.77328833699,
+            "log_path": "/tmp/stage5a_runs/formal_resume/C384-seed46_attempt_01.log",
+            "status": "passed",
+            "return_code": 0
+          }
+        ],
+        "source_commit": "72490c1a748ed9395025f4120c9eb04f28268695",
+        "concurrency": 2,
+        "formal_wall_seconds": 9632.0,
+        "host_cpu_peak_percent": 87.6,
+        "host_ram_peak_mb": 3332.59375,
+        "queue_gpu_utilization_mean_percent": 80.09326398226243,
+        "queue_nvidia_smi_peak_vram_mb": 5458.0
+      }
+    },
+    "512": {
+      "hidden_dim": 512,
+      "parameter_count": 4846601,
+      "by_seed_oof_wmae": {
+        "42": 0.02304987318524433,
+        "43": 0.023198631223322726,
+        "44": 0.023199007606566832,
+        "45": 0.023235488797127647,
+        "46": 0.023205784934418976
+      },
+      "mean_oof_wmae": 0.023177757149336103,
+      "sample_sd_oof_wmae": 7.30755038684628e-05,
+      "per_target": {
+        "Tg": {
+          "by_seed": {
+            "42": 51.56768079772492,
+            "43": 52.25710750994706,
+            "44": 53.11770729791349,
+            "45": 51.53082730678484,
+            "46": 51.7877216950753
+          },
+          "mean": 52.052208921489125,
+          "sample_sd": 0.6621612351839239
+        },
+        "FFV": {
+          "by_seed": {
+            "42": 0.005821999949256915,
+            "43": 0.005810077595802367,
+            "44": 0.006130133312996259,
+            "45": 0.006122530778021716,
+            "46": 0.006050777367562137
+          },
+          "mean": 0.005987103800727879,
+          "sample_sd": 0.00015925591800067314
+        },
+        "Tc": {
+          "by_seed": {
+            "42": 0.025092913207942793,
+            "43": 0.026086222918377,
+            "44": 0.02457389311081161,
+            "45": 0.025241413777574113,
+            "46": 0.025112845143811017
+          },
+          "mean": 0.025221457631703303,
+          "sample_sd": 0.0005467808973706054
+        },
+        "Density": {
+          "by_seed": {
+            "42": 0.025333153197559938,
+            "43": 0.025731655388259427,
+            "44": 0.02667739439072939,
+            "45": 0.02628747587086505,
+            "46": 0.027607345833650796
+          },
+          "mean": 0.026327404936212922,
+          "sample_sd": 0.0008811625407902385
+        },
+        "Rg": {
+          "by_seed": {
+            "42": 1.6293682483470155,
+            "43": 1.581450148108462,
+            "44": 1.5658508702091278,
+            "45": 1.6061028065233236,
+            "46": 1.5766446805792103
+          },
+          "mean": 1.5918833507534278,
+          "sample_sd": 0.025622594030428738
+        }
+      },
+      "performance": {
+        "mean_fold_epoch_seconds": 1.9804976864563852,
+        "mean_seed_runtime_seconds": 1097.377985555801,
+        "sample_sd_seed_runtime_seconds": 144.93822936363134,
+        "summed_seed_runtime_seconds": 5486.889927779004,
+        "peak_pytorch_allocated_mb": 292.75048828125,
+        "peak_pytorch_reserved_mb": 410.0,
+        "peak_nvidia_smi_vram_mb": 5458.0,
+        "mean_gpu_utilization_percent": 77.91484783293762
+      },
+      "training_behavior": {
+        "mean_best_epoch": 69.4,
+        "sd_best_epoch": 31.781808213714545,
+        "mean_best_validation_wmae": 0.023178132198761886,
+        "sd_best_validation_wmae": 0.0015481092111527173,
+        "mean_training_loss_at_best_epoch": 0.040152291296795005,
+        "training_loss_at_best_epoch_fold_count": 25,
+        "early_stop_epochs": [
+          {
+            "seed": 42,
+            "fold": 0,
+            "best_epoch": 97,
+            "epochs_completed": 137
+          },
+          {
+            "seed": 42,
+            "fold": 1,
+            "best_epoch": 158,
+            "epochs_completed": 198
+          },
+          {
+            "seed": 42,
+            "fold": 2,
+            "best_epoch": 68,
+            "epochs_completed": 108
+          },
+          {
+            "seed": 42,
+            "fold": 3,
+            "best_epoch": 32,
+            "epochs_completed": 72
+          },
+          {
+            "seed": 42,
+            "fold": 4,
+            "best_epoch": 64,
+            "epochs_completed": 104
+          },
+          {
+            "seed": 43,
+            "fold": 0,
+            "best_epoch": 90,
+            "epochs_completed": 130
+          },
+          {
+            "seed": 43,
+            "fold": 1,
+            "best_epoch": 94,
+            "epochs_completed": 134
+          },
+          {
+            "seed": 43,
+            "fold": 2,
+            "best_epoch": 35,
+            "epochs_completed": 75
+          },
+          {
+            "seed": 43,
+            "fold": 3,
+            "best_epoch": 87,
+            "epochs_completed": 127
+          },
+          {
+            "seed": 43,
+            "fold": 4,
+            "best_epoch": 79,
+            "epochs_completed": 119
+          },
+          {
+            "seed": 44,
+            "fold": 0,
+            "best_epoch": 85,
+            "epochs_completed": 125
+          },
+          {
+            "seed": 44,
+            "fold": 1,
+            "best_epoch": 58,
+            "epochs_completed": 98
+          },
+          {
+            "seed": 44,
+            "fold": 2,
+            "best_epoch": 67,
+            "epochs_completed": 107
+          },
+          {
+            "seed": 44,
+            "fold": 3,
+            "best_epoch": 53,
+            "epochs_completed": 93
+          },
+          {
+            "seed": 44,
+            "fold": 4,
+            "best_epoch": 31,
+            "epochs_completed": 71
+          },
+          {
+            "seed": 45,
+            "fold": 0,
+            "best_epoch": 87,
+            "epochs_completed": 127
+          },
+          {
+            "seed": 45,
+            "fold": 1,
+            "best_epoch": 66,
+            "epochs_completed": 106
+          },
+          {
+            "seed": 45,
+            "fold": 2,
+            "best_epoch": 39,
+            "epochs_completed": 79
+          },
+          {
+            "seed": 45,
+            "fold": 3,
+            "best_epoch": 55,
+            "epochs_completed": 95
+          },
+          {
+            "seed": 45,
+            "fold": 4,
+            "best_epoch": 36,
+            "epochs_completed": 76
+          },
+          {
+            "seed": 46,
+            "fold": 0,
+            "best_epoch": 121,
+            "epochs_completed": 161
+          },
+          {
+            "seed": 46,
+            "fold": 1,
+            "best_epoch": 111,
+            "epochs_completed": 151
+          },
+          {
+            "seed": 46,
+            "fold": 2,
+            "best_epoch": 41,
+            "epochs_completed": 81
+          },
+          {
+            "seed": 46,
+            "fold": 3,
+            "best_epoch": 44,
+            "epochs_completed": 84
+          },
+          {
+            "seed": 46,
+            "fold": 4,
+            "best_epoch": 37,
+            "epochs_completed": 77
+          }
+        ],
+        "mean_epochs_completed": 109.4,
+        "sd_epochs_completed": 31.781808213714545
+      },
+      "execution": {
+        "queue_records": [
+          {
+            "job": {
+              "phase": "formal",
+              "hidden_dim": 512,
+              "seed": 42
+            },
+            "attempt": 1,
+            "pid": null,
+            "command": [],
+            "output_dir": "/home/gyf/work/polymer/from_scratch_gnn/models/capacity_scaling/artifacts/formal/C512/seed_42/attempt_01",
+            "started_at_utc": "2026-10-04T09:26:02+00:00",
+            "completed_at_utc": "2026-10-04T09:46:58+00:00",
+            "process_wall_seconds": 1255.9954901040037,
+            "log_path": "/tmp/stage5a_runs/formal/C512-seed42_attempt_01.log",
+            "status": "passed",
+            "return_code": 0
+          },
+          {
+            "job": {
+              "phase": "formal",
+              "hidden_dim": 512,
+              "seed": 43
+            },
+            "attempt": 1,
+            "pid": null,
+            "command": [],
+            "output_dir": "/home/gyf/work/polymer/from_scratch_gnn/models/capacity_scaling/artifacts/formal/C512/seed_43/attempt_01",
+            "started_at_utc": "2026-10-04T09:47:01+00:00",
+            "completed_at_utc": "2026-10-04T10:07:29+00:00",
+            "process_wall_seconds": 1227.8205863610056,
+            "log_path": "/tmp/stage5a_runs/formal/C512-seed43_attempt_01.log",
+            "status": "passed",
+            "return_code": 0
+          },
+          {
+            "job": {
+              "phase": "formal",
+              "hidden_dim": 512,
+              "seed": 44
+            },
+            "attempt": 1,
+            "pid": null,
+            "command": [],
+            "output_dir": "/home/gyf/work/polymer/from_scratch_gnn/models/capacity_scaling/artifacts/formal/C512/seed_44/attempt_01",
+            "started_at_utc": "2026-10-04T10:13:02+00:00",
+            "completed_at_utc": "2026-10-04T10:31:02+00:00",
+            "process_wall_seconds": 1079.5616599070054,
+            "log_path": "/tmp/stage5a_runs/formal/C512-seed44_attempt_01.log",
+            "status": "passed",
+            "return_code": 0
+          },
+          {
+            "job": {
+              "phase": "formal",
+              "hidden_dim": 512,
+              "seed": 45
+            },
+            "attempt": 1,
+            "pid": null,
+            "command": [],
+            "output_dir": "/home/gyf/work/polymer/from_scratch_gnn/models/capacity_scaling/artifacts/formal/C512/seed_45/attempt_01",
+            "started_at_utc": "2026-10-04T10:39:19+00:00",
+            "completed_at_utc": "2026-10-04T10:56:10+00:00",
+            "process_wall_seconds": 1010.487815335,
+            "log_path": "/tmp/stage5a_runs/formal/C512-seed45_attempt_01.log",
+            "status": "passed",
+            "return_code": 0
+          },
+          {
+            "job": {
+              "phase": "formal",
+              "hidden_dim": 512,
+              "seed": 46
+            },
+            "attempt": 1,
+            "pid": null,
+            "command": [],
+            "output_dir": "/home/gyf/work/polymer/from_scratch_gnn/models/capacity_scaling/artifacts/formal/C512/seed_46/attempt_01",
+            "started_at_utc": "2026-10-04T11:33:25+00:00",
+            "completed_at_utc": "2026-10-04T11:48:38+00:00",
+            "process_wall_seconds": 913.0243760719895,
+            "log_path": "/tmp/stage5a_runs/formal_resume/C512-seed46_attempt_01.log",
+            "status": "passed",
+            "return_code": 0
+          }
+        ],
+        "source_commit": "72490c1a748ed9395025f4120c9eb04f28268695",
+        "concurrency": 2,
+        "formal_wall_seconds": 9632.0,
+        "host_cpu_peak_percent": 87.6,
+        "host_ram_peak_mb": 3332.59375,
+        "queue_gpu_utilization_mean_percent": 80.09326398226243,
+        "queue_nvidia_smi_peak_vram_mb": 5458.0
+      }
+    }
+  },
+  "paired": {
+    "128": {
+      "reference_width": 256,
+      "by_seed": {
+        "42": -0.0002528091127876053,
+        "43": -4.768225687110453e-05,
+        "44": -0.00024125840812626656,
+        "45": -0.0003937105019249064,
+        "46": -0.0003836202310456109
+      },
+      "paired_mean": -0.0002638161021510987,
+      "paired_sample_sd": 0.00014015119232711965,
+      "lower_seed_count": 5,
+      "per_target": {
+        "Tg": {
+          "by_seed": {
+            "42": 0.7967688536821882,
+            "43": 0.45022693875291964,
+            "44": -3.4077131001694454,
+            "45": -0.0740475960411544,
+            "46": -0.40470644172565073
+          },
+          "mean": -0.5278942691002285,
+          "sample_sd": 1.675258340477126,
+          "lower_seed_count": 3
+        },
+        "FFV": {
+          "by_seed": {
+            "42": -6.6959210154688906e-06,
+            "43": 0.0007197338818945402,
+            "44": 0.0004270300424132926,
+            "45": 0.00020796526887821836,
+            "46": 3.507700801942508e-05
+          },
+          "mean": 0.00027662205603800146,
+          "sample_sd": 0.00030095576641196633,
+          "lower_seed_count": 1
+        },
+        "Tc": {
+          "by_seed": {
+            "42": -0.0005129830193102702,
+            "43": -0.0007101178463919319,
+            "44": 4.999277099684146e-05,
+            "45": -0.0008758862645545408,
+            "46": -0.0009557120719718981
+          },
+          "mean": -0.00060094128624636,
+          "sample_sd": 0.00040150603245403337,
+          "lower_seed_count": 4
+        },
+        "Density": {
+          "by_seed": {
+            "42": -0.002167726126127801,
+            "43": -0.0005926973968761705,
+            "44": 0.0014222278577228284,
+            "45": 0.0007100028635662441,
+            "46": -7.982321468310433e-06
+          },
+          "mean": -0.00012723502463664189,
+          "sample_sd": 0.001368967025506874,
+          "lower_seed_count": 3
+        },
+        "Rg": {
+          "by_seed": {
+            "42": -0.019890814070741225,
+            "43": -0.08608182248958984,
+            "44": -0.043103912718645,
+            "45": -0.10507135686143143,
+            "46": -0.04264742326389981
+          },
+          "mean": -0.05935906588086146,
+          "sample_sd": 0.03501774968388481,
+          "lower_seed_count": 5
+        }
+      }
+    },
+    "384": {
+      "reference_width": 256,
+      "by_seed": {
+        "42": 0.0001245853805538627,
+        "43": 0.0002619524414197473,
+        "44": 0.00029970167176900445,
+        "45": 0.00027467853111671006,
+        "46": -4.0365014436369306e-05
+      },
+      "paired_mean": 0.00018411060208459103,
+      "paired_sample_sd": 0.00014278983815540033,
+      "lower_seed_count": 1,
+      "per_target": {
+        "Tg": {
+          "by_seed": {
+            "42": 2.2007928541286788,
+            "43": 1.5398378199195193,
+            "44": -0.6407282686439615,
+            "45": 0.3297142942216098,
+            "46": 2.150012541174803
+          },
+          "mean": 1.11592584816013,
+          "sample_sd": 1.2379353136110651,
+          "lower_seed_count": 1
+        },
+        "FFV": {
+          "by_seed": {
+            "42": -0.0001534024017075114,
+            "43": 3.6184436427152966e-05,
+            "44": 0.00027892256690836316,
+            "45": 9.204435172052196e-05,
+            "46": -0.0005008377462157937
+          },
+          "mean": -4.941775857345339e-05,
+          "sample_sd": 0.0002956938640832694,
+          "lower_seed_count": 2
+        },
+        "Tc": {
+          "by_seed": {
+            "42": 0.001316053240593574,
+            "43": -0.0002150626287599558,
+            "44": -2.2379843306667008e-05,
+            "45": -0.0005829295053252741,
+            "46": -7.765565768919416e-05
+          },
+          "mean": 8.360512110249657e-05,
+          "sample_sd": 0.0007227788478728323,
+          "lower_seed_count": 4
+        },
+        "Density": {
+          "by_seed": {
+            "42": -0.0015085649077586465,
+            "43": 0.0012620230615579993,
+            "44": 0.0022352654805914626,
+            "45": 0.00187666740042014,
+            "46": 0.00019353759097356926
+          },
+          "mean": 0.000811785725156905,
+          "sample_sd": 0.00151073153394521,
+          "lower_seed_count": 1
+        },
+        "Rg": {
+          "by_seed": {
+            "42": -0.06335623900098208,
+            "43": -0.00547209056564002,
+            "44": 0.014575397922842015,
+            "45": 0.04093191761168424,
+            "46": -0.01326162844152079
+          },
+          "mean": -0.0053165284947233275,
+          "sample_sd": 0.03862112217502216,
+          "lower_seed_count": 3
+        }
+      }
+    },
+    "512": {
+      "reference_width": 256,
+      "by_seed": {
+        "42": 0.0002770009660559847,
+        "43": 0.0005500053354919703,
+        "44": 0.00030934091291042257,
+        "45": 0.0005024818649831189,
+        "46": 0.0003229227528456294
+      },
+      "paired_mean": 0.00039235036645742514,
+      "paired_sample_sd": 0.00012449928043142548,
+      "lower_seed_count": 0,
+      "per_target": {
+        "Tg": {
+          "by_seed": {
+            "42": 0.06382705423064294,
+            "43": 1.5174927038307047,
+            "44": -0.15211605815511575,
+            "45": -0.2547880515048817,
+            "46": 0.10251236660609919
+          },
+          "mean": 0.2553856030014899,
+          "sample_sd": 0.7209913313581688,
+          "lower_seed_count": 2
+        },
+        "FFV": {
+          "by_seed": {
+            "42": -4.482183186898907e-06,
+            "43": -0.00012258147629483872,
+            "44": 0.0003478977009446927,
+            "45": 0.0002917853508310284,
+            "46": -5.1414490438617295e-05
+          },
+          "mean": 9.224098037107325e-05,
+          "sample_sd": 0.00021290800073442008,
+          "lower_seed_count": 3
+        },
+        "Tc": {
+          "by_seed": {
+            "42": 0.0009710411646689926,
+            "43": 0.0013371237211936456,
+            "44": 8.78835524246932e-05,
+            "45": 0.00020003675355950712,
+            "46": 0.00020224837932504916
+          },
+          "mean": 0.0005596667142343775,
+          "sample_sd": 0.0005597609451033434,
+          "lower_seed_count": 0
+        },
+        "Density": {
+          "by_seed": {
+            "42": 3.770595936495105e-05,
+            "43": 0.0006345102379743013,
+            "44": 0.0023300012678253122,
+            "45": 0.002675161764741491,
+            "46": 0.00295168251095837
+          },
+          "mean": 0.0017258123481728852,
+          "sample_sd": 0.0013047710236891831,
+          "lower_seed_count": 0
+        },
+        "Rg": {
+          "by_seed": {
+            "42": 0.019166682932545198,
+            "43": 0.025528787960451327,
+            "44": -0.019717608823292876,
+            "45": 0.032232107750898464,
+            "46": 0.015266211094973947
+          },
+          "mean": 0.014495236183115212,
+          "sample_sd": 0.020182117445372114,
+          "lower_seed_count": 1
+        }
+      }
+    }
+  },
+  "parameter_audit": {
+    "stage": "5A",
+    "architecture": {
+      "operator": "GINEConv",
+      "num_layers": 4,
+      "readout": [
+        "global_mean",
+        "global_max"
+      ],
+      "heads": [
+        "Tg",
+        "FFV",
+        "Tc",
+        "Density",
+        "Rg"
+      ]
+    },
+    "parameter_counts": {
+      "128": {
+        "embedding_parameters": 19968,
+        "gine_trunk_parameters": 141828,
+        "readout_head_parameters": 165125,
+        "total_trainable_parameters": 326921
+      },
+      "256": {
+        "embedding_parameters": 39936,
+        "gine_trunk_parameters": 545796,
+        "readout_head_parameters": 657925,
+        "total_trainable_parameters": 1243657
+      },
+      "384": {
+        "embedding_parameters": 59904,
+        "gine_trunk_parameters": 1211908,
+        "readout_head_parameters": 1478405,
+        "total_trainable_parameters": 2750217
+      },
+      "512": {
+        "embedding_parameters": 79872,
+        "gine_trunk_parameters": 2140164,
+        "readout_head_parameters": 2626565,
+        "total_trainable_parameters": 4846601
+      }
+    },
+    "strictly_increasing": true,
+    "historical_c256_count_verified": true,
+    "config_diff": {
+      "reference": "C256 effective Stage 5A config; architecture/training matches historical G0",
+      "allowed_diff_paths": [
+        "experiment_id",
+        "model.hidden_dim",
+        "seed"
+      ],
+      "width_comparisons": {
+        "128": {
+          "changed_paths_vs_c256": [
+            "experiment_id",
+            "model.hidden_dim"
+          ],
+          "unexpected_paths": [],
+          "passed": true
+        },
+        "256": {
+          "changed_paths_vs_c256": [],
+          "unexpected_paths": [],
+          "passed": true
+        },
+        "384": {
+          "changed_paths_vs_c256": [
+            "experiment_id",
+            "model.hidden_dim"
+          ],
+          "unexpected_paths": [],
+          "passed": true
+        },
+        "512": {
+          "changed_paths_vs_c256": [
+            "experiment_id",
+            "model.hidden_dim"
+          ],
+          "unexpected_paths": [],
+          "passed": true
+        }
+      },
+      "seed_comparison": {
+        "changed_paths": [
+          "seed"
+        ],
+        "unexpected_paths": [],
+        "passed": true
+      }
+    }
+  },
+  "execution": {
+    "concurrency": 2,
+    "max_observed_active_jobs": 2,
+    "formal_wall_seconds": 9632.0,
+    "summed_process_wall_seconds": 15342.532401582008,
+    "sum_training_seconds": 15342.532401582008,
+    "host_cpu_peak_percent": 87.6,
+    "host_ram_peak_mb": 3332.59375,
+    "mean_gpu_utilization_percent": 80.09326398226243,
+    "peak_gpu_utilization_percent": 93.0,
+    "peak_nvidia_smi_vram_mb": 5458.0,
+    "failed_or_restarted_attempts": [],
+    "queue_runs": [
+      {
+        "job": {
+          "phase": "formal",
+          "hidden_dim": 128,
+          "seed": 42
+        },
+        "attempt": 1,
+        "pid": null,
+        "command": [],
+        "output_dir": "/home/gyf/work/polymer/from_scratch_gnn/models/capacity_scaling/artifacts/formal/C128/seed_42/attempt_01",
+        "started_at_utc": "2026-10-04T09:08:06+00:00",
+        "completed_at_utc": "2026-10-04T09:25:59+00:00",
+        "process_wall_seconds": 1073.1836464980006,
+        "log_path": "/tmp/stage5a_runs/formal/C128-seed42_attempt_01.log",
+        "status": "passed",
+        "return_code": 0
+      },
+      {
+        "job": {
+          "phase": "formal",
+          "hidden_dim": 384,
+          "seed": 42
+        },
+        "attempt": 1,
+        "pid": null,
+        "command": [],
+        "output_dir": "/home/gyf/work/polymer/from_scratch_gnn/models/capacity_scaling/artifacts/formal/C384/seed_42/attempt_01",
+        "started_at_utc": "2026-10-04T09:08:06+00:00",
+        "completed_at_utc": "2026-10-04T09:26:19+00:00",
+        "process_wall_seconds": 1093.0288153000001,
+        "log_path": "/tmp/stage5a_runs/formal/C384-seed42_attempt_01.log",
+        "status": "passed",
+        "return_code": 0
+      },
+      {
+        "job": {
+          "phase": "formal",
+          "hidden_dim": 512,
+          "seed": 42
+        },
+        "attempt": 1,
+        "pid": null,
+        "command": [],
+        "output_dir": "/home/gyf/work/polymer/from_scratch_gnn/models/capacity_scaling/artifacts/formal/C512/seed_42/attempt_01",
+        "started_at_utc": "2026-10-04T09:26:02+00:00",
+        "completed_at_utc": "2026-10-04T09:46:58+00:00",
+        "process_wall_seconds": 1255.9954901040037,
+        "log_path": "/tmp/stage5a_runs/formal/C512-seed42_attempt_01.log",
+        "status": "passed",
+        "return_code": 0
+      },
+      {
+        "job": {
+          "phase": "formal",
+          "hidden_dim": 128,
+          "seed": 43
+        },
+        "attempt": 1,
+        "pid": null,
+        "command": [],
+        "output_dir": "/home/gyf/work/polymer/from_scratch_gnn/models/capacity_scaling/artifacts/formal/C128/seed_43/attempt_01",
+        "started_at_utc": "2026-10-04T09:26:22+00:00",
+        "completed_at_utc": "2026-10-04T09:40:45+00:00",
+        "process_wall_seconds": 863.7025599580084,
+        "log_path": "/tmp/stage5a_runs/formal/C128-seed43_attempt_01.log",
+        "status": "passed",
+        "return_code": 0
+      },
+      {
+        "job": {
+          "phase": "formal",
+          "hidden_dim": 384,
+          "seed": 43
+        },
+        "attempt": 1,
+        "pid": null,
+        "command": [],
+        "output_dir": "/home/gyf/work/polymer/from_scratch_gnn/models/capacity_scaling/artifacts/formal/C384/seed_43/attempt_01",
+        "started_at_utc": "2026-10-04T09:40:48+00:00",
+        "completed_at_utc": "2026-10-04T09:57:58+00:00",
+        "process_wall_seconds": 1029.2427707799943,
+        "log_path": "/tmp/stage5a_runs/formal/C384-seed43_attempt_01.log",
+        "status": "passed",
+        "return_code": 0
+      },
+      {
+        "job": {
+          "phase": "formal",
+          "hidden_dim": 512,
+          "seed": 43
+        },
+        "attempt": 1,
+        "pid": null,
+        "command": [],
+        "output_dir": "/home/gyf/work/polymer/from_scratch_gnn/models/capacity_scaling/artifacts/formal/C512/seed_43/attempt_01",
+        "started_at_utc": "2026-10-04T09:47:01+00:00",
+        "completed_at_utc": "2026-10-04T10:07:29+00:00",
+        "process_wall_seconds": 1227.8205863610056,
+        "log_path": "/tmp/stage5a_runs/formal/C512-seed43_attempt_01.log",
+        "status": "passed",
+        "return_code": 0
+      },
+      {
+        "job": {
+          "phase": "formal",
+          "hidden_dim": 128,
+          "seed": 44
+        },
+        "attempt": 1,
+        "pid": null,
+        "command": [],
+        "output_dir": "/home/gyf/work/polymer/from_scratch_gnn/models/capacity_scaling/artifacts/formal/C128/seed_44/attempt_01",
+        "started_at_utc": "2026-10-04T09:58:00+00:00",
+        "completed_at_utc": "2026-10-04T10:12:59+00:00",
+        "process_wall_seconds": 898.7325999689929,
+        "log_path": "/tmp/stage5a_runs/formal/C128-seed44_attempt_01.log",
+        "status": "passed",
+        "return_code": 0
+      },
+      {
+        "job": {
+          "phase": "formal",
+          "hidden_dim": 384,
+          "seed": 44
+        },
+        "attempt": 1,
+        "pid": null,
+        "command": [],
+        "output_dir": "/home/gyf/work/polymer/from_scratch_gnn/models/capacity_scaling/artifacts/formal/C384/seed_44/attempt_01",
+        "started_at_utc": "2026-10-04T10:07:32+00:00",
+        "completed_at_utc": "2026-10-04T10:23:48+00:00",
+        "process_wall_seconds": 976.2465965890005,
+        "log_path": "/tmp/stage5a_runs/formal/C384-seed44_attempt_01.log",
+        "status": "passed",
+        "return_code": 0
+      },
+      {
+        "job": {
+          "phase": "formal",
+          "hidden_dim": 512,
+          "seed": 44
+        },
+        "attempt": 1,
+        "pid": null,
+        "command": [],
+        "output_dir": "/home/gyf/work/polymer/from_scratch_gnn/models/capacity_scaling/artifacts/formal/C512/seed_44/attempt_01",
+        "started_at_utc": "2026-10-04T10:13:02+00:00",
+        "completed_at_utc": "2026-10-04T10:31:02+00:00",
+        "process_wall_seconds": 1079.5616599070054,
+        "log_path": "/tmp/stage5a_runs/formal/C512-seed44_attempt_01.log",
+        "status": "passed",
+        "return_code": 0
+      },
+      {
+        "job": {
+          "phase": "formal",
+          "hidden_dim": 128,
+          "seed": 45
+        },
+        "attempt": 1,
+        "pid": null,
+        "command": [],
+        "output_dir": "/home/gyf/work/polymer/from_scratch_gnn/models/capacity_scaling/artifacts/formal/C128/seed_45/attempt_01",
+        "started_at_utc": "2026-10-04T10:23:52+00:00",
+        "completed_at_utc": "2026-10-04T10:39:16+00:00",
+        "process_wall_seconds": 924.6425754130032,
+        "log_path": "/tmp/stage5a_runs/formal/C128-seed45_attempt_01.log",
+        "status": "passed",
+        "return_code": 0
+      },
+      {
+        "job": {
+          "phase": "formal",
+          "hidden_dim": 384,
+          "seed": 45
+        },
+        "attempt": 1,
+        "pid": null,
+        "command": [],
+        "output_dir": "/home/gyf/work/polymer/from_scratch_gnn/models/capacity_scaling/artifacts/formal/C384/seed_45/attempt_01",
+        "started_at_utc": "2026-10-04T10:31:05+00:00",
+        "completed_at_utc": "2026-10-04T10:47:37+00:00",
+        "process_wall_seconds": 992.2414082010073,
+        "log_path": "/tmp/stage5a_runs/formal/C384-seed45_attempt_01.log",
+        "status": "passed",
+        "return_code": 0
+      },
+      {
+        "job": {
+          "phase": "formal",
+          "hidden_dim": 512,
+          "seed": 45
+        },
+        "attempt": 1,
+        "pid": null,
+        "command": [],
+        "output_dir": "/home/gyf/work/polymer/from_scratch_gnn/models/capacity_scaling/artifacts/formal/C512/seed_45/attempt_01",
+        "started_at_utc": "2026-10-04T10:39:19+00:00",
+        "completed_at_utc": "2026-10-04T10:56:10+00:00",
+        "process_wall_seconds": 1010.487815335,
+        "log_path": "/tmp/stage5a_runs/formal/C512-seed45_attempt_01.log",
+        "status": "passed",
+        "return_code": 0
+      },
+      {
+        "job": {
+          "phase": "formal",
+          "hidden_dim": 128,
+          "seed": 46
+        },
+        "attempt": 2,
+        "pid": null,
+        "command": [],
+        "output_dir": "/home/gyf/work/polymer/from_scratch_gnn/models/capacity_scaling/artifacts/formal/C128/seed_46/attempt_02",
+        "started_at_utc": "2026-10-04T11:19:13+00:00",
+        "completed_at_utc": "2026-10-04T11:33:21+00:00",
+        "process_wall_seconds": 848.8482127580064,
+        "log_path": "/tmp/stage5a_runs/formal_resume/C128-seed46_attempt_02.log",
+        "status": "passed",
+        "return_code": 0
+      },
+      {
+        "job": {
+          "phase": "formal",
+          "hidden_dim": 384,
+          "seed": 46
+        },
+        "attempt": 1,
+        "pid": null,
+        "command": [],
+        "output_dir": "/home/gyf/work/polymer/from_scratch_gnn/models/capacity_scaling/artifacts/formal/C384/seed_46/attempt_01",
+        "started_at_utc": "2026-10-04T11:19:13+00:00",
+        "completed_at_utc": "2026-10-04T11:38:28+00:00",
+        "process_wall_seconds": 1155.77328833699,
+        "log_path": "/tmp/stage5a_runs/formal_resume/C384-seed46_attempt_01.log",
+        "status": "passed",
+        "return_code": 0
+      },
+      {
+        "job": {
+          "phase": "formal",
+          "hidden_dim": 512,
+          "seed": 46
+        },
+        "attempt": 1,
+        "pid": null,
+        "command": [],
+        "output_dir": "/home/gyf/work/polymer/from_scratch_gnn/models/capacity_scaling/artifacts/formal/C512/seed_46/attempt_01",
+        "started_at_utc": "2026-10-04T11:33:25+00:00",
+        "completed_at_utc": "2026-10-04T11:48:38+00:00",
+        "process_wall_seconds": 913.0243760719895,
+        "log_path": "/tmp/stage5a_runs/formal_resume/C512-seed46_attempt_01.log",
+        "status": "passed",
+        "return_code": 0
+      },
+      {
+        "job": {
+          "phase": "formal",
+          "hidden_dim": 128,
+          "seed": 46
+        },
+        "attempt": 1,
+        "pid": null,
+        "command": [],
+        "output_dir": "/home/gyf/work/polymer/from_scratch_gnn/models/capacity_scaling/artifacts/formal/C128/seed_46/attempt_01",
+        "status": "interrupted",
+        "return_code": null,
+        "reason": "SSH transport timeout killed the original queue process before run completion; partial checkpoints/summaries were preserved and excluded from aggregation."
+      }
+    ]
+  },
+  "resource_monitor_coverage": "The initial 12-job queue held its resource samples only in memory and lost them when SSH transport timed out; these host CPU/RAM peaks cover the resumed 3-job segment only. Per-fold GPU utilization and VRAM are present in all 15 run_metadata files.",
+  "historical_reuse": {
+    "C256_new_formal_runs": 0,
+    "seeds": [
+      42,
+      43,
+      44,
+      45,
+      46
+    ],
+    "artifact_directories": {
+      "42": "models/own_gnn_repr_keep_dummy/artifacts/production_gpu_20261003",
+      "43": "models/own_gnn_repr_keep_dummy/artifacts/paired_seed_43",
+      "44": "models/own_gnn_repr_keep_dummy/artifacts/paired_seed_44",
+      "45": "models/own_gnn_repr_keep_dummy/artifacts/paired_seed_45",
+      "46": "models/own_gnn_repr_keep_dummy/artifacts/paired_seed_46"
+    }
+  },
+  "new_formal_runs": 15,
+  "no_other_scientific_variable_changed": true
+}

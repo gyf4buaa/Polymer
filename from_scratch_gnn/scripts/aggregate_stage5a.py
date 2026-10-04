@@ -281,7 +281,7 @@ def _paired_summary(
     return result
 
 
-def _write_capacity_curve(path: Path, widths: Mapping[int, Mapping[str, Any]]) -> None:
+def _write_capacity_curve(path: Path, widths: Mapping[str, Mapping[str, Any]]) -> None:
     columns = (
         "hidden_dim",
         "parameter_count",
@@ -295,7 +295,7 @@ def _write_capacity_curve(path: Path, widths: Mapping[int, Mapping[str, Any]]) -
         writer = csv.DictWriter(output, fieldnames=columns, lineterminator="\n")
         writer.writeheader()
         for width in WIDTHS:
-            item = widths[width]
+            item = widths[str(width)]
             writer.writerow(
                 {
                     "hidden_dim": width,
@@ -397,18 +397,21 @@ def _markdown(summary: Mapping[str, Any]) -> str:
             item = summary["paired"][str(width)]["per_target"][target]
             cells.append(f"{item['mean']:+.8g} ± {item['sample_sd']:.3g}")
         lines.append(f"| {target} | " + " | ".join(cells) + " |")
-    lines.extend(["", "## Cost and training behavior", "", "| Width | Mean fold epoch (s) | Mean seed runtime (s) | Peak PyTorch allocated / reserved (MiB) | Peak nvidia-smi VRAM (MiB) | Mean GPU util (%) | Mean best epoch | Mean train loss at best epoch |", "|---:|---:|---:|---:|---:|---:|---:|---:|"])
+    lines.extend(["", "## Cost and training behavior", "", "| Width | Mean fold epoch (s) | Mean seed runtime (s) | Peak PyTorch allocated / reserved (MiB) | Peak nvidia-smi VRAM (MiB) | Mean GPU util (%) | Mean best epoch | Mean best validation wMAE | Mean epochs completed (min–max) | Mean train loss at best epoch |", "|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|"])
     for width in WIDTHS:
         item = summary["widths"][str(width)]
         perf = item["performance"]
         behavior = item["training_behavior"]
+        completed_epochs = [row["epochs_completed"] for row in behavior["early_stop_epochs"]]
         lines.append(
             f"| {width} | {perf['mean_fold_epoch_seconds']:.3f} | {perf['mean_seed_runtime_seconds']:.1f} | "
             f"{perf['peak_pytorch_allocated_mb']:.1f} / {perf['peak_pytorch_reserved_mb']:.1f} | "
             f"{perf['peak_nvidia_smi_vram_mb']:.1f} | {perf['mean_gpu_utilization_percent']:.1f} | "
-            f"{behavior['mean_best_epoch']:.1f} | {behavior['mean_training_loss_at_best_epoch']:.6g} |"
+            f"{behavior['mean_best_epoch']:.1f} | {behavior['mean_best_validation_wmae']:.8f} | "
+            f"{behavior['mean_epochs_completed']:.1f} ({min(completed_epochs)}–{max(completed_epochs)}) | "
+            f"{behavior['mean_training_loss_at_best_epoch']:.6g} |"
         )
-    lines.extend(["", "## Execution", "", f"- Actual concurrency: {summary['execution']['concurrency']}", f"- Formal wall time: {summary['execution']['formal_wall_seconds']:.1f} s", f"- Summed process wall time: {summary['execution']['summed_process_wall_seconds']:.1f} s", f"- Host CPU peak: {summary['execution']['host_cpu_peak_percent']:.1f}%", f"- Host RAM peak: {summary['execution']['host_ram_peak_mb']:.1f} MiB", "", "## Interpretation", "", "Use the paired deltas and five-seed consistency as descriptive engineering evidence. Do not interpret these summaries as a formal significance test.", ""])
+    lines.extend(["", "Per-fold `best_epoch` and `epochs_completed` values are retained in `aggregate_summary.json` as the early-stop distribution.", "", "## Execution", "", f"- Actual concurrency: {summary['execution']['concurrency']} (maximum observed: {summary['execution']['max_observed_active_jobs']})", f"- Formal wall time: {summary['execution']['formal_wall_seconds']:.1f} s", f"- Summed process/training time: {summary['execution']['summed_process_wall_seconds']:.1f} s", f"- Sampled GPU utilization mean / peak: {summary['execution']['mean_gpu_utilization_percent']:.1f}% / {summary['execution']['peak_gpu_utilization_percent']:.1f}%", f"- Peak nvidia-smi VRAM: {summary['execution']['peak_nvidia_smi_vram_mb']:.1f} MiB", f"- Host CPU peak: {summary['execution']['host_cpu_peak_percent']:.1f}%", f"- Host RAM peak: {summary['execution']['host_ram_peak_mb']:.1f} MiB", f"- Host CPU/RAM peak coverage: {summary['resource_monitor_coverage']}", "- One C128-seed46 attempt was interrupted by an SSH timeout before completion and excluded; attempt 02 completed from the same frozen source/config. All 15 preregistered runs passed.", "", "## Interpretation", "", "Use the paired deltas and five-seed consistency as descriptive engineering evidence. Do not interpret these summaries as a formal significance test.", ""])
     return "\n".join(lines)
 
 
@@ -498,6 +501,7 @@ def aggregate(
             ],
             "queue_runs": queue_notes.get("runs", []),
         },
+        "resource_monitor_coverage": notes.get("host_resource_sampling_coverage", ""),
         "historical_reuse": {
             "C256_new_formal_runs": 0,
             "seeds": list(SEEDS),
