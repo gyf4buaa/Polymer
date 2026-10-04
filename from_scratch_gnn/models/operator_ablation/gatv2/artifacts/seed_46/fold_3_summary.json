@@ -1,0 +1,46 @@
+{
+  "fold": 3,
+  "sample_count": 1594,
+  "train_sample_count": 6379,
+  "best_epoch": 65,
+  "epochs_completed": 105,
+  "best_validation_wmae": 0.024175645983408323,
+  "Tg_mae": 54.253064199904365,
+  "FFV_mae": 0.005892658213313075,
+  "Tc_mae": 0.024532830539335262,
+  "Density_mae": 0.029503623094948233,
+  "Rg_mae": 1.5799083888797338,
+  "seed": 49,
+  "duration_seconds": 132.1179350589955,
+  "seconds_per_epoch": 1.2582660481809096,
+  "training_samples_per_second": 5069.675057371371,
+  "peak_vram_allocated_mb": 162.65087890625,
+  "peak_vram_reserved_mb": 208.0,
+  "gpu_utilization_sample_count": 9,
+  "gpu_utilization_mean_percent": 35.55555555555556,
+  "gpu_utilization_max_percent": 40.0,
+  "nvidia_smi_peak_memory_used_mb": 1924.0,
+  "checkpoint_path": "/home/gyf/work/polymer/from_scratch_gnn/models/operator_ablation/gatv2/artifacts/seed_46/checkpoints/fold_3_best.pt",
+  "normalizer": {
+    "Tg": {
+      "mean": 97.24972917316666,
+      "std": 112.09589903923602
+    },
+    "FFV": {
+      "mean": 0.3672064315779197,
+      "std": 0.02917091544594437
+    },
+    "Tc": {
+      "mean": 0.2549583431719796,
+      "std": 0.08956686465999587
+    },
+    "Density": {
+      "mean": 0.9843351114269777,
+      "std": 0.14595462039648974
+    },
+    "Rg": {
+      "mean": 16.315414667957317,
+      "std": 4.444335945833389
+    }
+  }
+}

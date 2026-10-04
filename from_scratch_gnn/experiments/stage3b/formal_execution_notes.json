@@ -1,0 +1,20 @@
+{
+  "experiment": "Stage 3B message-passing operator ablation",
+  "formal_source_commit": "c57d016cc65c1b74e00b89e9ff1ba40acf59a0c9",
+  "successful_formal_runs": {
+    "gatv2": 5,
+    "pna": 5
+  },
+  "interrupted_attempts": [
+    {
+      "operator": "gatv2",
+      "seed": 46,
+      "attempt": 1,
+      "source_commit": "c57d016cc65c1b74e00b89e9ff1ba40acf59a0c9",
+      "event": "SSH transport timed out during fold 1 after fold 0 had completed; the incomplete run produced no complete OOF/metrics artifact. No training, CUDA, or model exception was reported before transport loss.",
+      "resolution": "The partial directory was preserved on the RTX workspace under models/operator_ablation/gatv2/artifacts/interrupted/seed_46_attempt1_ssh_timeout_20261004/ and excluded from the scientific aggregate. Seed 46 was rerun once with the same source commit, config, folds, and training settings; only its complete successful artifact is included."
+    }
+  ],
+  "successful_formal_runtime_seconds": 12360.825005696002,
+  "successful_formal_runtime_excludes_interrupted_attempt": true
+}

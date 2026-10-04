@@ -1,0 +1,23 @@
+{
+  "experiment_id": "own_gnn_operator_pna",
+  "operator": "pna",
+  "seed": 43,
+  "status": "formal_oof_model",
+  "source_commit": "c57d016cc65c1b74e00b89e9ff1ba40acf59a0c9",
+  "train_sha256": "1f79c85c785698e8c3499d99721adfe3be9660a487f137a923dd34eb7ef845e1",
+  "folds_sha256": "1bb066dd45d9b9a0f7861efbe7efd38c438522519ed36a745bf61f2a9191284a",
+  "effective_config_sha256": "d1f5f318b7727a37266efc17b7b353d89463b41daeac8049250447b61c29617f",
+  "overall_oof_wmae": 0.032828211742291516,
+  "target_mae": {
+    "Tg": 54.52716666124649,
+    "FFV": 0.011500622495479415,
+    "Tc": 0.03438881793164859,
+    "Density": 0.06240571012229409,
+    "Rg": 1.9987737749078633
+  },
+  "run_metadata": "models/operator_ablation/pna/artifacts/seed_43/run_metadata.json",
+  "parameter_count": {
+    "trainable": 5176581,
+    "message_passing_blocks": 4476928
+  }
+}
