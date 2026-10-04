@@ -1,0 +1,229 @@
+{
+  "schema_version": "stage4a_global_features_v1",
+  "source": {
+    "sample_count": 7973,
+    "smiles_source": "raw benchmark SMILES parsed directly by RDKit; original dummy atoms retained",
+    "labels_read": false,
+    "data_sha256": "1f79c85c785698e8c3499d99721adfe3be9660a487f137a923dd34eb7ef845e1"
+  },
+  "rdkit_version": "2026.03.2",
+  "descriptors": {
+    "names_in_order": [
+      "MolWt",
+      "MolLogP",
+      "MolMR",
+      "TPSA",
+      "LabuteASA",
+      "HeavyAtomCount",
+      "NumHeteroatoms",
+      "NumHDonors",
+      "NumHAcceptors",
+      "NumRotatableBonds",
+      "RingCount",
+      "NumAromaticRings",
+      "NumAliphaticRings",
+      "NumSaturatedRings",
+      "NumAromaticHeterocycles",
+      "NumAliphaticHeterocycles",
+      "NumSaturatedHeterocycles",
+      "NumAromaticCarbocycles",
+      "NumAliphaticCarbocycles",
+      "FractionCSP3"
+    ],
+    "shape": [
+      7973,
+      20
+    ],
+    "dtype": "float64 little-endian C-order",
+    "raw_matrix_sha256": "e492d9ea669f5d138f91a651a808924d0aed266d807091bb959b56039635a0fb",
+    "nonfinite_count": 0,
+    "nonfinite_count_by_descriptor": {
+      "MolWt": 0,
+      "MolLogP": 0,
+      "MolMR": 0,
+      "TPSA": 0,
+      "LabuteASA": 0,
+      "HeavyAtomCount": 0,
+      "NumHeteroatoms": 0,
+      "NumHDonors": 0,
+      "NumHAcceptors": 0,
+      "NumRotatableBonds": 0,
+      "RingCount": 0,
+      "NumAromaticRings": 0,
+      "NumAliphaticRings": 0,
+      "NumSaturatedRings": 0,
+      "NumAromaticHeterocycles": 0,
+      "NumAliphaticHeterocycles": 0,
+      "NumSaturatedHeterocycles": 0,
+      "NumAromaticCarbocycles": 0,
+      "NumAliphaticCarbocycles": 0,
+      "FractionCSP3": 0
+    },
+    "constant_columns": [],
+    "statistics": {
+      "MolWt": {
+        "min": 14.027,
+        "max": 2202.4819999999986,
+        "mean": 442.4839197003247,
+        "std_population": 239.97672219765647,
+        "constant": false
+      },
+      "MolLogP": {
+        "min": -4.822899999999999,
+        "max": 31.011400000000112,
+        "mean": 5.5722816982315315,
+        "std_population": 3.7019880521325836,
+        "constant": false
+      },
+      "MolMR": {
+        "min": 4.807,
+        "max": 615.9180000000018,
+        "mean": 123.3541505957606,
+        "std_population": 67.81980120421336,
+        "constant": false
+      },
+      "TPSA": {
+        "min": 0.0,
+        "max": 437.2600000000002,
+        "mean": 66.11108365734353,
+        "std_population": 47.085493658197386,
+        "constant": false
+      },
+      "LabuteASA": {
+        "min": 8.739251027829551,
+        "max": 950.1995874282948,
+        "mean": 189.37209908156063,
+        "std_population": 102.08405824371098,
+        "constant": false
+      },
+      "HeavyAtomCount": {
+        "min": 1.0,
+        "max": 164.0,
+        "mean": 32.28007023705005,
+        "std_population": 17.962702286066783,
+        "constant": false
+      },
+      "NumHeteroatoms": {
+        "min": 2.0,
+        "max": 54.0,
+        "mean": 8.23479242443246,
+        "std_population": 4.601741807843606,
+        "constant": false
+      },
+      "NumHDonors": {
+        "min": 0.0,
+        "max": 9.0,
+        "mean": 0.8724445001881349,
+        "std_population": 1.2449459374378569,
+        "constant": false
+      },
+      "NumHAcceptors": {
+        "min": 0.0,
+        "max": 45.0,
+        "mean": 4.382039382917346,
+        "std_population": 2.905689891203065,
+        "constant": false
+      },
+      "NumRotatableBonds": {
+        "min": 0.0,
+        "max": 92.0,
+        "mean": 9.004891508842343,
+        "std_population": 6.46650827263676,
+        "constant": false
+      },
+      "RingCount": {
+        "min": 0.0,
+        "max": 18.0,
+        "mean": 3.674651950332372,
+        "std_population": 3.0808749874782086,
+        "constant": false
+      },
+      "NumAromaticRings": {
+        "min": 0.0,
+        "max": 16.0,
+        "mean": 3.038003261005895,
+        "std_population": 2.6249649263193544,
+        "constant": false
+      },
+      "NumAliphaticRings": {
+        "min": 0.0,
+        "max": 10.0,
+        "mean": 0.6366486893264769,
+        "std_population": 1.049769360213182,
+        "constant": false
+      },
+      "NumSaturatedRings": {
+        "min": 0.0,
+        "max": 10.0,
+        "mean": 0.20845353066599775,
+        "std_population": 0.7047126159428372,
+        "constant": false
+      },
+      "NumAromaticHeterocycles": {
+        "min": 0.0,
+        "max": 6.0,
+        "mean": 0.1881349554747272,
+        "std_population": 0.5819085237494637,
+        "constant": false
+      },
+      "NumAliphaticHeterocycles": {
+        "min": 0.0,
+        "max": 4.0,
+        "mean": 0.40499184748526273,
+        "std_population": 0.7843701862301967,
+        "constant": false
+      },
+      "NumSaturatedHeterocycles": {
+        "min": 0.0,
+        "max": 4.0,
+        "mean": 0.07111501316944688,
+        "std_population": 0.33981531706117163,
+        "constant": false
+      },
+      "NumAromaticCarbocycles": {
+        "min": 0.0,
+        "max": 16.0,
+        "mean": 2.8498683055311678,
+        "std_population": 2.483592019468433,
+        "constant": false
+      },
+      "NumAliphaticCarbocycles": {
+        "min": 0.0,
+        "max": 10.0,
+        "mean": 0.2316568418412141,
+        "std_population": 0.7238158750231769,
+        "constant": false
+      },
+      "FractionCSP3": {
+        "min": 0.0,
+        "max": 1.0,
+        "mean": 0.34267252633510886,
+        "std_population": 0.3195443692693549,
+        "constant": false
+      }
+    },
+    "source_data_sha256": "1f79c85c785698e8c3499d99721adfe3be9660a487f137a923dd34eb7ef845e1"
+  },
+  "morgan": {
+    "algorithm": "Morgan bit fingerprint via rdkit.Chem.rdFingerprintGenerator.GetMorganGenerator",
+    "radius": 2,
+    "bit_count": 2048,
+    "chirality": true,
+    "representation": "binary bit fingerprint",
+    "shape": [
+      7973,
+      2048
+    ],
+    "dtype": "uint8 C-order",
+    "raw_matrix_sha256": "56a419b2a9b3fa28bc6860f636421d11f5165b16c0a2ecbe91180c9852d99ca9",
+    "average_bits_on": 37.95359337764957,
+    "min_bits_on": 4,
+    "max_bits_on": 117,
+    "duplicate_fingerprint_rows": 1133,
+    "duplicate_fingerprint_groups": 519,
+    "target_based_selection": false,
+    "released_label_adjustment": false,
+    "augmentation": false,
+    "source_data_sha256": "1f79c85c785698e8c3499d99721adfe3be9660a487f137a923dd34eb7ef845e1"
+  }
+}

@@ -1,0 +1,11 @@
+# Stage 4A disposable matrices and model weights stay outside source/results commits.
+from_scratch_gnn/models/global_information_augmentation/**/artifacts/cache/
+from_scratch_gnn/models/global_information_augmentation/**/artifacts/formal/
+from_scratch_gnn/models/global_information_augmentation/**/artifacts/**/checkpoints/
+from_scratch_gnn/models/global_information_augmentation/**/artifacts/**/*.pt
+from_scratch_gnn/models/global_information_augmentation/**/artifacts/**/*.npz
+from_scratch_gnn/models/global_information_augmentation/**/artifacts/**/logs/
+from_scratch_gnn/models/global_information_augmentation/**/artifacts/tiny/
+from_scratch_gnn/models/global_information_augmentation/**/artifacts/smoke/
+from_scratch_gnn/models/global_information_augmentation/**/artifacts/smoke_pilot/
+from_scratch_gnn/models/global_information_augmentation/**/artifacts/pilot/

@@ -567,6 +567,20 @@ For every addition, compare against the immediately preceding model using the sa
 
 The purpose is to measure **complementary information**, not simply accumulate features.
 
+### Stage 4A result (complete)
+
+Stage 4A tested fixed RDKit global descriptors (D) and a binary Morgan fingerprint (M) as separate, zero-initialized residual projections after the frozen 512-dimensional graph readout. The historical graph-only model G0 reused its five OOF seeds; each new variant completed five frozen five-fold OOF runs on the same seeds. No graph, fold, target scaling, or training settings changed.
+
+| Model | OOF wMAE, mean ± sample SD | Paired delta vs G0 | Seeds with lower wMAE |
+|---|---:|---:|---:|
+| G0 | 0.02278541 ± 0.00010244 | — | — |
+| D | 0.02303453 ± 0.00007864 | +0.00024912 ± 0.00013927 | 0/5 |
+| M | 0.02587587 ± 0.00014020 | +0.00309046 ± 0.00022608 | 0/5 |
+
+D had lower error than M in all five seeds, but both were worse than G0 in every seed. D improved Tg and Rg on average while worsening FFV, Tc, and Density; M worsened all five targets. The preregistered stability rule was a negative paired mean delta and improvement in at least four of five seeds, so neither variant qualifies. D+M was not trained, and Stage 4B is not warranted by this result. **G0 remains the model to carry forward.**
+
+D adds 10,240 trainable projection parameters (1,253,897 total); M adds 1,048,576 (2,292,233 total) to G0's 1,243,657. Any Morgan result therefore also reflects the substantially larger model capacity. The 20 descriptors covered all 7,973 original SMILES with no non-finite or constant columns. Feature matrix hashes, full per-seed and per-target tables, fold scalers, diagnostics, runtime, and execution notes are recorded in the [Stage 4A aggregate report](experiments/stage4a/aggregate_summary.md) and [feature manifest](experiments/stage4a/feature_manifest.json).
+
 ---
 
 ## Stage 5 — Final ablation

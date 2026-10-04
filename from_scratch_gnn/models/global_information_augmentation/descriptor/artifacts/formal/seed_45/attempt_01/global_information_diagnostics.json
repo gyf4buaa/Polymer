@@ -1,0 +1,44 @@
+{
+  "stage": "4A",
+  "variant": "D",
+  "projection_l2_norm_by_fold": {
+    "0": 4.018523216247559,
+    "1": 5.120055675506592,
+    "2": 4.1775336265563965,
+    "3": 5.809566020965576,
+    "4": 4.960529327392578
+  },
+  "projection_l2_norm_mean": 4.817241573333741,
+  "descriptor_projection_column_l2_norm_fold_4": {
+    "MolWt": 0.706220269203186,
+    "MolLogP": 0.8809931874275208,
+    "MolMR": 0.7989212274551392,
+    "TPSA": 0.8917933702468872,
+    "LabuteASA": 0.6495251655578613,
+    "HeavyAtomCount": 0.6470186114311218,
+    "NumHeteroatoms": 1.3090629577636719,
+    "NumHDonors": 1.312903642654419,
+    "NumHAcceptors": 0.9775335192680359,
+    "NumRotatableBonds": 1.965006947517395,
+    "RingCount": 1.0877034664154053,
+    "NumAromaticRings": 1.147842288017273,
+    "NumAliphaticRings": 1.0782536268234253,
+    "NumSaturatedRings": 1.2398724555969238,
+    "NumAromaticHeterocycles": 1.1262375116348267,
+    "NumAliphaticHeterocycles": 1.100644826889038,
+    "NumSaturatedHeterocycles": 1.0519022941589355,
+    "NumAromaticCarbocycles": 1.2184865474700928,
+    "NumAliphaticCarbocycles": 1.3446091413497925,
+    "FractionCSP3": 0.8509427309036255
+  },
+  "descriptor_train_fold_scaler_files": [
+    "fold_scalers/fold_0.json",
+    "fold_scalers/fold_1.json",
+    "fold_scalers/fold_2.json",
+    "fold_scalers/fold_3.json",
+    "fold_scalers/fold_4.json"
+  ],
+  "morgan_average_bits_on": 37.95359337764957,
+  "morgan_duplicate_fingerprint_rows": 1133,
+  "selection_role": "diagnostic only; no feature selection or model selection"
+}

@@ -1,0 +1,17 @@
+{
+  "stage": "4A",
+  "variant": "M",
+  "projection_l2_norm_by_fold": {
+    "0": 34.529361724853516,
+    "1": 21.116167068481445,
+    "2": 23.09153175354004,
+    "3": 30.056293487548828,
+    "4": 42.6575927734375
+  },
+  "projection_l2_norm_mean": 30.290189361572267,
+  "descriptor_projection_column_l2_norm_fold_4": null,
+  "descriptor_train_fold_scaler_files": [],
+  "morgan_average_bits_on": 37.95359337764957,
+  "morgan_duplicate_fingerprint_rows": 1133,
+  "selection_role": "diagnostic only; no feature selection or model selection"
+}
