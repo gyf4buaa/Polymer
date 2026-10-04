@@ -1,0 +1,41 @@
+{
+  "stage": "5A",
+  "phase": "pre-formal-source CPU tiny-overfit",
+  "train_sha256": "1f79c85c785698e8c3499d99721adfe3be9660a487f137a923dd34eb7ef845e1",
+  "selection_role": "sanity only; not used for model selection",
+  "runs": {
+    "128": {
+      "status": "passed",
+      "device": "cpu",
+      "steps": 120,
+      "initial_masked_huber_loss": 0.3262626528739929,
+      "final_masked_huber_loss": 0.00166998035274446,
+      "relative_loss_reduction": 0.9948814847852371,
+      "forward_backward_finite": true,
+      "checkpoint_round_trip": true,
+      "checkpoint_max_prediction_delta": 0.0
+    },
+    "384": {
+      "status": "passed",
+      "device": "cpu",
+      "steps": 120,
+      "initial_masked_huber_loss": 0.334285169839859,
+      "final_masked_huber_loss": 0.0030947797931730747,
+      "relative_loss_reduction": 0.9907420966516234,
+      "forward_backward_finite": true,
+      "checkpoint_round_trip": true,
+      "checkpoint_max_prediction_delta": 0.0
+    },
+    "512": {
+      "status": "passed",
+      "device": "cpu",
+      "steps": 120,
+      "initial_masked_huber_loss": 0.3209560215473175,
+      "final_masked_huber_loss": 0.004507589153945446,
+      "relative_loss_reduction": 0.9859557420601909,
+      "forward_backward_finite": true,
+      "checkpoint_round_trip": true,
+      "checkpoint_max_prediction_delta": 0.0
+    }
+  }
+}
