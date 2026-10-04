@@ -15,6 +15,7 @@ baselines/third_party_gatv2/artifacts/
 models/own_gnn_v0/artifacts/
 models/own_gnn_repr_keep_dummy/artifacts/
 models/own_gnn_repr_endpoint_marker/artifacts/
+models/elemental_physical_priors/artifacts/
 models/operator_ablation/gatv2/artifacts/
 models/operator_ablation/pna/artifacts/
 # Stage 3C compact formal run evidence is versioned. Keep nonformal and bulky
