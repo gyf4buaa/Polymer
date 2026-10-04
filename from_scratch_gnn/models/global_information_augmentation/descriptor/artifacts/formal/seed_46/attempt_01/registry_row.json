@@ -1,0 +1,19 @@
+{
+  "experiment_id": "own_gnn_stage4a_descriptor_seed_46",
+  "variant": "D",
+  "seed": 46,
+  "status": "formal_oof_model",
+  "source_commit": "64cbe8e540fd4347c929b6364d0d598488cf96f4",
+  "train_sha256": "1f79c85c785698e8c3499d99721adfe3be9660a487f137a923dd34eb7ef845e1",
+  "folds_sha256": "1bb066dd45d9b9a0f7861efbe7efd38c438522519ed36a745bf61f2a9191284a",
+  "effective_config_sha256": "09fd214953e92cc883a55121fa53d4e2b5aa275dacb3a94cfd3ffe6d02bc2303",
+  "overall_oof_wmae": 0.023025586230074585,
+  "target_mae": {
+    "Tg": 51.49837395766006,
+    "FFV": 0.006023302408129203,
+    "Tc": 0.02483073438645567,
+    "Density": 0.025658896277296325,
+    "Rg": 1.6018230163198504
+  },
+  "run_metadata": "models/global_information_augmentation/descriptor/artifacts/formal/seed_46/attempt_01/run_metadata.json"
+}

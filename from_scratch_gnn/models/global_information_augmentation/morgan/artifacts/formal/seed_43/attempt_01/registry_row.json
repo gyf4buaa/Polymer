@@ -1,0 +1,19 @@
+{
+  "experiment_id": "own_gnn_stage4a_morgan_seed_43",
+  "variant": "M",
+  "seed": 43,
+  "status": "formal_oof_model",
+  "source_commit": "64cbe8e540fd4347c929b6364d0d598488cf96f4",
+  "train_sha256": "1f79c85c785698e8c3499d99721adfe3be9660a487f137a923dd34eb7ef845e1",
+  "folds_sha256": "1bb066dd45d9b9a0f7861efbe7efd38c438522519ed36a745bf61f2a9191284a",
+  "effective_config_sha256": "ac425fe16ba5084feea0e04e49802cad3bc9b58104e789776b87332728ce6adb",
+  "overall_oof_wmae": 0.026105033558281008,
+  "target_mae": {
+    "Tg": 57.78192002090088,
+    "FFV": 0.007322036750064019,
+    "Tc": 0.027397658897357097,
+    "Density": 0.03623854246921858,
+    "Rg": 1.642582450649551
+  },
+  "run_metadata": "models/global_information_augmentation/morgan/artifacts/formal/seed_43/attempt_01/run_metadata.json"
+}

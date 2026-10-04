@@ -1,0 +1,271 @@
+{
+  "formal_wall_seconds": 3477.784348596004,
+  "concurrency": 2,
+  "throughput_pilot": {
+    "single_lane": {
+      "wall_seconds": 20.208273355994606,
+      "jobs": {
+        "D": {
+          "return_code": 0,
+          "training_seconds": 6.945626651009661,
+          "process_wall_seconds": 10.098727917007636,
+          "seconds_per_epoch": 1.3053034087992272,
+          "peak_vram_allocated_mb": 124.71142578125,
+          "projection_l2_norm": 2.7508881092071533,
+          "verification_status": "passed",
+          "log_path": "/tmp/stage4a_pilot_logs/measured_serial_D_seed_43.log"
+        },
+        "M": {
+          "return_code": 0,
+          "training_seconds": 7.08922681499098,
+          "process_wall_seconds": 10.108826838986715,
+          "seconds_per_epoch": 1.3299802166002337,
+          "peak_vram_allocated_mb": 141.97607421875,
+          "projection_l2_norm": 18.62412452697754,
+          "verification_status": "passed",
+          "log_path": "/tmp/stage4a_pilot_logs/measured_serial_M_seed_43.log"
+        }
+      },
+      "resource_samples": {
+        "mean_cpu_percent": 9.036456921162863,
+        "max_cpu_percent": 20.863309352517987,
+        "mean_ram_used_mb": 1812.673828125,
+        "max_ram_used_mb": 2209.13671875,
+        "mean_gpu_util_percent": 19.73076923076923,
+        "max_gpu_util_percent": 37.0,
+        "max_gpu_memory_used_mb": 4413.0,
+        "gpu_total_memory_mb": 12282.0
+      }
+    },
+    "two_lane": {
+      "wall_seconds": 11.77111080600298,
+      "jobs": {
+        "D": {
+          "return_code": 0,
+          "training_seconds": 8.681872183995438,
+          "process_wall_seconds": 11.77072083701205,
+          "seconds_per_epoch": 1.6438111651979852,
+          "peak_vram_allocated_mb": 124.71142578125,
+          "projection_l2_norm": 2.5452792644500732,
+          "verification_status": "passed",
+          "log_path": "/tmp/stage4a_pilot_logs/measured_parallel_D_seed_43.log"
+        },
+        "M": {
+          "return_code": 0,
+          "training_seconds": 8.681056563000311,
+          "process_wall_seconds": 11.77055072800431,
+          "seconds_per_epoch": 1.6440222770004767,
+          "peak_vram_allocated_mb": 141.97607421875,
+          "projection_l2_norm": 23.00569725036621,
+          "verification_status": "passed",
+          "log_path": "/tmp/stage4a_pilot_logs/measured_parallel_M_seed_43.log"
+        }
+      },
+      "resource_samples": {
+        "mean_cpu_percent": 16.687950700073262,
+        "max_cpu_percent": 30.62438057482656,
+        "mean_ram_used_mb": 2901.4828125,
+        "max_ram_used_mb": 3532.8671875,
+        "mean_gpu_util_percent": 54.0,
+        "max_gpu_util_percent": 81.0,
+        "max_gpu_memory_used_mb": 4754.0,
+        "gpu_total_memory_mb": 12282.0
+      }
+    },
+    "speedup": 1.7167685946587878,
+    "wall_time_reduction_percent": 41.75103137888233
+  },
+  "cpu_ram_bottleneck": "No pilot CPU/RAM bottleneck: two-lane max CPU 30.6%, peak WSL RAM 3533 MiB; formal max CPU 22.3%, peak WSL RAM 3503 MiB.",
+  "engineering_failures": [
+    {
+      "stage": "pre-formal CUDA smoke",
+      "issue": "Linux RDKit descriptor byte hash differed from the macOS raw matrix despite matching version and summary statistics.",
+      "remediation": "Transferred the audited feature cache; both descriptor and Morgan matrices pass committed manifest hashes.",
+      "formal_impact": "No formal runs were attempted before the cache matched."
+    },
+    {
+      "stage": "pre-formal CUDA smoke",
+      "issue": "Initial fold adapter dropped rows, fold_ids, and output_dir when calling the frozen trainer.",
+      "remediation": "Fixed in the final source commit and added a regression test.",
+      "formal_impact": "No formal runs were attempted before the fix."
+    }
+  ],
+  "formal_started_at": "2026-10-04T12:19:31+0800",
+  "formal_source_commit": "64cbe8e540fd4347c929b6364d0d598488cf96f4",
+  "completed_seed_pairs": [
+    {
+      "seed": 42,
+      "concurrency": 2,
+      "pair_wall_seconds": 780.2539931939973,
+      "jobs": {
+        "D": {
+          "return_code": 0,
+          "wall_seconds": 780.2531001380121,
+          "log_path": "/tmp/stage4a_formal_logs/descriptor_seed_42.log",
+          "attempt_dir": "from_scratch_gnn/models/global_information_augmentation/descriptor/artifacts/formal/seed_42/attempt_01",
+          "training_runtime_seconds": 778.1919126700086,
+          "overall_oof_wmae": 0.022901366503618594,
+          "fold_count": 5,
+          "git_commit": "64cbe8e540fd4347c929b6364d0d598488cf96f4"
+        },
+        "M": {
+          "return_code": 0,
+          "wall_seconds": 780.2529581670096,
+          "log_path": "/tmp/stage4a_formal_logs/morgan_seed_42.log",
+          "attempt_dir": "from_scratch_gnn/models/global_information_augmentation/morgan/artifacts/formal/seed_42/attempt_01",
+          "training_runtime_seconds": 411.52695657299773,
+          "overall_oof_wmae": 0.025907086546754398,
+          "fold_count": 5,
+          "git_commit": "64cbe8e540fd4347c929b6364d0d598488cf96f4"
+        }
+      },
+      "resource_summary": {
+        "mean_gpu_utilization_percent": 57.63376623376623,
+        "max_gpu_memory_used_mb": 4795.0,
+        "max_cpu_utilization_percent": 21.71314741035857,
+        "max_ram_used_mb": 3478.97265625
+      }
+    },
+    {
+      "seed": 43,
+      "concurrency": 2,
+      "pair_wall_seconds": 630.177718499006,
+      "jobs": {
+        "D": {
+          "return_code": 0,
+          "wall_seconds": 630.176797239008,
+          "log_path": "/tmp/stage4a_formal_logs/descriptor_seed_43.log",
+          "attempt_dir": "from_scratch_gnn/models/global_information_augmentation/descriptor/artifacts/formal/seed_43/attempt_01",
+          "training_runtime_seconds": 626.2264901900053,
+          "overall_oof_wmae": 0.02308704739261798,
+          "fold_count": 5,
+          "git_commit": "64cbe8e540fd4347c929b6364d0d598488cf96f4"
+        },
+        "M": {
+          "return_code": 0,
+          "wall_seconds": 630.176642942999,
+          "log_path": "/tmp/stage4a_formal_logs/morgan_seed_43.log",
+          "attempt_dir": "from_scratch_gnn/models/global_information_augmentation/morgan/artifacts/formal/seed_43/attempt_01",
+          "training_runtime_seconds": 478.26474843599135,
+          "overall_oof_wmae": 0.026105033558281008,
+          "fold_count": 5,
+          "git_commit": "64cbe8e540fd4347c929b6364d0d598488cf96f4"
+        }
+      },
+      "resource_summary": {
+        "mean_gpu_utilization_percent": 66.41479099678456,
+        "max_gpu_memory_used_mb": 4803.0,
+        "max_cpu_utilization_percent": 22.34592445328032,
+        "max_ram_used_mb": 3480.99609375
+      }
+    },
+    {
+      "seed": 44,
+      "concurrency": 2,
+      "pair_wall_seconds": 656.6529245139973,
+      "jobs": {
+        "D": {
+          "return_code": 0,
+          "wall_seconds": 656.6515383060032,
+          "log_path": "/tmp/stage4a_formal_logs/descriptor_seed_44.log",
+          "attempt_dir": "from_scratch_gnn/models/global_information_augmentation/descriptor/artifacts/formal/seed_44/attempt_01",
+          "training_runtime_seconds": 653.6789660490031,
+          "overall_oof_wmae": 0.023070565543583634,
+          "fold_count": 5,
+          "git_commit": "64cbe8e540fd4347c929b6364d0d598488cf96f4"
+        },
+        "M": {
+          "return_code": 0,
+          "wall_seconds": 656.6513991900138,
+          "log_path": "/tmp/stage4a_formal_logs/morgan_seed_44.log",
+          "attempt_dir": "from_scratch_gnn/models/global_information_augmentation/morgan/artifacts/formal/seed_44/attempt_01",
+          "training_runtime_seconds": 471.9341185689991,
+          "overall_oof_wmae": 0.025767489135385777,
+          "fold_count": 5,
+          "git_commit": "64cbe8e540fd4347c929b6364d0d598488cf96f4"
+        }
+      },
+      "resource_summary": {
+        "mean_gpu_utilization_percent": 65.97222222222223,
+        "max_gpu_memory_used_mb": 4787.0,
+        "max_cpu_utilization_percent": 21.71474358974359,
+        "max_ram_used_mb": 3478.453125
+      }
+    },
+    {
+      "seed": 45,
+      "concurrency": 2,
+      "pair_wall_seconds": 636.3306800360006,
+      "jobs": {
+        "D": {
+          "return_code": 0,
+          "wall_seconds": 636.3298672189994,
+          "log_path": "/tmp/stage4a_formal_logs/descriptor_seed_45.log",
+          "attempt_dir": "from_scratch_gnn/models/global_information_augmentation/descriptor/artifacts/formal/seed_45/attempt_01",
+          "training_runtime_seconds": 632.4701695450058,
+          "overall_oof_wmae": 0.023088076260766713,
+          "fold_count": 5,
+          "git_commit": "64cbe8e540fd4347c929b6364d0d598488cf96f4"
+        },
+        "M": {
+          "return_code": 0,
+          "wall_seconds": 636.3297171489976,
+          "log_path": "/tmp/stage4a_formal_logs/morgan_seed_45.log",
+          "attempt_dir": "from_scratch_gnn/models/global_information_augmentation/morgan/artifacts/formal/seed_45/attempt_01",
+          "training_runtime_seconds": 464.1601088900061,
+          "overall_oof_wmae": 0.025769549474849787,
+          "fold_count": 5,
+          "git_commit": "64cbe8e540fd4347c929b6364d0d598488cf96f4"
+        }
+      },
+      "resource_summary": {
+        "mean_gpu_utilization_percent": 65.11783439490446,
+        "max_gpu_memory_used_mb": 4817.0,
+        "max_cpu_utilization_percent": 22.316043425814236,
+        "max_ram_used_mb": 3478.66015625
+      }
+    },
+    {
+      "seed": 46,
+      "concurrency": 2,
+      "pair_wall_seconds": 774.3671759599965,
+      "jobs": {
+        "D": {
+          "return_code": 0,
+          "wall_seconds": 774.3662107200071,
+          "log_path": "/tmp/stage4a_formal_logs/descriptor_seed_46.log",
+          "attempt_dir": "from_scratch_gnn/models/global_information_augmentation/descriptor/artifacts/formal/seed_46/attempt_01",
+          "training_runtime_seconds": 770.1654301020026,
+          "overall_oof_wmae": 0.023025586230074585,
+          "fold_count": 5,
+          "git_commit": "64cbe8e540fd4347c929b6364d0d598488cf96f4"
+        },
+        "M": {
+          "return_code": 0,
+          "wall_seconds": 774.3660506529995,
+          "log_path": "/tmp/stage4a_formal_logs/morgan_seed_46.log",
+          "attempt_dir": "from_scratch_gnn/models/global_information_augmentation/morgan/artifacts/formal/seed_46/attempt_01",
+          "training_runtime_seconds": 450.6627086410008,
+          "overall_oof_wmae": 0.025830190757544454,
+          "fold_count": 5,
+          "git_commit": "64cbe8e540fd4347c929b6364d0d598488cf96f4"
+        }
+      },
+      "resource_summary": {
+        "mean_gpu_utilization_percent": 59.93979057591623,
+        "max_gpu_memory_used_mb": 4790.0,
+        "max_cpu_utilization_percent": 21.977582065652523,
+        "max_ram_used_mb": 3503.28515625
+      }
+    }
+  ],
+  "formal_resource_summary": {
+    "mean_cpu_utilization_percent": 14.572277111513806,
+    "max_cpu_utilization_percent": 22.34592445328032,
+    "mean_ram_used_mb": 2961.0243480477857,
+    "max_ram_used_mb": 3503.28515625,
+    "mean_gpu_utilization_percent": 62.68240093240093,
+    "max_gpu_utilization_percent": 85.0,
+    "max_nvidia_smi_memory_used_mb": 4817.0
+  }
+}

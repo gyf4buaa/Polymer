@@ -1,0 +1,17 @@
+{
+  "stage": "4A",
+  "variant": "D",
+  "parameter_count": {
+    "G0_total_trainable": 1243657,
+    "D_total_trainable": 1253897,
+    "projection_trainable": 10240,
+    "new_parameters_vs_G0": 10240
+  },
+  "graph_readout_dim": 512,
+  "fusion": "z_graph + Linear(20, 512, bias=False)(x_D_std)",
+  "projection_initialization": "all_zero",
+  "feature_manifest_sha256": "04293739fe37790d931cee5ea2482b9f8d43b034f7d70c753563549012d1201c",
+  "descriptor_nonfinite_count": 0,
+  "morgan_average_bits_on": 37.95359337764957,
+  "selection_role": "formal global-information augmentation; smoke outputs are non-selection"
+}
