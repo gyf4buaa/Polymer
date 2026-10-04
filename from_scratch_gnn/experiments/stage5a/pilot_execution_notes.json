@@ -1,0 +1,183 @@
+{
+  "stage": "5A",
+  "mode": "concurrency_2_pilot",
+  "source_commit": "72490c1a748ed9395025f4120c9eb04f28268695",
+  "branch": "stage5a/capacity-scaling",
+  "train_csv_sha256": "1f79c85c785698e8c3499d99721adfe3be9660a487f137a923dd34eb7ef845e1",
+  "concurrency": 2,
+  "max_observed_active_jobs": 2,
+  "planned_job_count": 2,
+  "completed_job_count": 2,
+  "failed_job_count": 0,
+  "formal_wall_seconds": 19.314939061005134,
+  "summed_process_wall_seconds": 38.12170783299371,
+  "started_at_utc": "2026-10-04T09:06:48Z",
+  "completed_at_utc": "2026-10-04T09:07:07Z",
+  "logs_directory": "/tmp/stage5a_runs/pilot",
+  "runs": [
+    {
+      "job": {
+        "phase": "smoke",
+        "hidden_dim": 384,
+        "seed": 42,
+        "fold": 0
+      },
+      "attempt": 1,
+      "pid": 53791,
+      "command": [
+        "/home/gyf/venvs/polymer/bin/python",
+        "-m",
+        "from_scratch_gnn.models.capacity_scaling.runner",
+        "--hidden-dim",
+        "384",
+        "--train-csv",
+        "/home/gyf/work/polymer/data/competition_raw/train.csv",
+        "--seed",
+        "42",
+        "--device",
+        "cuda",
+        "--output-dir",
+        "/home/gyf/work/polymer/from_scratch_gnn/models/capacity_scaling/artifacts/smoke/C384/seed_42",
+        "--smoke-fold",
+        "0",
+        "--epochs",
+        "5"
+      ],
+      "output_dir": "/home/gyf/work/polymer/from_scratch_gnn/models/capacity_scaling/artifacts/smoke/C384/seed_42",
+      "started_at_utc": "2026-10-04T09:06:48Z",
+      "log_path": "/tmp/stage5a_runs/pilot/C384-smoke_attempt_01.log",
+      "status": "passed",
+      "return_code": 0,
+      "completed_at_utc": "2026-10-04T09:07:07Z",
+      "process_wall_seconds": 18.806864024998504
+    },
+    {
+      "job": {
+        "phase": "smoke",
+        "hidden_dim": 512,
+        "seed": 42,
+        "fold": 0
+      },
+      "attempt": 1,
+      "pid": 53790,
+      "command": [
+        "/home/gyf/venvs/polymer/bin/python",
+        "-m",
+        "from_scratch_gnn.models.capacity_scaling.runner",
+        "--hidden-dim",
+        "512",
+        "--train-csv",
+        "/home/gyf/work/polymer/data/competition_raw/train.csv",
+        "--seed",
+        "42",
+        "--device",
+        "cuda",
+        "--output-dir",
+        "/home/gyf/work/polymer/from_scratch_gnn/models/capacity_scaling/artifacts/smoke/C512/seed_42",
+        "--smoke-fold",
+        "0",
+        "--epochs",
+        "5"
+      ],
+      "output_dir": "/home/gyf/work/polymer/from_scratch_gnn/models/capacity_scaling/artifacts/smoke/C512/seed_42",
+      "started_at_utc": "2026-10-04T09:06:48Z",
+      "log_path": "/tmp/stage5a_runs/pilot/C512-smoke_attempt_01.log",
+      "status": "passed",
+      "return_code": 0,
+      "completed_at_utc": "2026-10-04T09:07:07Z",
+      "process_wall_seconds": 19.314843807995203
+    }
+  ],
+  "resource_monitor": {
+    "sample_interval_seconds": 2.0,
+    "sample_count": 10,
+    "mean_gpu_utilization_percent": 46.3,
+    "peak_gpu_utilization_percent": 84.0,
+    "peak_nvidia_smi_memory_used_mb": 5062.0,
+    "peak_host_cpu_percent": 96.9,
+    "peak_host_ram_used_mb": 3393.10546875,
+    "samples": [
+      {
+        "elapsed_seconds": 0.007786123009282164,
+        "cpu_percent": 96.9,
+        "ram_used_mb": 747.4140625,
+        "active_jobs": 2,
+        "gpu_utilization_percent": 1.0,
+        "gpu_memory_used_mb": 4058.0
+      },
+      {
+        "elapsed_seconds": 2.063868650002405,
+        "cpu_percent": 23.4,
+        "ram_used_mb": 1602.1171875,
+        "active_jobs": 2,
+        "gpu_utilization_percent": 0.0,
+        "gpu_memory_used_mb": 4058.0
+      },
+      {
+        "elapsed_seconds": 4.091231384009006,
+        "cpu_percent": 16.9,
+        "ram_used_mb": 1677.94921875,
+        "active_jobs": 2,
+        "gpu_utilization_percent": 0.0,
+        "gpu_memory_used_mb": 4059.0
+      },
+      {
+        "elapsed_seconds": 6.11638502801361,
+        "cpu_percent": 17.8,
+        "ram_used_mb": 1792.98828125,
+        "active_jobs": 2,
+        "gpu_utilization_percent": 1.0,
+        "gpu_memory_used_mb": 4058.0
+      },
+      {
+        "elapsed_seconds": 8.150344856010634,
+        "cpu_percent": 16.4,
+        "ram_used_mb": 3339.125,
+        "active_jobs": 2,
+        "gpu_utilization_percent": 79.0,
+        "gpu_memory_used_mb": 5004.0
+      },
+      {
+        "elapsed_seconds": 10.177457795012742,
+        "cpu_percent": 16.8,
+        "ram_used_mb": 3358.45703125,
+        "active_jobs": 2,
+        "gpu_utilization_percent": 82.0,
+        "gpu_memory_used_mb": 5020.0
+      },
+      {
+        "elapsed_seconds": 12.204185752008925,
+        "cpu_percent": 16.9,
+        "ram_used_mb": 3373.36328125,
+        "active_jobs": 2,
+        "gpu_utilization_percent": 76.0,
+        "gpu_memory_used_mb": 5020.0
+      },
+      {
+        "elapsed_seconds": 14.232224281004164,
+        "cpu_percent": 16.9,
+        "ram_used_mb": 3377.1484375,
+        "active_jobs": 2,
+        "gpu_utilization_percent": 75.0,
+        "gpu_memory_used_mb": 5020.0
+      },
+      {
+        "elapsed_seconds": 16.257646293001017,
+        "cpu_percent": 17.0,
+        "ram_used_mb": 3393.10546875,
+        "active_jobs": 2,
+        "gpu_utilization_percent": 84.0,
+        "gpu_memory_used_mb": 5044.0
+      },
+      {
+        "elapsed_seconds": 18.285198026002035,
+        "cpu_percent": 17.7,
+        "ram_used_mb": 3385.68359375,
+        "active_jobs": 2,
+        "gpu_utilization_percent": 65.0,
+        "gpu_memory_used_mb": 5062.0
+      }
+    ]
+  },
+  "status": "passed"
+}

@@ -9,3 +9,12 @@ from_scratch_gnn/models/global_information_augmentation/**/artifacts/tiny/
 from_scratch_gnn/models/global_information_augmentation/**/artifacts/smoke/
 from_scratch_gnn/models/global_information_augmentation/**/artifacts/smoke_pilot/
 from_scratch_gnn/models/global_information_augmentation/**/artifacts/pilot/
+from_scratch_gnn/models/capacity_scaling/artifacts/**/checkpoints/
+from_scratch_gnn/models/capacity_scaling/artifacts/**/cache/
+from_scratch_gnn/models/capacity_scaling/artifacts/**/*.pt
+from_scratch_gnn/models/capacity_scaling/artifacts/**/logs/
+from_scratch_gnn/models/capacity_scaling/artifacts/formal/
+from_scratch_gnn/models/capacity_scaling/artifacts/smoke/
+from_scratch_gnn/models/capacity_scaling/artifacts/tiny/
+from_scratch_gnn/models/capacity_scaling/artifacts/pilot/
+from_scratch_gnn/experiments/stage5a/*_execution_notes.json

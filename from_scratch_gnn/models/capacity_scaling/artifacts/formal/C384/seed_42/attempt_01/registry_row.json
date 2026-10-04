@@ -1,0 +1,22 @@
+{
+  "experiment_id": "stage5a_capacity_c384_seed_42",
+  "model_name": "Stage 5A G0 C384",
+  "category": "own_model",
+  "stage": "5A",
+  "hidden_dim": 384,
+  "seed": 42,
+  "status": "formal_oof_model",
+  "source_commit": "72490c1a748ed9395025f4120c9eb04f28268695",
+  "train_sha256": "1f79c85c785698e8c3499d99721adfe3be9660a487f137a923dd34eb7ef845e1",
+  "folds_sha256": "1bb066dd45d9b9a0f7861efbe7efd38c438522519ed36a745bf61f2a9191284a",
+  "effective_config_sha256": "509f542ee1431e346c840413c6ef88b63d0792192d375d26d39f1f74abf19878",
+  "overall_oof_wmae": 0.022897457599742207,
+  "target_mae": {
+    "Tg": 53.704646597622954,
+    "FFV": 0.005673079730736302,
+    "Tc": 0.025437925283867374,
+    "Density": 0.02378688233043634,
+    "Rg": 1.5468453264134883
+  },
+  "run_metadata": "models/capacity_scaling/artifacts/formal/C384/seed_42/attempt_01/run_metadata.json"
+}

@@ -1,0 +1,68 @@
+{
+  "stage": "5A",
+  "architecture": {
+    "operator": "GINEConv",
+    "num_layers": 4,
+    "readout": ["global_mean", "global_max"],
+    "heads": ["Tg", "FFV", "Tc", "Density", "Rg"]
+  },
+  "parameter_counts": {
+    "128": {
+      "embedding_parameters": 19968,
+      "gine_trunk_parameters": 141828,
+      "readout_head_parameters": 165125,
+      "total_trainable_parameters": 326921
+    },
+    "256": {
+      "embedding_parameters": 39936,
+      "gine_trunk_parameters": 545796,
+      "readout_head_parameters": 657925,
+      "total_trainable_parameters": 1243657
+    },
+    "384": {
+      "embedding_parameters": 59904,
+      "gine_trunk_parameters": 1211908,
+      "readout_head_parameters": 1478405,
+      "total_trainable_parameters": 2750217
+    },
+    "512": {
+      "embedding_parameters": 79872,
+      "gine_trunk_parameters": 2140164,
+      "readout_head_parameters": 2626565,
+      "total_trainable_parameters": 4846601
+    }
+  },
+  "strictly_increasing": true,
+  "historical_c256_count_verified": true,
+  "config_diff": {
+    "reference": "C256 effective Stage 5A config; architecture/training matches historical G0",
+    "allowed_diff_paths": ["experiment_id", "model.hidden_dim", "seed"],
+    "width_comparisons": {
+      "128": {
+        "changed_paths_vs_c256": ["experiment_id", "model.hidden_dim"],
+        "unexpected_paths": [],
+        "passed": true
+      },
+      "256": {
+        "changed_paths_vs_c256": [],
+        "unexpected_paths": [],
+        "passed": true
+      },
+      "384": {
+        "changed_paths_vs_c256": ["experiment_id", "model.hidden_dim"],
+        "unexpected_paths": [],
+        "passed": true
+      },
+      "512": {
+        "changed_paths_vs_c256": ["experiment_id", "model.hidden_dim"],
+        "unexpected_paths": [],
+        "passed": true
+      }
+    },
+    "seed_comparison": {
+      "changed_paths": ["seed"],
+      "unexpected_paths": [],
+      "passed": true
+    }
+  }
+}
