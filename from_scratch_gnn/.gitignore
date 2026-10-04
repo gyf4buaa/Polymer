@@ -17,3 +17,4 @@ models/own_gnn_repr_keep_dummy/artifacts/
 models/own_gnn_repr_endpoint_marker/artifacts/
 models/operator_ablation/gatv2/artifacts/
 models/operator_ablation/pna/artifacts/
+models/readout_ablation/*/artifacts/
