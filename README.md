@@ -27,3 +27,7 @@
 ## 分数使用说明
 
 该版本代码注释明示 Tg 偏移参考了赛后释放的 private 标签。它是赛后探索版本，分数不代表遵守竞赛盲测条件的有效名次。官方最终榜单和本地报告不一致；不要把报告中的阶段性“第 1 名”写成最终名次。
+
+## Clean-room OOF 基准
+
+从头训练的 Own-GNN 与传统基线使用独立的冻结 OOF 协议；它不复用本目录赛后 Kaggle blending 脚本里的 private-label 校准。Stage R 使用 `nopp2025_train_v1` 的同一 5 折与 competition-style wMAE，比较 fold median、Tanimoto kNN、SMILES-only LightGBM 和现有 C128 Own-GNN OOF。结果、相似度分层、逐样本误差和 Morgan 重复指纹审计见 [`Stage R aggregate report`](from_scratch_gnn/experiments/stageR/aggregate_summary.md)。

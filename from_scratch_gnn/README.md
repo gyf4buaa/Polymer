@@ -615,6 +615,26 @@ Formal execution used concurrency 2, with a 9,632 s wall time and 15,342.5 s sum
 
 ---
 
+## Stage R — Benchmark Reality Check (complete)
+
+Stage R answers how much C128 gains over simple non-GNN methods and where its OOF errors occur. It reuses the existing five C128 OOF seeds; no GNN training or architecture search was run. Every new baseline uses `benchmark/folds.csv` and the authoritative competition-style weighted MAE.
+
+The baseline runner is [`scripts/stageR_benchmark.py`](scripts/stageR_benchmark.py). Reproduce it with the official `nopp2025_train_v1` training CSV using `python from_scratch_gnn/scripts/stageR_benchmark.py --train-csv /path/to/train.csv`.
+
+| Model | Overall OOF wMAE | Tg | FFV | Tc | Density | Rg |
+|---|---:|---:|---:|---:|---:|---:|
+| Per-target training-fold median | 0.06098563 | 86.94653 | 0.02077689 | 0.07616204 | 0.10465387 | 3.884517 |
+| Morgan Tanimoto kNN (k=5) | 0.03066069 | 53.70421 | 0.00931491 | 0.03601802 | 0.06092912 | 1.700242 |
+| Clean LightGBM | 0.02352955 | 50.90582 | 0.00684880 | 0.02562413 | 0.02910599 | 1.513395 |
+| C128 Own-GNN | 0.02252159 ± 0.00011844 | 51.26893 | 0.00617148 | 0.02406085 | 0.02447436 | 1.518029 |
+| C256/G0 historical | 0.02278541 ± 0.00010244 | 51.79682 | 0.00589486 | 0.02466179 | 0.02460159 | 1.577388 |
+
+For LightGBM − C128 the paired sample-bootstrap ΔwMAE is +0.00100796 (95% CI +0.00043144 to +0.00159247); kNN's Δ is +0.00813910 (95% CI +0.00718886 to +0.00909993). C128 is better than LightGBM on FFV, Tc, and Density; Tg and Rg differences are small and their paired intervals include zero. A fixed 50:50 OOF blend of the five-seed C128 mean prediction and LightGBM scores 0.02112949 versus 0.02097316 for C128 alone; per-target absolute-error correlations are 0.72–0.86, so these results do not support a default tree blend.
+
+Nearest-neighbor similarity is not uniformly predictive of C128 error: FFV and Density improve in the >0.9 bin, Tc is best in the 0.7–0.9 bin, and Rg changes little. The random sample split remains an IID-style benchmark; these bins do not establish leakage. A separate similarity-disjoint benchmark is the next most informative evaluation. Single-task/multitask and FFV transfer remain controlled hypotheses; FFV labels co-occur with Tc/Density/Rg on 270–300 rows but with Tg on one row.
+
+The Morgan radius-2 2048-bit audit found 545 duplicate-fingerprint groups covering 1,717 samples. No group shares an isomeric canonical molecular graph; 30 groups differ only stereochemically in the isomeric view, and 515 contain multiple achiral canonical graphs. Polymer equivalence is marked **UNKNOWN**; no rows were removed. The complete [Stage R report](experiments/stageR/aggregate_summary.md), [JSON](experiments/stageR/aggregate_summary.json), comparison table, sample diagnostics, similarity strata, fingerprint group audit, and fixed-blend diagnostics are in `experiments/stageR/`.
+
 ## Stage 5 — Final ablation
 
 Development experiments and final ablations are not the same thing.
