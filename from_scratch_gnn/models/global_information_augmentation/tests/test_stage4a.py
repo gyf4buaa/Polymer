@@ -174,6 +174,40 @@ class Stage4AFeatureTests(unittest.TestCase):
         morgan_config = runner._expected_global_config("morgan")
         self.assertIs(morgan_config["target_based_selection"], False)
 
+    def test_feature_aware_fold_adapter_forwards_frozen_fold_inputs(self) -> None:
+        rows = [{"sample_id": f"sample-{index}"} for index in range(3)]
+        fold_ids = [0, 1, 2]
+        output_dir = Path("/tmp/stage4a-adapter-test")
+        observed = {}
+
+        def original_train_fold(*, rows, fold_ids, output_dir, **kwargs):
+            observed["rows"] = rows
+            observed["fold_ids"] = fold_ids
+            observed["output_dir"] = output_dir
+            observed["fold"] = kwargs["fold"]
+            observed["feature_shape"] = runner._FEATURE_CONTEXT["value"]["feature_matrix"].shape
+            return "fold-result"
+
+        result = runner._feature_aware_train_fold(
+            original_train_fold=original_train_fold,
+            variant="morgan",
+            rows=rows,
+            fold_ids=fold_ids,
+            descriptors=np.zeros((3, 20), dtype=np.float64),
+            morgan=np.ones((3, 2048), dtype=np.uint8),
+            source_data_sha256="frozen-train-hash",
+            output_dir=output_dir,
+            fold=1,
+        )
+
+        self.assertEqual(result, "fold-result")
+        self.assertEqual(observed["rows"], rows)
+        self.assertEqual(observed["fold_ids"], fold_ids)
+        self.assertEqual(observed["output_dir"], output_dir)
+        self.assertEqual(observed["fold"], 1)
+        self.assertEqual(observed["feature_shape"], (3, 2048))
+        self.assertNotIn("value", runner._FEATURE_CONTEXT)
+
     def test_descriptor_projection_is_zero_initialized(self) -> None:
         model = GlobalInformationGNN(variant="D")
         self.assertEqual(tuple(model.global_projection.weight.shape), (512, 20))

@@ -447,7 +447,12 @@ def _feature_aware_train_fold(
     previous = _FEATURE_CONTEXT.get("value")
     _FEATURE_CONTEXT["value"] = context
     try:
-        return original_train_fold(**kwargs)
+        return original_train_fold(
+            rows=rows,
+            fold_ids=fold_ids,
+            output_dir=output_dir,
+            **kwargs,
+        )
     finally:
         if previous is None:
             _FEATURE_CONTEXT.pop("value", None)
