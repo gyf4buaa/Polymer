@@ -1,0 +1,102 @@
+{
+  "experiment_id": "own_gnn_elemental_physical_priors",
+  "model_name": "Own-GNN E — elemental physical priors",
+  "category": "own_model",
+  "benchmark_version": "nopp2025_train_v1",
+  "seed": 44,
+  "graph": {
+    "schema": "own_gnn_repr_keep_dummy_raw_graph_node7_edge16_endpoint1_v1",
+    "representation": "keep_dummy",
+    "node_features": [
+      "atomic_number",
+      "degree",
+      "formal_charge",
+      "hybridization",
+      "aromatic",
+      "total_hydrogens",
+      "chirality"
+    ],
+    "additional_node_features": [
+      "polymer_endpoint_all_zero"
+    ],
+    "atomic_number_zero_bucket": 0,
+    "edge_features": [
+      "bond_type_one_hot",
+      "conjugated",
+      "in_ring",
+      "stereo_one_hot",
+      "polymerization_edge_all_zero"
+    ],
+    "dummy_policy": "retain_all_source_atoms_and_rdkit_chemical_bonds",
+    "endpoint_closure": false,
+    "ambiguous_dummy_policy": "retain_complete_source_graph_without_fallback"
+  },
+  "model": {
+    "operator": "GINEConv",
+    "hidden_dim": 256,
+    "num_layers": 4,
+    "dropout": 0.1,
+    "residual": true,
+    "normalization": "LayerNorm",
+    "pooling": [
+      "global_mean",
+      "global_max"
+    ],
+    "property_heads": [
+      "Tg",
+      "FFV",
+      "Tc",
+      "Density",
+      "Rg"
+    ],
+    "endpoint_indicator_embedding": "zero_initialized_additive_vector; input is all zero",
+    "elemental_physical": {
+      "feature_names_in_order": [
+        "atomic_weight",
+        "covalent_radius",
+        "vdw_radius",
+        "outer_electrons",
+        "period"
+      ],
+      "source": "fixed RDKit PeriodicTable APIs for atomic numbers 1..118",
+      "input_dim": 5,
+      "normalization": "benchmark-independent fixed periodic-table reference Z=1..118; population mean/std",
+      "fusion": "h_cat + Linear(5, 256, bias=False)(x_physical) before GINE; node-wise additive residual",
+      "projection_initialization": "all_zero; created after all G0 common parameters",
+      "dummy_atomic_number_zero": "physical vector fixed to five zeros"
+    }
+  },
+  "training": {
+    "epochs_max": 600,
+    "patience": 40,
+    "batch_size": 64,
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 1e-05,
+    "loss": "masked_huber",
+    "huber_delta": 1.0,
+    "target_normalization": "fold_train_mean_std",
+    "task_reduction": "equal_mean_over_tasks_with_observed_labels",
+    "early_stopping_metric": "Stage0 weighted MAE with frozen manifest weights"
+  },
+  "registry_notes": "Stage 4B node-level elemental physical priors only; reuses frozen keep-dummy G0 graph, GINE architecture and training protocol. No graph-level features or training changes.",
+  "runtime": {
+    "device": "cuda",
+    "device_name": "NVIDIA GeForce RTX 4070",
+    "processor": "x86_64",
+    "python": "3.11.17 (main, Oct  1 2026, 15:41:07) [GCC 13.3.0]",
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "torch": "2.11.0+cu128",
+    "torch_geometric": "2.7.0",
+    "rdkit": "2026.03.2",
+    "numpy": "2.4.6",
+    "fold_sizes": {
+      "0": 1595,
+      "1": 1595,
+      "2": 1595,
+      "3": 1594,
+      "4": 1594
+    },
+    "started_at_utc": "2026-10-04T07:45:05+00:00"
+  }
+}

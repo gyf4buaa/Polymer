@@ -1,0 +1,57 @@
+{
+  "stage": "4B",
+  "variant": "E",
+  "projection_l2_norm_by_fold": {
+    "0": 2.7282469272613525,
+    "1": 2.6698784828186035,
+    "2": 2.2287442684173584,
+    "3": 2.7807509899139404,
+    "4": 2.3347442150115967
+  },
+  "projection_l2_norm_mean_over_folds": 2.5484729766845704,
+  "projection_column_l2_norm_by_fold": {
+    "0": {
+      "atomic_weight": 1.180195689201355,
+      "covalent_radius": 1.162860631942749,
+      "vdw_radius": 1.1915643215179443,
+      "outer_electrons": 1.3925148248672485,
+      "period": 1.1572823524475098
+    },
+    "1": {
+      "atomic_weight": 1.1009531021118164,
+      "covalent_radius": 1.0889239311218262,
+      "vdw_radius": 1.1064025163650513,
+      "outer_electrons": 1.5259214639663696,
+      "period": 1.0852811336517334
+    },
+    "2": {
+      "atomic_weight": 0.9468808174133301,
+      "covalent_radius": 0.9488319158554077,
+      "vdw_radius": 0.977130651473999,
+      "outer_electrons": 1.1537468433380127,
+      "period": 0.9404888153076172
+    },
+    "3": {
+      "atomic_weight": 1.1951847076416016,
+      "covalent_radius": 1.1810379028320312,
+      "vdw_radius": 1.2020987272262573,
+      "outer_electrons": 1.4429017305374146,
+      "period": 1.1756913661956787
+    },
+    "4": {
+      "atomic_weight": 0.9938690662384033,
+      "covalent_radius": 0.9857581853866577,
+      "vdw_radius": 1.004572868347168,
+      "outer_electrons": 1.2327536344528198,
+      "period": 0.9811659455299377
+    }
+  },
+  "projection_column_l2_norm_mean_over_folds": {
+    "atomic_weight": 1.0834166765213014,
+    "covalent_radius": 1.0734825134277344,
+    "vdw_radius": 1.096353816986084,
+    "outer_electrons": 1.349567699432373,
+    "period": 1.0679819226264953
+  },
+  "selection_role": "diagnostic only; no feature selection or model selection"
+}
