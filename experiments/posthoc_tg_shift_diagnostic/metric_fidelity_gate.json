@@ -1,0 +1,280 @@
+{
+  "candidate_scopes": {
+    "global_released_test_weights": {
+      "absolute_error_vs_kaggle_display": {
+        "private_clean": 0.043269384419779025,
+        "private_tg_plus_70": 0.02991897546125666,
+        "public_clean": 0.04342126196501582,
+        "public_tg_plus_70": 0.03865741190163949
+      },
+      "all_four_within_display_precision": false,
+      "scores": {
+        "private_clean": 0.05197061558022098,
+        "private_tg_plus_70": 0.04766102453874334,
+        "public_clean": 0.11241126196501582,
+        "public_tg_plus_70": 0.10358741190163949
+      },
+      "weights": {
+        "private": {
+          "Density": {
+            "valid_count": 1526,
+            "value_range": 1.598287,
+            "weight": 0.37924090080435596
+          },
+          "FFV": {
+            "valid_count": 223,
+            "value_range": 0.35000000000000003,
+            "weight": 4.530297550438718
+          },
+          "Rg": {
+            "valid_count": 1110,
+            "value_range": 26.084065000000002,
+            "weight": 0.027246482312985314
+          },
+          "Tc": {
+            "valid_count": 1404,
+            "value_range": 0.929512,
+            "weight": 0.6798430287297946
+          },
+          "Tg": {
+            "valid_count": 261,
+            "value_range": 623.4921,
+            "weight": 0.0023506934357766652
+          }
+        },
+        "public": {
+          "Density": {
+            "valid_count": 1526,
+            "value_range": 1.598287,
+            "weight": 0.37924090080435596
+          },
+          "FFV": {
+            "valid_count": 223,
+            "value_range": 0.35000000000000003,
+            "weight": 4.530297550438718
+          },
+          "Rg": {
+            "valid_count": 1110,
+            "value_range": 26.084065000000002,
+            "weight": 0.027246482312985314
+          },
+          "Tc": {
+            "valid_count": 1404,
+            "value_range": 0.929512,
+            "weight": 0.6798430287297946
+          },
+          "Tg": {
+            "valid_count": 261,
+            "value_range": 623.4921,
+            "weight": 0.0023506934357766652
+          }
+        }
+      }
+    },
+    "official_training_snapshot_weights": {
+      "absolute_error_vs_kaggle_display": {
+        "private_clean": 0.004621160197738186,
+        "private_tg_plus_70": 0.009276159591200109,
+        "public_clean": 0.09846804129039047,
+        "public_tg_plus_70": 0.09482398638139893
+      },
+      "all_four_within_display_precision": false,
+      "scores": {
+        "private_clean": 0.09061883980226182,
+        "private_tg_plus_70": 0.0868561595912001,
+        "public_clean": 0.16745804129039046,
+        "public_tg_plus_70": 0.15975398638139893
+      },
+      "weights": {
+        "private": {
+          "Density": {
+            "max": 1.840998909,
+            "min": 0.748691234,
+            "missing_count": 7360,
+            "range": 1.092307675,
+            "task_balance_factor": 1.162318235511848,
+            "valid_count": 613,
+            "weight": 1.0640941761320573
+          },
+          "FFV": {
+            "max": 0.77709707,
+            "min": 0.2269924,
+            "missing_count": 943,
+            "range": 0.55010467,
+            "task_balance_factor": 0.3432239825005911,
+            "valid_count": 7030,
+            "weight": 0.6239248659724905
+          },
+          "Rg": {
+            "max": 34.672905605,
+            "min": 9.7283551,
+            "missing_count": 7359,
+            "range": 24.944550504999995,
+            "task_balance_factor": 1.1613713365884741,
+            "valid_count": 614,
+            "weight": 0.04655811842974215
+          },
+          "Tc": {
+            "max": 0.524,
+            "min": 0.0465,
+            "missing_count": 7236,
+            "range": 0.47750000000000004,
+            "task_balance_factor": 1.060038270353066,
+            "valid_count": 737,
+            "weight": 2.219975435294379
+          },
+          "Tg": {
+            "max": 472.25,
+            "min": -148.0297376,
+            "missing_count": 7462,
+            "range": 620.2797376,
+            "task_balance_factor": 1.2730481750460205,
+            "valid_count": 511,
+            "weight": 0.00205237749659811
+          }
+        },
+        "public": {
+          "Density": {
+            "max": 1.840998909,
+            "min": 0.748691234,
+            "missing_count": 7360,
+            "range": 1.092307675,
+            "task_balance_factor": 1.162318235511848,
+            "valid_count": 613,
+            "weight": 1.0640941761320573
+          },
+          "FFV": {
+            "max": 0.77709707,
+            "min": 0.2269924,
+            "missing_count": 943,
+            "range": 0.55010467,
+            "task_balance_factor": 0.3432239825005911,
+            "valid_count": 7030,
+            "weight": 0.6239248659724905
+          },
+          "Rg": {
+            "max": 34.672905605,
+            "min": 9.7283551,
+            "missing_count": 7359,
+            "range": 24.944550504999995,
+            "task_balance_factor": 1.1613713365884741,
+            "valid_count": 614,
+            "weight": 0.04655811842974215
+          },
+          "Tc": {
+            "max": 0.524,
+            "min": 0.0465,
+            "missing_count": 7236,
+            "range": 0.47750000000000004,
+            "task_balance_factor": 1.060038270353066,
+            "valid_count": 737,
+            "weight": 2.219975435294379
+          },
+          "Tg": {
+            "max": 472.25,
+            "min": -148.0297376,
+            "missing_count": 7462,
+            "range": 620.2797376,
+            "task_balance_factor": 1.2730481750460205,
+            "valid_count": 511,
+            "weight": 0.00205237749659811
+          }
+        }
+      }
+    },
+    "split_specific_released_test_weights": {
+      "absolute_error_vs_kaggle_display": {
+        "private_clean": 0.04138072456169775,
+        "private_tg_plus_70": 0.028680934021865487,
+        "public_clean": 0.08214684890461785,
+        "public_tg_plus_70": 0.07806826610263605
+      },
+      "all_four_within_display_precision": false,
+      "scores": {
+        "private_clean": 0.053859275438302254,
+        "private_tg_plus_70": 0.04889906597813451,
+        "public_clean": 0.15113684890461784,
+        "public_tg_plus_70": 0.14299826610263605
+      },
+      "weights": {
+        "private": {
+          "Density": {
+            "valid_count": 1282,
+            "value_range": 1.598287,
+            "weight": 0.3480245222433331
+          },
+          "FFV": {
+            "valid_count": 137,
+            "value_range": 0.14800000000000002,
+            "weight": 11.497055467597084
+          },
+          "Rg": {
+            "valid_count": 1056,
+            "value_range": 26.084065000000002,
+            "weight": 0.02349640355806595
+          },
+          "Tc": {
+            "valid_count": 1165,
+            "value_range": 0.929512,
+            "weight": 0.6277556960194534
+          },
+          "Tg": {
+            "valid_count": 166,
+            "value_range": 571.34,
+            "weight": 0.002705577328770334
+          }
+        },
+        "public": {
+          "Density": {
+            "valid_count": 244,
+            "value_range": 0.6135439810000001,
+            "weight": 1.097837192244462
+          },
+          "FFV": {
+            "valid_count": 86,
+            "value_range": 0.341,
+            "weight": 3.3271696676917157
+          },
+          "Rg": {
+            "valid_count": 54,
+            "value_range": 21.092965,
+            "weight": 0.06788034497618911
+          },
+          "Tc": {
+            "valid_count": 239,
+            "value_range": 0.6006940000000001,
+            "weight": 1.1329906039312463
+          },
+          "Tg": {
+            "valid_count": 95,
+            "value_range": 497.88620000000003,
+            "weight": 0.002168136701296474
+          }
+        }
+      }
+    }
+  },
+  "display_tolerance": 5.1e-06,
+  "expected_kaggle_scores": {
+    "private_clean": 0.09524,
+    "private_tg_plus_70": 0.07758,
+    "public_clean": 0.06899,
+    "public_tg_plus_70": 0.06493
+  },
+  "official_metric_formula": "w_i=(1/r_i)*(K*sqrt(1/n_i)/sum_j sqrt(1/n_j)); wMAE=(1/N_split)*sum_rows sum_observed_targets(w_i*abs(error))",
+  "passed": false,
+  "scored_submission_refs": {
+    "clean": {
+      "private": 0.09524,
+      "public": 0.06899,
+      "ref": "56831294"
+    },
+    "tg_plus_70": {
+      "private": 0.07758,
+      "public": 0.06493,
+      "ref": "56831959"
+    }
+  },
+  "selected_metric_scope": null,
+  "training_manifest_sha256": "dfbd13bc3ca1b087199f88d8dcfaba0616b9f79a58a50b291527cc146ef87e2a"
+}

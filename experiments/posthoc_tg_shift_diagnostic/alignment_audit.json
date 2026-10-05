@@ -1,0 +1,641 @@
+{
+  "classification": "POST-HOC / USES RELEASED TEST LABELS / NOT VALID BLIND PERFORMANCE",
+  "conclusion": "The released dataset claims public/private leaderboard meaning, and row counts fit the approximate split ratio. However, it lacks Kaggle IDs, the final scored label counts/ranges are not publicly exposed for independent confirmation, and none of the tested mapping/weight scenarios reproduces the four known scores. Released labels cannot be used to exactly reproduce leaderboard scoring.",
+  "graph_serialization_roundtrip": {
+    "different_graph_examples": [],
+    "feature_labeled_graph_isomorphism_different": 0,
+    "feature_labeled_graph_isomorphism_equal": 1317,
+    "formal_topology_counts": {
+      "dummy_atom_count_4": 3,
+      "shared_endpoint": 9,
+      "two_distinct_degree_one_endpoints": 1305
+    },
+    "inference_run": false,
+    "method": "RDKit canonical isomeric SMILES serialization then parse; build both with formal keep-dummy graph builder; categorical graph isomorphism compares every formal atom and bond feature",
+    "parse_failures": [],
+    "random_sample_size_requested": 256,
+    "random_seed": 20261005,
+    "raw_strings_changed_by_canonicalization": 17,
+    "rdkit_version": "2026.03.2",
+    "special_representation_rows_in_full_released_set": 1144,
+    "unique_rows_checked": 1317
+  },
+  "inference_run": false,
+  "joined_by": "exact raw SMILES",
+  "known_online_scores": {
+    "private_clean": 0.09524,
+    "private_tg_plus_70": 0.07758,
+    "public_clean": 0.06899,
+    "public_tg_plus_70": 0.06493
+  },
+  "metadata": {
+    "current_version_number": 1,
+    "dataset_id": 8954694,
+    "dataset_ref": "alexliu99/neurips-open-polymer-prediction-2025-test-data",
+    "dataset_visibility": "public",
+    "description_claim": "public.csv is used for the public leaderboard; private.csv is used for the private leaderboard.",
+    "files": {
+      "private.csv": {
+        "bytes": 208864,
+        "created_utc": "2025-12-09T04:27:34.024Z",
+        "sha256": "55cac160c1c139240968a96ba070b583e93902dd1901be2e54d722c4d590a952"
+      },
+      "public.csv": {
+        "bytes": 19513,
+        "created_utc": "2025-12-09T04:27:34.105Z",
+        "sha256": "0b5b59f9464fb30da82252cc9e4f56552ff641284c627f11aa93fa4d7031c514"
+      }
+    },
+    "last_updated_utc": "2025-12-09T04:27:33.087Z",
+    "license": "MIT",
+    "owner": "Alex Liu (alexliu99)",
+    "scope_note": "The owner explicitly labels the files as the public/private leaderboard datasets. This is provenance metadata, not an independent proof that the files equal the final scoring snapshot or that their rows map to Kaggle numeric IDs.",
+    "sources": {
+      "competition_data_update_discussion": "https://www.kaggle.com/competitions/neurips-open-polymer-prediction-2025/discussion/588643",
+      "competition_leaderboard": "https://www.kaggle.com/competitions/neurips-open-polymer-prediction-2025/leaderboard",
+      "dataset_file_list_api": "https://www.kaggle.com/api/v1/datasets/list/alexliu99/neurips-open-polymer-prediction-2025-test-data",
+      "dataset_metadata_api": "https://www.kaggle.com/api/v1/datasets/view/alexliu99/neurips-open-polymer-prediction-2025-test-data"
+    },
+    "subtitle": "Datasets used in the public and private leaderboards",
+    "title": "NeurIPS - Open Polymer Prediction 2025 Test Data",
+    "version_history": [
+      {
+        "created_utc": "2025-12-09T04:27:33.087Z",
+        "note": "Initial release",
+        "status": "Ready",
+        "version": 1
+      }
+    ]
+  },
+  "no_tg_sweep": true,
+  "numeric_kaggle_ids_present": false,
+  "official_final_exact_target_counts_ranges": "not independently exposed by Kaggle's public metadata or leaderboard page; released-file statistics are candidates only if version 1 matches final scoring truth",
+  "prediction_csv_sha256": "f00b0b3bc83831ac9e1b6825bd868b40c8ddf22a919575a067bd11b73b8c1f43",
+  "preview_nonoverlap_is_mismatch_evidence": false,
+  "preview_note": "The downloadable 3-row competition test.csv is a preview. Its non-overlap with the released full test set is expected and provides no evidence of a released-test mismatch.",
+  "preview_rows": 3,
+  "private_fraction": 0.9157624214734438,
+  "public_fraction": 0.08423757852655625,
+  "released_row_count": 3502,
+  "released_test_provenance": {
+    "dataset": "alexliu99/neurips-open-polymer-prediction-2025-test-data",
+    "files": {
+      "private": {
+        "columns": [
+          "SMILES",
+          "Tg",
+          "FFV",
+          "Tc",
+          "Density",
+          "Rg"
+        ],
+        "has_numeric_kaggle_id": false,
+        "id_key": "exact raw SMILES",
+        "label_counts": {
+          "Density": 1282,
+          "FFV": 137,
+          "Rg": 1056,
+          "Tc": 1165,
+          "Tg": 166
+        },
+        "path": "/Users/gyf/Library/Caches/Polymer-stage5a-c128/posthoc_tg_shift_diagnostic/private.csv",
+        "rows": 3207,
+        "sha256": "55cac160c1c139240968a96ba070b583e93902dd1901be2e54d722c4d590a952",
+        "unique_ids": 3207
+      },
+      "public": {
+        "columns": [
+          "SMILES",
+          "Tg",
+          "FFV",
+          "Tc",
+          "Density",
+          "Rg"
+        ],
+        "has_numeric_kaggle_id": false,
+        "id_key": "exact raw SMILES",
+        "label_counts": {
+          "Density": 244,
+          "FFV": 86,
+          "Rg": 54,
+          "Tc": 239,
+          "Tg": 95
+        },
+        "path": "/Users/gyf/Library/Caches/Polymer-stage5a-c128/posthoc_tg_shift_diagnostic/public.csv",
+        "rows": 295,
+        "sha256": "0b5b59f9464fb30da82252cc9e4f56552ff641284c627f11aa93fa4d7031c514",
+        "unique_ids": 295
+      }
+    },
+    "id_mapping_note": "Released public.csv/private.csv have no numeric Kaggle id column. The analysis uses exact raw SMILES as the released polymer identifier; the 3-row Kaggle preview is not a full ID mapping.",
+    "rows_total": 3502,
+    "unique_id_count": 3502
+  },
+  "rows_private": 3207,
+  "rows_public": 295,
+  "split_size_comparison": "295/3502 = 8.42% public and 3207/3502 = 91.58% private; consistent with Kaggle's approximate statement that about 92% is used for private scoring, but not identity proof",
+  "split_weight_scenarios": [
+    {
+      "assignment": "normal",
+      "clean_minus_online": 0.04342126196501582,
+      "clean_score": 0.11241126196501582,
+      "expected_online_clean": 0.06899,
+      "expected_online_plus70": 0.06493,
+      "plus70_minus_clean": -0.008823850063376326,
+      "plus70_minus_online": 0.03865741190163949,
+      "plus70_score": 0.10358741190163949,
+      "rows": 295,
+      "scored_split": "public",
+      "weight_scope": "global",
+      "weight_values": {
+        "Density": {
+          "valid_count": 1526,
+          "value_range": 1.598287,
+          "weight": 0.37924090080435596
+        },
+        "FFV": {
+          "valid_count": 223,
+          "value_range": 0.35000000000000003,
+          "weight": 4.530297550438718
+        },
+        "Rg": {
+          "valid_count": 1110,
+          "value_range": 26.084065000000002,
+          "weight": 0.027246482312985314
+        },
+        "Tc": {
+          "valid_count": 1404,
+          "value_range": 0.929512,
+          "weight": 0.6798430287297946
+        },
+        "Tg": {
+          "valid_count": 261,
+          "value_range": 623.4921,
+          "weight": 0.0023506934357766652
+        }
+      }
+    },
+    {
+      "assignment": "normal",
+      "clean_minus_online": -0.043269384419779025,
+      "clean_score": 0.05197061558022098,
+      "expected_online_clean": 0.09524,
+      "expected_online_plus70": 0.07758,
+      "plus70_minus_clean": -0.004309591041477642,
+      "plus70_minus_online": -0.02991897546125666,
+      "plus70_score": 0.04766102453874334,
+      "rows": 3207,
+      "scored_split": "private",
+      "weight_scope": "global",
+      "weight_values": {
+        "Density": {
+          "valid_count": 1526,
+          "value_range": 1.598287,
+          "weight": 0.37924090080435596
+        },
+        "FFV": {
+          "valid_count": 223,
+          "value_range": 0.35000000000000003,
+          "weight": 4.530297550438718
+        },
+        "Rg": {
+          "valid_count": 1110,
+          "value_range": 26.084065000000002,
+          "weight": 0.027246482312985314
+        },
+        "Tc": {
+          "valid_count": 1404,
+          "value_range": 0.929512,
+          "weight": 0.6798430287297946
+        },
+        "Tg": {
+          "valid_count": 261,
+          "value_range": 623.4921,
+          "weight": 0.0023506934357766652
+        }
+      }
+    },
+    {
+      "assignment": "normal",
+      "clean_minus_online": 0.08214684890461785,
+      "clean_score": 0.15113684890461784,
+      "expected_online_clean": 0.06899,
+      "expected_online_plus70": 0.06493,
+      "plus70_minus_clean": -0.008138582801981792,
+      "plus70_minus_online": 0.07806826610263605,
+      "plus70_score": 0.14299826610263605,
+      "rows": 295,
+      "scored_split": "public",
+      "weight_scope": "split_specific",
+      "weight_values": {
+        "Density": {
+          "valid_count": 244,
+          "value_range": 0.6135439810000001,
+          "weight": 1.097837192244462
+        },
+        "FFV": {
+          "valid_count": 86,
+          "value_range": 0.341,
+          "weight": 3.3271696676917157
+        },
+        "Rg": {
+          "valid_count": 54,
+          "value_range": 21.092965,
+          "weight": 0.06788034497618911
+        },
+        "Tc": {
+          "valid_count": 239,
+          "value_range": 0.6006940000000001,
+          "weight": 1.1329906039312463
+        },
+        "Tg": {
+          "valid_count": 95,
+          "value_range": 497.88620000000003,
+          "weight": 0.002168136701296474
+        }
+      }
+    },
+    {
+      "assignment": "normal",
+      "clean_minus_online": -0.04138072456169775,
+      "clean_score": 0.053859275438302254,
+      "expected_online_clean": 0.09524,
+      "expected_online_plus70": 0.07758,
+      "plus70_minus_clean": -0.004960209460167744,
+      "plus70_minus_online": -0.028680934021865487,
+      "plus70_score": 0.04889906597813451,
+      "rows": 3207,
+      "scored_split": "private",
+      "weight_scope": "split_specific",
+      "weight_values": {
+        "Density": {
+          "valid_count": 1282,
+          "value_range": 1.598287,
+          "weight": 0.3480245222433331
+        },
+        "FFV": {
+          "valid_count": 137,
+          "value_range": 0.14800000000000002,
+          "weight": 11.497055467597084
+        },
+        "Rg": {
+          "valid_count": 1056,
+          "value_range": 26.084065000000002,
+          "weight": 0.02349640355806595
+        },
+        "Tc": {
+          "valid_count": 1165,
+          "value_range": 0.929512,
+          "weight": 0.6277556960194534
+        },
+        "Tg": {
+          "valid_count": 166,
+          "value_range": 571.34,
+          "weight": 0.002705577328770334
+        }
+      }
+    },
+    {
+      "assignment": "public_private_swapped",
+      "clean_minus_online": -0.017019384419779016,
+      "clean_score": 0.05197061558022098,
+      "expected_online_clean": 0.06899,
+      "expected_online_plus70": 0.06493,
+      "plus70_minus_clean": -0.004309591041477642,
+      "plus70_minus_online": -0.017268975461256664,
+      "plus70_score": 0.04766102453874334,
+      "rows": 3207,
+      "scored_split": "public",
+      "weight_scope": "global",
+      "weight_values": {
+        "Density": {
+          "valid_count": 1526,
+          "value_range": 1.598287,
+          "weight": 0.37924090080435596
+        },
+        "FFV": {
+          "valid_count": 223,
+          "value_range": 0.35000000000000003,
+          "weight": 4.530297550438718
+        },
+        "Rg": {
+          "valid_count": 1110,
+          "value_range": 26.084065000000002,
+          "weight": 0.027246482312985314
+        },
+        "Tc": {
+          "valid_count": 1404,
+          "value_range": 0.929512,
+          "weight": 0.6798430287297946
+        },
+        "Tg": {
+          "valid_count": 261,
+          "value_range": 623.4921,
+          "weight": 0.0023506934357766652
+        }
+      }
+    },
+    {
+      "assignment": "public_private_swapped",
+      "clean_minus_online": 0.01717126196501581,
+      "clean_score": 0.11241126196501582,
+      "expected_online_clean": 0.09524,
+      "expected_online_plus70": 0.07758,
+      "plus70_minus_clean": -0.008823850063376326,
+      "plus70_minus_online": 0.026007411901639493,
+      "plus70_score": 0.10358741190163949,
+      "rows": 295,
+      "scored_split": "private",
+      "weight_scope": "global",
+      "weight_values": {
+        "Density": {
+          "valid_count": 1526,
+          "value_range": 1.598287,
+          "weight": 0.37924090080435596
+        },
+        "FFV": {
+          "valid_count": 223,
+          "value_range": 0.35000000000000003,
+          "weight": 4.530297550438718
+        },
+        "Rg": {
+          "valid_count": 1110,
+          "value_range": 26.084065000000002,
+          "weight": 0.027246482312985314
+        },
+        "Tc": {
+          "valid_count": 1404,
+          "value_range": 0.929512,
+          "weight": 0.6798430287297946
+        },
+        "Tg": {
+          "valid_count": 261,
+          "value_range": 623.4921,
+          "weight": 0.0023506934357766652
+        }
+      }
+    },
+    {
+      "assignment": "public_private_swapped",
+      "clean_minus_online": -0.015130724561697742,
+      "clean_score": 0.053859275438302254,
+      "expected_online_clean": 0.06899,
+      "expected_online_plus70": 0.06493,
+      "plus70_minus_clean": -0.004960209460167744,
+      "plus70_minus_online": -0.016030934021865492,
+      "plus70_score": 0.04889906597813451,
+      "rows": 3207,
+      "scored_split": "public",
+      "weight_scope": "split_specific",
+      "weight_values": {
+        "Density": {
+          "valid_count": 1282,
+          "value_range": 1.598287,
+          "weight": 0.3480245222433331
+        },
+        "FFV": {
+          "valid_count": 137,
+          "value_range": 0.14800000000000002,
+          "weight": 11.497055467597084
+        },
+        "Rg": {
+          "valid_count": 1056,
+          "value_range": 26.084065000000002,
+          "weight": 0.02349640355806595
+        },
+        "Tc": {
+          "valid_count": 1165,
+          "value_range": 0.929512,
+          "weight": 0.6277556960194534
+        },
+        "Tg": {
+          "valid_count": 166,
+          "value_range": 571.34,
+          "weight": 0.002705577328770334
+        }
+      }
+    },
+    {
+      "assignment": "public_private_swapped",
+      "clean_minus_online": 0.05589684890461784,
+      "clean_score": 0.15113684890461784,
+      "expected_online_clean": 0.09524,
+      "expected_online_plus70": 0.07758,
+      "plus70_minus_clean": -0.008138582801981792,
+      "plus70_minus_online": 0.06541826610263606,
+      "plus70_score": 0.14299826610263605,
+      "rows": 295,
+      "scored_split": "private",
+      "weight_scope": "split_specific",
+      "weight_values": {
+        "Density": {
+          "valid_count": 244,
+          "value_range": 0.6135439810000001,
+          "weight": 1.097837192244462
+        },
+        "FFV": {
+          "valid_count": 86,
+          "value_range": 0.341,
+          "weight": 3.3271696676917157
+        },
+        "Rg": {
+          "valid_count": 54,
+          "value_range": 21.092965,
+          "weight": 0.06788034497618911
+        },
+        "Tc": {
+          "valid_count": 239,
+          "value_range": 0.6006940000000001,
+          "weight": 1.1329906039312463
+        },
+        "Tg": {
+          "valid_count": 95,
+          "value_range": 497.88620000000003,
+          "weight": 0.002168136701296474
+        }
+      }
+    }
+  ],
+  "target_statistics": {
+    "combined": {
+      "rows": 3502,
+      "targets": {
+        "Density": {
+          "max": 1.73283,
+          "mean": 1.0815311813879425,
+          "median": 1.0754722975,
+          "min": 0.134543,
+          "missing_count": 1976,
+          "missingness": 0.5642490005711023,
+          "observed_label_count": 1526,
+          "range": 1.598287,
+          "rows": 3502
+        },
+        "FFV": {
+          "max": 0.656,
+          "mean": 0.3567892376681614,
+          "median": 0.351,
+          "min": 0.306,
+          "missing_count": 3279,
+          "missingness": 0.9363221016561964,
+          "observed_label_count": 223,
+          "range": 0.35000000000000003,
+          "rows": 3502
+        },
+        "Rg": {
+          "max": 35.52955,
+          "mean": 18.33126548801598,
+          "median": 18.467033335,
+          "min": 9.445485,
+          "missing_count": 2392,
+          "missingness": 0.683038263849229,
+          "observed_label_count": 1110,
+          "range": 26.084065000000002,
+          "rows": 3502
+        },
+        "Tc": {
+          "max": 0.954,
+          "mean": 0.24730779914529913,
+          "median": 0.2401135,
+          "min": 0.024488,
+          "missing_count": 2098,
+          "missingness": 0.5990862364363221,
+          "observed_label_count": 1404,
+          "range": 0.929512,
+          "rows": 3502
+        },
+        "Tg": {
+          "max": 484.69000000000005,
+          "mean": 151.81694559386975,
+          "median": 126.37,
+          "min": -138.80209999999997,
+          "missing_count": 3241,
+          "missingness": 0.9254711593375214,
+          "observed_label_count": 261,
+          "range": 623.4921,
+          "rows": 3502
+        }
+      }
+    },
+    "private": {
+      "rows": 3207,
+      "targets": {
+        "Density": {
+          "max": 1.73283,
+          "mean": 1.0861318342363495,
+          "median": 1.0811285,
+          "min": 0.134543,
+          "missing_count": 1925,
+          "missingness": 0.6002494543186779,
+          "observed_label_count": 1282,
+          "range": 1.598287,
+          "rows": 3207
+        },
+        "FFV": {
+          "max": 0.454,
+          "mean": 0.3560656934306569,
+          "median": 0.351,
+          "min": 0.306,
+          "missing_count": 3070,
+          "missingness": 0.9572809479264109,
+          "observed_label_count": 137,
+          "range": 0.14800000000000002,
+          "rows": 3207
+        },
+        "Rg": {
+          "max": 35.52955,
+          "mean": 18.379112991239584,
+          "median": 18.511291649999997,
+          "min": 9.445485,
+          "missing_count": 2151,
+          "missingness": 0.6707202993451824,
+          "observed_label_count": 1056,
+          "range": 26.084065000000002,
+          "rows": 3207
+        },
+        "Tc": {
+          "max": 0.954,
+          "mean": 0.24533078025751073,
+          "median": 0.239328,
+          "min": 0.024488,
+          "missing_count": 2042,
+          "missingness": 0.6367321484253197,
+          "observed_label_count": 1165,
+          "range": 0.929512,
+          "rows": 3207
+        },
+        "Tg": {
+          "max": 484.69000000000005,
+          "mean": 179.8207228915663,
+          "median": 169.67000000000002,
+          "min": -86.64999999999998,
+          "missing_count": 3041,
+          "missingness": 0.9482382288743374,
+          "observed_label_count": 166,
+          "range": 571.34,
+          "rows": 3207
+        }
+      }
+    },
+    "public": {
+      "rows": 295,
+      "targets": {
+        "Density": {
+          "max": 1.360333553,
+          "mean": 1.0573588987991802,
+          "median": 1.0571258475,
+          "min": 0.746789572,
+          "missing_count": 51,
+          "missingness": 0.17288135593220338,
+          "observed_label_count": 244,
+          "range": 0.6135439810000001,
+          "rows": 295
+        },
+        "FFV": {
+          "max": 0.656,
+          "mean": 0.3579418604651163,
+          "median": 0.3525,
+          "min": 0.315,
+          "missing_count": 209,
+          "missingness": 0.7084745762711865,
+          "observed_label_count": 86,
+          "range": 0.341,
+          "rows": 295
+        },
+        "Rg": {
+          "max": 32.30113333,
+          "mean": 17.395580980532177,
+          "median": 17.43588335,
+          "min": 11.20816833,
+          "missing_count": 241,
+          "missingness": 0.8169491525423729,
+          "observed_label_count": 54,
+          "range": 21.092965,
+          "rows": 295
+        },
+        "Tc": {
+          "max": 0.678,
+          "mean": 0.2569447322175732,
+          "median": 0.244302,
+          "min": 0.077306,
+          "missing_count": 56,
+          "missingness": 0.18983050847457628,
+          "observed_label_count": 239,
+          "range": 0.6006940000000001,
+          "rows": 295
+        },
+        "Tg": {
+          "max": 359.08410000000003,
+          "mean": 102.88402947368422,
+          "median": 97.76390000000004,
+          "min": -138.80209999999997,
+          "missing_count": 200,
+          "missingness": 0.6779661016949152,
+          "observed_label_count": 95,
+          "range": 497.88620000000003,
+          "rows": 295
+        }
+      }
+    }
+  }
+}

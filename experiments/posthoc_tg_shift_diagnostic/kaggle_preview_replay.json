@@ -1,0 +1,35 @@
+{
+  "classification": "POST-HOC / USES RELEASED TEST LABELS / NOT VALID BLIND PERFORMANCE",
+  "formal_source_sha": "72490c1a748ed9395025f4120c9eb04f28268695",
+  "ids_match_in_order": true,
+  "kernel_preview_submission": {
+    "path": "kernel_output/submission.csv",
+    "rows": 3,
+    "sha256": "3118e9ddbee597fc75601bd566fa54ff48552f1eee9b129106ea3cb898649be4"
+  },
+  "local_checkpoint_replay": {
+    "checkpoint_count": 25,
+    "path": "/tmp/c128_preview_replay.csv",
+    "rows": 3,
+    "sha256": "08c5667a332270dfa37953d7a75460417d7ba70ed6e65c9208e1011cc17cb3c5"
+  },
+  "max_abs_prediction_difference_by_target": {
+    "Density": 2.6701836297604586e-09,
+    "FFV": 6.988396528129215e-10,
+    "Rg": 1.509762519447122e-07,
+    "Tc": 2.933097847934718e-09,
+    "Tg": 1.5254694289978943e-06
+  },
+  "purpose": "inference implementation check only; not validation against hidden labels",
+  "released_truth_files": {
+    "limitation": "The competition test.csv contains only three preview rows. Non-overlap with the full released set is expected and is not evidence of a mismatch. The preview cannot establish full hidden-row ID mapping or prove which released truth snapshot was used for leaderboard scores.",
+    "private_sha256": "55cac160c1c139240968a96ba070b583e93902dd1901be2e54d722c4d590a952",
+    "public_sha256": "0b5b59f9464fb30da82252cc9e4f56552ff641284c627f11aa93fa4d7031c514",
+    "rows": 3502
+  },
+  "test_preview": {
+    "path": "official_competition_test/test.csv",
+    "rows": 3,
+    "sha256": "f62367095efa2beae8af3ddbf3a7a6063c7be65034bdfc1fce9b2def29203bf7"
+  }
+}
