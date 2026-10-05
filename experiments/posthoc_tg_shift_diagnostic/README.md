@@ -46,3 +46,27 @@ The default run rebuilds graphs and performs inference once with the 25 fixed ch
 - `metric_fidelity_gate.json`: clean/+70 offline score replay and gate result.
 - If the gate passes: `shift_scores.csv`, `target_contributions.csv`, `residual_statistics.csv`, `diagnostic_summary.json`, and both requested figures are generated.
 - On the current gate-failed run: `kaggle_preview_replay.json` records the three-row inference cross-check; `metric_fidelity_gate.json`, `provenance.json`, and `report.md` record why the sweep was stopped.
+
+## Released-test alignment audit
+
+The downloadable competition `test.csv` has three preview rows. Its non-overlap with the full released files is expected and is not mismatch evidence. The released dataset metadata explicitly claims `public.csv` and `private.csv` are the corresponding leaderboard datasets, but does not expose Kaggle numeric IDs or independently prove that its sole version is byte-for-byte the final scored snapshot.
+
+`alignment_audit.py` performs only a post-hoc audit of the fixed clean predictions and the already scored +70 output. It does not run inference or test any additional shift. It writes:
+
+- `dataset_metadata_audit.json`: Kaggle owner description, version and file timestamps, sizes, hashes, and source URLs.
+- `released_target_statistics.csv`: rows, observed labels, missingness, range, mean, and median per target and split.
+- `split_weight_scenarios.csv`: normal/swapped split assignment under global/split-specific weights, with clean/+70 scores and comparison to the four online values.
+- `alignment_audit.json`: metadata, graph canonicalization round-trip audit, exact score-alignment conclusion, and the no-sweep declaration.
+- `report.md`: interpretation, ruled-out causes, remaining possibilities, and the mapping conclusion.
+
+Reproduce the bounded audit (no checkpoint files are read):
+
+```bash
+python experiments/posthoc_tg_shift_diagnostic/alignment_audit.py \
+  --formal-source <checkout-at-72490c1a748ed9395025f4120c9eb04f28268695> \
+  --public-csv <released-test-data>/public.csv \
+  --private-csv <released-test-data>/private.csv \
+  --prediction-csv experiments/posthoc_tg_shift_diagnostic/clean_c128_predictions.csv
+```
+
+The audited canonicalization sample found 1,317/1,317 feature-labeled graph isomorphisms. Neither normal nor swapped split assignment, under global or split-specific released-label weights, reproduced the known Clean and +70 Kaggle scores. The conclusion is: **released labels cannot be used to exactly reproduce leaderboard scoring**. No private-optimal shift or Tg sweep was performed.

@@ -1,0 +1,39 @@
+{
+  "current_version_number": 1,
+  "dataset_id": 8954694,
+  "dataset_ref": "alexliu99/neurips-open-polymer-prediction-2025-test-data",
+  "dataset_visibility": "public",
+  "description_claim": "public.csv is used for the public leaderboard; private.csv is used for the private leaderboard.",
+  "files": {
+    "private.csv": {
+      "bytes": 208864,
+      "created_utc": "2025-12-09T04:27:34.024Z",
+      "sha256": "55cac160c1c139240968a96ba070b583e93902dd1901be2e54d722c4d590a952"
+    },
+    "public.csv": {
+      "bytes": 19513,
+      "created_utc": "2025-12-09T04:27:34.105Z",
+      "sha256": "0b5b59f9464fb30da82252cc9e4f56552ff641284c627f11aa93fa4d7031c514"
+    }
+  },
+  "last_updated_utc": "2025-12-09T04:27:33.087Z",
+  "license": "MIT",
+  "owner": "Alex Liu (alexliu99)",
+  "scope_note": "The owner explicitly labels the files as the public/private leaderboard datasets. This is provenance metadata, not an independent proof that the files equal the final scoring snapshot or that their rows map to Kaggle numeric IDs.",
+  "sources": {
+    "competition_data_update_discussion": "https://www.kaggle.com/competitions/neurips-open-polymer-prediction-2025/discussion/588643",
+    "competition_leaderboard": "https://www.kaggle.com/competitions/neurips-open-polymer-prediction-2025/leaderboard",
+    "dataset_file_list_api": "https://www.kaggle.com/api/v1/datasets/list/alexliu99/neurips-open-polymer-prediction-2025-test-data",
+    "dataset_metadata_api": "https://www.kaggle.com/api/v1/datasets/view/alexliu99/neurips-open-polymer-prediction-2025-test-data"
+  },
+  "subtitle": "Datasets used in the public and private leaderboards",
+  "title": "NeurIPS - Open Polymer Prediction 2025 Test Data",
+  "version_history": [
+    {
+      "created_utc": "2025-12-09T04:27:33.087Z",
+      "note": "Initial release",
+      "status": "Ready",
+      "version": 1
+    }
+  ]
+}

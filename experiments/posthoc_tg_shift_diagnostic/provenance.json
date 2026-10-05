@@ -1,4 +1,19 @@
 {
+  "alignment_audit": {
+    "conclusion": "Released labels cannot be used to exactly reproduce leaderboard scoring.",
+    "metadata_path": "dataset_metadata_audit.json",
+    "metadata_sha256": "8070899d2c61a02bc744506cf051278098110ea878a0f9432092edcfa0261813",
+    "path": "alignment_audit.json",
+    "private_optimal_shift_search_performed": false,
+    "script_path": "alignment_audit.py",
+    "script_sha256": "1f40ccbc080a55d33a6921f62cfeb5ffec7f4241e99ea68d03153ab8aa827716",
+    "sha256": "8b450bc53435061ef8bc8c34a84744d50d7ef82b646651f77b40e6ecd052188d",
+    "split_weight_scenarios_path": "split_weight_scenarios.csv",
+    "split_weight_scenarios_sha256": "39a80db2bb559fec8e6c69cb9fc6f604eb16bc1418d1d86144186cf496170df1",
+    "target_statistics_path": "released_target_statistics.csv",
+    "target_statistics_sha256": "db14e7fa2e679a77af6c61c5b706b510a1b0d307561ec0a159d7ed3d0fd75058",
+    "tg_sweep_performed": false
+  },
   "checkpoint_manifest": {
     "/Users/gyf/Library/Caches/Polymer-stage5a-c128/formal_source_72490c1a748ed9395025f4120c9eb04f28268695/checkpoint_manifest.json": {
       "sha256": "534bf11b6c93154fc405259cf1a56dfff9574762c4bf5b56f721210c5bd0b3a3",
@@ -288,7 +303,7 @@
   "inference_manifest_sha256": "3b264bb215e41ff46ddc23f06d4942ab048c8dd7eea3a00a682390155853a093",
   "kaggle_preview_replay": {
     "path": "kaggle_preview_replay.json",
-    "sha256": "0eb984dae25601ce1084ec25b7ae0ce226e6c2d69ddc310053089ed067327abe"
+    "sha256": "3ad5e27329fc13ce02fcff4e9eb390b5a304f4b4b3998fcfbd48d79028882c94"
   },
   "main_source_sha": "c9949c088d8822eac775a55ad601d278b747c9f9",
   "metric_fidelity_gate": {
@@ -301,6 +316,7 @@
     "sha256": "f00b0b3bc83831ac9e1b6825bd868b40c8ddf22a919575a067bd11b73b8c1f43",
     "size_bytes": 705020
   },
+  "private_optimal_shift_search_performed": false,
   "released_data": {
     "dataset": "alexliu99/neurips-open-polymer-prediction-2025-test-data",
     "files": {
@@ -351,14 +367,14 @@
         "unique_ids": 295
       }
     },
-    "id_mapping_note": "Released public.csv/private.csv have no numeric Kaggle id column. The analysis uses exact raw SMILES as the released polymer identifier; the 3-row Kaggle preview is not a full ID mapping.",
+    "id_mapping_note": "Released public.csv/private.csv have no numeric Kaggle id; the analysis joins predictions to released structures by exact raw SMILES. Kaggle test.csv is a three-row preview whose non-overlap is expected and not mismatch evidence.",
     "rows_total": 3502,
     "unique_id_count": 3502
   },
   "report": {
     "path": "report.md",
-    "sha256": "e36a1d81b34cfb0032a687e4d2396856cec6f6dd125448793ee621ef2d157dd9"
+    "sha256": "da0287e5c3de820175c88a466b4a2e6252ca9250a8db9a116e1150cf6da3ba69"
   },
   "shift_sweep_performed": false,
-  "status": "stopped_at_metric_fidelity_gate"
+  "status": "stopped_after_released_test_alignment_audit"
 }

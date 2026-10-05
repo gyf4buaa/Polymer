@@ -22,9 +22,7 @@
   },
   "purpose": "inference implementation check only; not validation against hidden labels",
   "released_truth_files": {
-    "limitation": "The competition download is only a three-row preview. It cannot establish full hidden-row ID mapping or prove which released truth snapshot was used for leaderboard scores.",
-    "preview_canonical_smiles_matches": 0,
-    "preview_exact_smiles_matches": 0,
+    "limitation": "The competition test.csv contains only three preview rows. Non-overlap with the full released set is expected and is not evidence of a mismatch. The preview cannot establish full hidden-row ID mapping or prove which released truth snapshot was used for leaderboard scores.",
     "private_sha256": "55cac160c1c139240968a96ba070b583e93902dd1901be2e54d722c4d590a952",
     "public_sha256": "0b5b59f9464fb30da82252cc9e4f56552ff641284c627f11aa93fa4d7031c514",
     "rows": 3502
