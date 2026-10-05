@@ -10,7 +10,7 @@ This update audits whether the released `public.csv` / `private.csv` can be mapp
 
 ## Released dataset metadata and history
 
-Kaggle's public dataset metadata calls the files “Datasets used in the public and private leaderboards” and explicitly says `public.csv` is used for the public leaderboard while `private.csv` is used for the private leaderboard. The dataset is public (this visibility setting is separate from “private leaderboard”), owned by `alexliu99`, MIT-licensed, and has a single listed version: version 1, “Initial release”, Ready, created **2025-12-09 04:27:33 UTC**. The file records are dated about one second later. The captured fields and source API URLs are in [dataset_metadata_audit.json](dataset_metadata_audit.json).
+Kaggle's [public dataset page](https://www.kaggle.com/datasets/alexliu99/neurips-open-polymer-prediction-2025-test-data) and [metadata API](https://www.kaggle.com/api/v1/datasets/view/alexliu99/neurips-open-polymer-prediction-2025-test-data) call the files “Datasets used in the public and private leaderboards” and explicitly say `public.csv` is used for the public leaderboard while `private.csv` is used for the private leaderboard. The dataset is public (this visibility setting is separate from “private leaderboard”), owned by `alexliu99`, MIT-licensed, and has a single listed version: version 1, “Initial release”, Ready, created **2025-12-09 04:27:33 UTC**. The [file-list API](https://www.kaggle.com/api/v1/datasets/list/alexliu99/neurips-open-polymer-prediction-2025-test-data) dates the file records about one second later. The captured fields and source API URLs are in [dataset_metadata_audit.json](dataset_metadata_audit.json).
 
 | File | Rows | Bytes | SHA-256 |
 |---|---:|---:|---|
