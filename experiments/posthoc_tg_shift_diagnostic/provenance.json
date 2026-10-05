@@ -1,0 +1,364 @@
+{
+  "checkpoint_manifest": {
+    "/Users/gyf/Library/Caches/Polymer-stage5a-c128/formal_source_72490c1a748ed9395025f4120c9eb04f28268695/checkpoint_manifest.json": {
+      "sha256": "534bf11b6c93154fc405259cf1a56dfff9574762c4bf5b56f721210c5bd0b3a3",
+      "size_bytes": 27878
+    }
+  },
+  "checkpoints": [
+    {
+      "attempt": "attempt_01",
+      "fold": 0,
+      "fold_initialization_seed": 42,
+      "path": "/Users/gyf/Library/Caches/Polymer-stage5a-c128/formal_source_72490c1a748ed9395025f4120c9eb04f28268695/seed_42/attempt_01/checkpoints/fold_0_best.pt",
+      "scaler_sha256": "9387fe97d3efa649011be2780013c9f277c5cd46577d19dddaae85adf9d68bcc",
+      "scaler_source": "normalizer embedded in this formal fold checkpoint",
+      "seed": 42,
+      "sha256": "ecc111da829abdef13e5acec9893c3513a882f42c5e17cd4f050a6cdd97fd9c8",
+      "size_bytes": 1331131
+    },
+    {
+      "attempt": "attempt_01",
+      "fold": 1,
+      "fold_initialization_seed": 43,
+      "path": "/Users/gyf/Library/Caches/Polymer-stage5a-c128/formal_source_72490c1a748ed9395025f4120c9eb04f28268695/seed_42/attempt_01/checkpoints/fold_1_best.pt",
+      "scaler_sha256": "81b1e6f878bd0e70060c67d1f5c49d2c89bf378224d1468826b603e58b75391a",
+      "scaler_source": "normalizer embedded in this formal fold checkpoint",
+      "seed": 42,
+      "sha256": "29acfe90deccd24314564adac18da67ca3d5dfb19b17fc71f5ea4f2f5ce8f817",
+      "size_bytes": 1331131
+    },
+    {
+      "attempt": "attempt_01",
+      "fold": 2,
+      "fold_initialization_seed": 44,
+      "path": "/Users/gyf/Library/Caches/Polymer-stage5a-c128/formal_source_72490c1a748ed9395025f4120c9eb04f28268695/seed_42/attempt_01/checkpoints/fold_2_best.pt",
+      "scaler_sha256": "632bee494656f9a477960cc40ea5ec0715a617dbb8653ddf57b5262375745dde",
+      "scaler_source": "normalizer embedded in this formal fold checkpoint",
+      "seed": 42,
+      "sha256": "be872b9f16a8bf043dc9a164aae435d3cd5d623ee5f4d81f8283733ffe91ac00",
+      "size_bytes": 1331131
+    },
+    {
+      "attempt": "attempt_01",
+      "fold": 3,
+      "fold_initialization_seed": 45,
+      "path": "/Users/gyf/Library/Caches/Polymer-stage5a-c128/formal_source_72490c1a748ed9395025f4120c9eb04f28268695/seed_42/attempt_01/checkpoints/fold_3_best.pt",
+      "scaler_sha256": "e81ea19bb69f80284dd775617121c3ceaa7f42c884b98f6a057e954f687fe82f",
+      "scaler_source": "normalizer embedded in this formal fold checkpoint",
+      "seed": 42,
+      "sha256": "15cbfc9f035f100606d9cbbaf26e333ab10406c0a8192d4235a6e23966c56610",
+      "size_bytes": 1331131
+    },
+    {
+      "attempt": "attempt_01",
+      "fold": 4,
+      "fold_initialization_seed": 46,
+      "path": "/Users/gyf/Library/Caches/Polymer-stage5a-c128/formal_source_72490c1a748ed9395025f4120c9eb04f28268695/seed_42/attempt_01/checkpoints/fold_4_best.pt",
+      "scaler_sha256": "d46cdcb05d2b7d0a0d93b65ace6a55f34176fa4168c28b20019d5afa493eefcc",
+      "scaler_source": "normalizer embedded in this formal fold checkpoint",
+      "seed": 42,
+      "sha256": "d92d78b2410286a2b6c5ec8035124987c673efc21e54ae025a993ef52bfae18f",
+      "size_bytes": 1331131
+    },
+    {
+      "attempt": "attempt_01",
+      "fold": 0,
+      "fold_initialization_seed": 43,
+      "path": "/Users/gyf/Library/Caches/Polymer-stage5a-c128/formal_source_72490c1a748ed9395025f4120c9eb04f28268695/seed_43/attempt_01/checkpoints/fold_0_best.pt",
+      "scaler_sha256": "9387fe97d3efa649011be2780013c9f277c5cd46577d19dddaae85adf9d68bcc",
+      "scaler_source": "normalizer embedded in this formal fold checkpoint",
+      "seed": 43,
+      "sha256": "bab93f8b3c6fd022b406b66c2b5f939d3f2b616acbc59de77c886da504482624",
+      "size_bytes": 1331131
+    },
+    {
+      "attempt": "attempt_01",
+      "fold": 1,
+      "fold_initialization_seed": 44,
+      "path": "/Users/gyf/Library/Caches/Polymer-stage5a-c128/formal_source_72490c1a748ed9395025f4120c9eb04f28268695/seed_43/attempt_01/checkpoints/fold_1_best.pt",
+      "scaler_sha256": "81b1e6f878bd0e70060c67d1f5c49d2c89bf378224d1468826b603e58b75391a",
+      "scaler_source": "normalizer embedded in this formal fold checkpoint",
+      "seed": 43,
+      "sha256": "9fe47ea7b93e8567b6a43bc9c568116d08ae9b1d2b811701fd22491bb3a529c5",
+      "size_bytes": 1331131
+    },
+    {
+      "attempt": "attempt_01",
+      "fold": 2,
+      "fold_initialization_seed": 45,
+      "path": "/Users/gyf/Library/Caches/Polymer-stage5a-c128/formal_source_72490c1a748ed9395025f4120c9eb04f28268695/seed_43/attempt_01/checkpoints/fold_2_best.pt",
+      "scaler_sha256": "632bee494656f9a477960cc40ea5ec0715a617dbb8653ddf57b5262375745dde",
+      "scaler_source": "normalizer embedded in this formal fold checkpoint",
+      "seed": 43,
+      "sha256": "d5d19bb63017592025153e5a841681604c5a0c92883c647e58f5bed4a42feaf3",
+      "size_bytes": 1331131
+    },
+    {
+      "attempt": "attempt_01",
+      "fold": 3,
+      "fold_initialization_seed": 46,
+      "path": "/Users/gyf/Library/Caches/Polymer-stage5a-c128/formal_source_72490c1a748ed9395025f4120c9eb04f28268695/seed_43/attempt_01/checkpoints/fold_3_best.pt",
+      "scaler_sha256": "e81ea19bb69f80284dd775617121c3ceaa7f42c884b98f6a057e954f687fe82f",
+      "scaler_source": "normalizer embedded in this formal fold checkpoint",
+      "seed": 43,
+      "sha256": "50d2d21f32361b1a4732aa6f2e2290f34f0502d7b61f5d28583569940f1a3006",
+      "size_bytes": 1331131
+    },
+    {
+      "attempt": "attempt_01",
+      "fold": 4,
+      "fold_initialization_seed": 47,
+      "path": "/Users/gyf/Library/Caches/Polymer-stage5a-c128/formal_source_72490c1a748ed9395025f4120c9eb04f28268695/seed_43/attempt_01/checkpoints/fold_4_best.pt",
+      "scaler_sha256": "d46cdcb05d2b7d0a0d93b65ace6a55f34176fa4168c28b20019d5afa493eefcc",
+      "scaler_source": "normalizer embedded in this formal fold checkpoint",
+      "seed": 43,
+      "sha256": "f8d3166805a016006d9b5dd75bd9dd098d281cdb4044f11a6a9646dcbf20ba44",
+      "size_bytes": 1331131
+    },
+    {
+      "attempt": "attempt_01",
+      "fold": 0,
+      "fold_initialization_seed": 44,
+      "path": "/Users/gyf/Library/Caches/Polymer-stage5a-c128/formal_source_72490c1a748ed9395025f4120c9eb04f28268695/seed_44/attempt_01/checkpoints/fold_0_best.pt",
+      "scaler_sha256": "9387fe97d3efa649011be2780013c9f277c5cd46577d19dddaae85adf9d68bcc",
+      "scaler_source": "normalizer embedded in this formal fold checkpoint",
+      "seed": 44,
+      "sha256": "bacc320860f2c50abe1a21dca2979e6b2e081e5ee15fc538ba5103bfab44a98d",
+      "size_bytes": 1331131
+    },
+    {
+      "attempt": "attempt_01",
+      "fold": 1,
+      "fold_initialization_seed": 45,
+      "path": "/Users/gyf/Library/Caches/Polymer-stage5a-c128/formal_source_72490c1a748ed9395025f4120c9eb04f28268695/seed_44/attempt_01/checkpoints/fold_1_best.pt",
+      "scaler_sha256": "81b1e6f878bd0e70060c67d1f5c49d2c89bf378224d1468826b603e58b75391a",
+      "scaler_source": "normalizer embedded in this formal fold checkpoint",
+      "seed": 44,
+      "sha256": "ff6945b89fb509adfc98950e4f32034a3dadbd53987c09552c3605d2170c023a",
+      "size_bytes": 1331131
+    },
+    {
+      "attempt": "attempt_01",
+      "fold": 2,
+      "fold_initialization_seed": 46,
+      "path": "/Users/gyf/Library/Caches/Polymer-stage5a-c128/formal_source_72490c1a748ed9395025f4120c9eb04f28268695/seed_44/attempt_01/checkpoints/fold_2_best.pt",
+      "scaler_sha256": "632bee494656f9a477960cc40ea5ec0715a617dbb8653ddf57b5262375745dde",
+      "scaler_source": "normalizer embedded in this formal fold checkpoint",
+      "seed": 44,
+      "sha256": "8ab5d5a67d465239863894c7f1d3d32363d39979bc4c0cd8f6ad4c52f858e8e1",
+      "size_bytes": 1331131
+    },
+    {
+      "attempt": "attempt_01",
+      "fold": 3,
+      "fold_initialization_seed": 47,
+      "path": "/Users/gyf/Library/Caches/Polymer-stage5a-c128/formal_source_72490c1a748ed9395025f4120c9eb04f28268695/seed_44/attempt_01/checkpoints/fold_3_best.pt",
+      "scaler_sha256": "e81ea19bb69f80284dd775617121c3ceaa7f42c884b98f6a057e954f687fe82f",
+      "scaler_source": "normalizer embedded in this formal fold checkpoint",
+      "seed": 44,
+      "sha256": "c483ce09b5170e8b14c1511fd29f4ed498d3dd21688c055adfefd34cc71f4f22",
+      "size_bytes": 1331131
+    },
+    {
+      "attempt": "attempt_01",
+      "fold": 4,
+      "fold_initialization_seed": 48,
+      "path": "/Users/gyf/Library/Caches/Polymer-stage5a-c128/formal_source_72490c1a748ed9395025f4120c9eb04f28268695/seed_44/attempt_01/checkpoints/fold_4_best.pt",
+      "scaler_sha256": "d46cdcb05d2b7d0a0d93b65ace6a55f34176fa4168c28b20019d5afa493eefcc",
+      "scaler_source": "normalizer embedded in this formal fold checkpoint",
+      "seed": 44,
+      "sha256": "27dadc4d5e69ffbb1299e42a20dbb11d8a20be5eb23eeb1e6f8b8b461548cb55",
+      "size_bytes": 1331131
+    },
+    {
+      "attempt": "attempt_01",
+      "fold": 0,
+      "fold_initialization_seed": 45,
+      "path": "/Users/gyf/Library/Caches/Polymer-stage5a-c128/formal_source_72490c1a748ed9395025f4120c9eb04f28268695/seed_45/attempt_01/checkpoints/fold_0_best.pt",
+      "scaler_sha256": "9387fe97d3efa649011be2780013c9f277c5cd46577d19dddaae85adf9d68bcc",
+      "scaler_source": "normalizer embedded in this formal fold checkpoint",
+      "seed": 45,
+      "sha256": "5d83f66aefd7c30b0c41daa204e011999653880f34f30b5c5dc9a22eb4929736",
+      "size_bytes": 1331131
+    },
+    {
+      "attempt": "attempt_01",
+      "fold": 1,
+      "fold_initialization_seed": 46,
+      "path": "/Users/gyf/Library/Caches/Polymer-stage5a-c128/formal_source_72490c1a748ed9395025f4120c9eb04f28268695/seed_45/attempt_01/checkpoints/fold_1_best.pt",
+      "scaler_sha256": "81b1e6f878bd0e70060c67d1f5c49d2c89bf378224d1468826b603e58b75391a",
+      "scaler_source": "normalizer embedded in this formal fold checkpoint",
+      "seed": 45,
+      "sha256": "3aaaa88ef0ff5d093aa12390994c1b830f23719b434a77c7666e985ed3fab42c",
+      "size_bytes": 1331131
+    },
+    {
+      "attempt": "attempt_01",
+      "fold": 2,
+      "fold_initialization_seed": 47,
+      "path": "/Users/gyf/Library/Caches/Polymer-stage5a-c128/formal_source_72490c1a748ed9395025f4120c9eb04f28268695/seed_45/attempt_01/checkpoints/fold_2_best.pt",
+      "scaler_sha256": "632bee494656f9a477960cc40ea5ec0715a617dbb8653ddf57b5262375745dde",
+      "scaler_source": "normalizer embedded in this formal fold checkpoint",
+      "seed": 45,
+      "sha256": "ae9ee4306e49600119709270a4de561dbe2bb3ec89f593c14003a582c257c727",
+      "size_bytes": 1331131
+    },
+    {
+      "attempt": "attempt_01",
+      "fold": 3,
+      "fold_initialization_seed": 48,
+      "path": "/Users/gyf/Library/Caches/Polymer-stage5a-c128/formal_source_72490c1a748ed9395025f4120c9eb04f28268695/seed_45/attempt_01/checkpoints/fold_3_best.pt",
+      "scaler_sha256": "e81ea19bb69f80284dd775617121c3ceaa7f42c884b98f6a057e954f687fe82f",
+      "scaler_source": "normalizer embedded in this formal fold checkpoint",
+      "seed": 45,
+      "sha256": "d8698230b6509f6171cc64af27ac631b57078d597eeb7cbd02167eea1af4eeb8",
+      "size_bytes": 1331131
+    },
+    {
+      "attempt": "attempt_01",
+      "fold": 4,
+      "fold_initialization_seed": 49,
+      "path": "/Users/gyf/Library/Caches/Polymer-stage5a-c128/formal_source_72490c1a748ed9395025f4120c9eb04f28268695/seed_45/attempt_01/checkpoints/fold_4_best.pt",
+      "scaler_sha256": "d46cdcb05d2b7d0a0d93b65ace6a55f34176fa4168c28b20019d5afa493eefcc",
+      "scaler_source": "normalizer embedded in this formal fold checkpoint",
+      "seed": 45,
+      "sha256": "870207662d69f084ea57c6fce1376ad2eaa9b18557547cd3537dd5796a70f3a4",
+      "size_bytes": 1331131
+    },
+    {
+      "attempt": "attempt_02",
+      "fold": 0,
+      "fold_initialization_seed": 46,
+      "path": "/Users/gyf/Library/Caches/Polymer-stage5a-c128/formal_source_72490c1a748ed9395025f4120c9eb04f28268695/seed_46/attempt_02/checkpoints/fold_0_best.pt",
+      "scaler_sha256": "9387fe97d3efa649011be2780013c9f277c5cd46577d19dddaae85adf9d68bcc",
+      "scaler_source": "normalizer embedded in this formal fold checkpoint",
+      "seed": 46,
+      "sha256": "641eaa2016249cfdbd38791de08ea6e091b605d8ef84c287b1c7626a22a76bd1",
+      "size_bytes": 1331131
+    },
+    {
+      "attempt": "attempt_02",
+      "fold": 1,
+      "fold_initialization_seed": 47,
+      "path": "/Users/gyf/Library/Caches/Polymer-stage5a-c128/formal_source_72490c1a748ed9395025f4120c9eb04f28268695/seed_46/attempt_02/checkpoints/fold_1_best.pt",
+      "scaler_sha256": "81b1e6f878bd0e70060c67d1f5c49d2c89bf378224d1468826b603e58b75391a",
+      "scaler_source": "normalizer embedded in this formal fold checkpoint",
+      "seed": 46,
+      "sha256": "a9128417c068e00c1182dd8a3b6ccef1ee7f6cfd85c7b92d4bc6865719fd2d1e",
+      "size_bytes": 1331131
+    },
+    {
+      "attempt": "attempt_02",
+      "fold": 2,
+      "fold_initialization_seed": 48,
+      "path": "/Users/gyf/Library/Caches/Polymer-stage5a-c128/formal_source_72490c1a748ed9395025f4120c9eb04f28268695/seed_46/attempt_02/checkpoints/fold_2_best.pt",
+      "scaler_sha256": "632bee494656f9a477960cc40ea5ec0715a617dbb8653ddf57b5262375745dde",
+      "scaler_source": "normalizer embedded in this formal fold checkpoint",
+      "seed": 46,
+      "sha256": "595c2b3ad17b1363a88478b50fd3cd19e87d910e010c5f7272f8d8cc802b75af",
+      "size_bytes": 1331131
+    },
+    {
+      "attempt": "attempt_02",
+      "fold": 3,
+      "fold_initialization_seed": 49,
+      "path": "/Users/gyf/Library/Caches/Polymer-stage5a-c128/formal_source_72490c1a748ed9395025f4120c9eb04f28268695/seed_46/attempt_02/checkpoints/fold_3_best.pt",
+      "scaler_sha256": "e81ea19bb69f80284dd775617121c3ceaa7f42c884b98f6a057e954f687fe82f",
+      "scaler_source": "normalizer embedded in this formal fold checkpoint",
+      "seed": 46,
+      "sha256": "b4a0e60d9d6dee21186d951e6577e3775568755a121f1cebfcb29a76c62e61d1",
+      "size_bytes": 1331131
+    },
+    {
+      "attempt": "attempt_02",
+      "fold": 4,
+      "fold_initialization_seed": 50,
+      "path": "/Users/gyf/Library/Caches/Polymer-stage5a-c128/formal_source_72490c1a748ed9395025f4120c9eb04f28268695/seed_46/attempt_02/checkpoints/fold_4_best.pt",
+      "scaler_sha256": "d46cdcb05d2b7d0a0d93b65ace6a55f34176fa4168c28b20019d5afa493eefcc",
+      "scaler_source": "normalizer embedded in this formal fold checkpoint",
+      "seed": 46,
+      "sha256": "11e0f93370f9d81c7b19bbc0e290d97e0eb2aaae69a2606e3dcd32d1f50cee1e",
+      "size_bytes": 1331131
+    }
+  ],
+  "classification": "POST-HOC / USES RELEASED TEST LABELS / NOT VALID BLIND PERFORMANCE",
+  "figures_generated": false,
+  "formal_source_sha": "72490c1a748ed9395025f4120c9eb04f28268695",
+  "inference_manifest_sha256": "3b264bb215e41ff46ddc23f06d4942ab048c8dd7eea3a00a682390155853a093",
+  "kaggle_preview_replay": {
+    "path": "kaggle_preview_replay.json",
+    "sha256": "0eb984dae25601ce1084ec25b7ae0ce226e6c2d69ddc310053089ed067327abe"
+  },
+  "main_source_sha": "c9949c088d8822eac775a55ad601d278b747c9f9",
+  "metric_fidelity_gate": {
+    "passed": false,
+    "path": "metric_fidelity_gate.json",
+    "sha256": "42f1af26397aa4e73f06f482e558cbec1d809b88429f81c21baa30f9f522ca76"
+  },
+  "prediction": {
+    "path": "clean_c128_predictions.csv",
+    "sha256": "f00b0b3bc83831ac9e1b6825bd868b40c8ddf22a919575a067bd11b73b8c1f43",
+    "size_bytes": 705020
+  },
+  "released_data": {
+    "dataset": "alexliu99/neurips-open-polymer-prediction-2025-test-data",
+    "files": {
+      "private": {
+        "columns": [
+          "SMILES",
+          "Tg",
+          "FFV",
+          "Tc",
+          "Density",
+          "Rg"
+        ],
+        "has_numeric_kaggle_id": false,
+        "id_key": "exact raw SMILES",
+        "label_counts": {
+          "Density": 1282,
+          "FFV": 137,
+          "Rg": 1056,
+          "Tc": 1165,
+          "Tg": 166
+        },
+        "path": "/Users/gyf/Library/Caches/Polymer-stage5a-c128/posthoc_tg_shift_diagnostic/private.csv",
+        "rows": 3207,
+        "sha256": "55cac160c1c139240968a96ba070b583e93902dd1901be2e54d722c4d590a952",
+        "unique_ids": 3207
+      },
+      "public": {
+        "columns": [
+          "SMILES",
+          "Tg",
+          "FFV",
+          "Tc",
+          "Density",
+          "Rg"
+        ],
+        "has_numeric_kaggle_id": false,
+        "id_key": "exact raw SMILES",
+        "label_counts": {
+          "Density": 244,
+          "FFV": 86,
+          "Rg": 54,
+          "Tc": 239,
+          "Tg": 95
+        },
+        "path": "/Users/gyf/Library/Caches/Polymer-stage5a-c128/posthoc_tg_shift_diagnostic/public.csv",
+        "rows": 295,
+        "sha256": "0b5b59f9464fb30da82252cc9e4f56552ff641284c627f11aa93fa4d7031c514",
+        "unique_ids": 295
+      }
+    },
+    "id_mapping_note": "Released public.csv/private.csv have no numeric Kaggle id column. The analysis uses exact raw SMILES as the released polymer identifier; the 3-row Kaggle preview is not a full ID mapping.",
+    "rows_total": 3502,
+    "unique_id_count": 3502
+  },
+  "report": {
+    "path": "report.md",
+    "sha256": "e36a1d81b34cfb0032a687e4d2396856cec6f6dd125448793ee621ef2d157dd9"
+  },
+  "shift_sweep_performed": false,
+  "status": "stopped_at_metric_fidelity_gate"
+}
