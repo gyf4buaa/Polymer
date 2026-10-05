@@ -1,0 +1,7 @@
+tg_shift_c,submission_ref,kernel_slug,kernel_version,submission_message,status,public_score,private_score,delta_public_vs_clean,delta_private_vs_clean,probe_stage
+0,56831294,safaaa46/clean-own-gnn-c128-5seed-5fold,5,Clean Own-GNN C128 5seed x 5fold ensemble,COMPLETE,0.06899,0.09524,+0.00000,+0.00000,clean reference
+40,56840734,safaaa46/clean-own-gnn-c128-tg-40c-diagnostic,2,Diagnostic: Clean C128 Tg +40C,COMPLETE,0.06417,0.08232,-0.00482,-0.01292,preregistered
+70,56831959,safaaa46/clean-own-gnn-c128-posthoc-tg70-diagnostic,4,Diagnostic: Clean Own-GNN C128 +70C Tg post-processing,COMPLETE,0.06493,0.07758,-0.00406,-0.01766,known diagnostic reference
+100,56840820,safaaa46/clean-own-gnn-c128-tg-100c-diagnostic,1,Diagnostic: Clean C128 Tg +100C,COMPLETE,0.06911,0.07570,+0.00012,-0.01954,preregistered
+115,56840967,safaaa46/clean-own-gnn-c128-tg-115c-diagnostic,1,Diagnostic: Clean C128 Tg +115C,COMPLETE,0.07223,0.07597,+0.00324,-0.01927,single permitted follow-up
+130,56840874,safaaa46/clean-own-gnn-c128-tg-130c-diagnostic,1,Diagnostic: Clean C128 Tg +130C,COMPLETE,0.07609,0.07657,+0.00710,-0.01867,preregistered

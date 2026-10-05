@@ -1,0 +1,195 @@
+{
+  "classification": "POST-HOC / LEADERBOARD-PROBED / NOT VALID BLIND PERFORMANCE",
+  "clean_submission_comparison": {
+    "columns_unchanged": true,
+    "csv_non_tg_exactly_equal_to_clean_serialization": true,
+    "id_order_unchanged": true,
+    "non_tg_targets_exactly_equal": true,
+    "rows_unchanged": true,
+    "tg_delta_max": 115.0,
+    "tg_delta_min": 114.99999999999997,
+    "tg_delta_tolerance": 1e-10
+  },
+  "columns_match": true,
+  "external_or_supplementary_labels": false,
+  "finite_predictions": true,
+  "formal_source_sha": "72490c1a748ed9395025f4120c9eb04f28268695",
+  "id_order_match": true,
+  "loaded_checkpoint_sha256": [
+    "ecc111da829abdef13e5acec9893c3513a882f42c5e17cd4f050a6cdd97fd9c8",
+    "29acfe90deccd24314564adac18da67ca3d5dfb19b17fc71f5ea4f2f5ce8f817",
+    "be872b9f16a8bf043dc9a164aae435d3cd5d623ee5f4d81f8283733ffe91ac00",
+    "15cbfc9f035f100606d9cbbaf26e333ab10406c0a8192d4235a6e23966c56610",
+    "d92d78b2410286a2b6c5ec8035124987c673efc21e54ae025a993ef52bfae18f",
+    "bab93f8b3c6fd022b406b66c2b5f939d3f2b616acbc59de77c886da504482624",
+    "9fe47ea7b93e8567b6a43bc9c568116d08ae9b1d2b811701fd22491bb3a529c5",
+    "d5d19bb63017592025153e5a841681604c5a0c92883c647e58f5bed4a42feaf3",
+    "50d2d21f32361b1a4732aa6f2e2290f34f0502d7b61f5d28583569940f1a3006",
+    "f8d3166805a016006d9b5dd75bd9dd098d281cdb4044f11a6a9646dcbf20ba44",
+    "bacc320860f2c50abe1a21dca2979e6b2e081e5ee15fc538ba5103bfab44a98d",
+    "ff6945b89fb509adfc98950e4f32034a3dadbd53987c09552c3605d2170c023a",
+    "8ab5d5a67d465239863894c7f1d3d32363d39979bc4c0cd8f6ad4c52f858e8e1",
+    "c483ce09b5170e8b14c1511fd29f4ed498d3dd21688c055adfefd34cc71f4f22",
+    "27dadc4d5e69ffbb1299e42a20dbb11d8a20be5eb23eeb1e6f8b8b461548cb55",
+    "5d83f66aefd7c30b0c41daa204e011999653880f34f30b5c5dc9a22eb4929736",
+    "3aaaa88ef0ff5d093aa12390994c1b830f23719b434a77c7666e985ed3fab42c",
+    "ae9ee4306e49600119709270a4de561dbe2bb3ec89f593c14003a582c257c727",
+    "d8698230b6509f6171cc64af27ac631b57078d597eeb7cbd02167eea1af4eeb8",
+    "870207662d69f084ea57c6fce1376ad2eaa9b18557547cd3537dd5796a70f3a4",
+    "641eaa2016249cfdbd38791de08ea6e091b605d8ef84c287b1c7626a22a76bd1",
+    "a9128417c068e00c1182dd8a3b6ccef1ee7f6cfd85c7b92d4bc6865719fd2d1e",
+    "595c2b3ad17b1363a88478b50fd3cd19e87d910e010c5f7272f8d8cc802b75af",
+    "b4a0e60d9d6dee21186d951e6577e3775568755a121f1cebfcb29a76c62e61d1",
+    "11e0f93370f9d81c7b19bbc0e290d97e0eb2aaae69a2606e3dcd32d1f50cee1e"
+  ],
+  "loaded_pairs": [
+    [
+      42,
+      0
+    ],
+    [
+      42,
+      1
+    ],
+    [
+      42,
+      2
+    ],
+    [
+      42,
+      3
+    ],
+    [
+      42,
+      4
+    ],
+    [
+      43,
+      0
+    ],
+    [
+      43,
+      1
+    ],
+    [
+      43,
+      2
+    ],
+    [
+      43,
+      3
+    ],
+    [
+      43,
+      4
+    ],
+    [
+      44,
+      0
+    ],
+    [
+      44,
+      1
+    ],
+    [
+      44,
+      2
+    ],
+    [
+      44,
+      3
+    ],
+    [
+      44,
+      4
+    ],
+    [
+      45,
+      0
+    ],
+    [
+      45,
+      1
+    ],
+    [
+      45,
+      2
+    ],
+    [
+      45,
+      3
+    ],
+    [
+      45,
+      4
+    ],
+    [
+      46,
+      0
+    ],
+    [
+      46,
+      1
+    ],
+    [
+      46,
+      2
+    ],
+    [
+      46,
+      3
+    ],
+    [
+      46,
+      4
+    ]
+  ],
+  "main_sha": "c9949c088d8822eac775a55ad601d278b747c9f9",
+  "model": "Stage 5A C128 Own-GNN; keep_dummy; GINEConv; 4 layers; mean|max pooling",
+  "models_expected": 25,
+  "models_loaded_and_ensembled": 25,
+  "official_train_only": true,
+  "posthoc_clipping_or_calibration": false,
+  "prediction_summary": {
+    "Density": {
+      "max": 1.1505290829314558,
+      "mean": 1.1259644683350276,
+      "min": 1.103210867715071
+    },
+    "FFV": {
+      "max": 0.3755022755396553,
+      "mean": 0.3674693847461665,
+      "min": 0.3547951255906059
+    },
+    "Rg": {
+      "max": 21.909089385822032,
+      "mean": 20.658520776604348,
+      "min": 19.80637584877389
+    },
+    "Tc": {
+      "max": 0.24688363910815095,
+      "mean": 0.22843026626331922,
+      "min": 0.20963212248224775
+    },
+    "Tg": {
+      "max": 275.6500975680579,
+      "mean": 242.71143469933244,
+      "min": 194.5302614844041
+    }
+  },
+  "runtime": {
+    "accelerator": "Tesla T4",
+    "internet_enabled": false,
+    "python": "3.13.15",
+    "rdkit": "2026.03.2",
+    "torch": "2.11.0+cu128",
+    "torch_geometric": "2.7.0"
+  },
+  "sample_submission_rows": 3,
+  "sample_submission_sha256": "ee85a223721ea96e7e5529faa9bfec9202a3c3a921d6a92ff1927f73353d3e01",
+  "status": "passed",
+  "submission_sha256": "274363aa95bcde33995ecfc99c2e4b08d7940a7325ce955dfc44d2b66b79a3a6",
+  "test_csv_sha256": "f62367095efa2beae8af3ddbf3a7a6063c7be65034bdfc1fce9b2def29203bf7",
+  "test_rows": 3,
+  "tg_shift_celsius": 115.0
+}
